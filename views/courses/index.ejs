@@ -1,0 +1,16 @@
+<% include ../partials/header %>
+
+    <form action='/courses/new'>
+    <input type='submit' value='NEW COURSE' />
+    </form>
+    <div>
+        <% courses.forEach((course) => { %>
+            <p>
+                <a href="/courses/<%= course.id %>">
+                    <%= course.name %>
+                </a>
+            </p>
+            <% }) %>
+    </div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+    <div>
+        <h2>Create new course</h2>
+        <form action='/courses' method='POST'>
+            <label for="name">Name</label>
+            <input type="text" name="name">
+            <br />
+
+            <label for="code">Code</label>
+            <input type="text" name="code" required="true">
+            <br />
+
+            <label for="image">Link to image</label>
+            <input type="text" name="image">
+            <br />
+
+            <label for="description">Description</label>
+            <textarea name="description"></textarea>
+            <br />
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+<% include ../partials/footer %>

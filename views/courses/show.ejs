@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+        <div>
+            <h2>Name: <%= course.name %></h2>
+            <h4>ID: <%= course.id %></h4>
+            <p>Code: <%= course.code %></p>
+            <img src="<%= course.image %>" alt="">
+            <p>Description: <%= course.description %></p>
+        </div>
+        <div>
+            <form action='/courses/<%= course.id %>/edit'>
+                <input type="submit" value="EDIT" />
+            </form>
+            <form action='/courses/<%= course.id %>?_method=DELETE' method='POST'>
+                <input type="submit" value="DELETE" />
+            </form>
+        </div>
+<% include ../partials/footer %>

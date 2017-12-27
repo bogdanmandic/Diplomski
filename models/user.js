@@ -13,24 +13,26 @@ const UserSchema = mongoose.Schema({
         required: [true, 'Email missing'],
         unique: true
     },
-    kind: {
+    type: {
         type: String,
-        enum: ['admin', 'teacher', 'student']
-    },
-    isAdmin: {
-        type: Boolean,
-        default: false
-    },
-    isPromote: {
-        type: Boolean,
-        default: false
+        enum: ['admin', 'teacher', 'student'],
+        default: 'student'
     },
     username: {
         type: String,
         required: [true, 'Username missing'],
         unique: true
     },
-    password: String
+    password: String,
+    courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Courses'
+    }]
+});
+
+UserSchema.pre('remove', function (next) {
+    this.model('Course').update({ students: { $elemMatch: { data: this._id } } },{ $pull: { students: { $elemMatch: { data: this._id } }  } }, { multi: true }).exec();
+    next();
 });
 
 UserSchema.plugin(passportLocalMongoose);

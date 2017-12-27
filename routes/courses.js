@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Course = require('../models/course');
+var m = require('../middlewares/middleware');
 
 
 // INDEX
@@ -17,13 +18,14 @@ router.get('/', (req, res) => {
 });
 
 // NEW
-router.get('/new', (req, res) => {
+router.get('/new', m.isTeacher, (req, res) => {
     res.render('courses/new');
 });
 
 // CREATE
-router.post('/', (req, res) => {
+router.post('/', m.isTeacher, (req, res) => {
     if (req.body.image === '') delete req.body.image;
+    req.body.teacher = req.user._id;
     Course.create(req.body, (err, created) => {
         if (err) {
             req.flash('error', err.message);
@@ -39,7 +41,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Course.findById(req.params.id, (err, foundCourse) => {
         if (err || !foundCourse) {
-            req.flash('error', err.message);
+            req.flash('error', 'There was an error or that course can\'t be found');
             res.redirect('/courses');
         } else {
             res.render('courses/show', { course: foundCourse });
@@ -48,7 +50,7 @@ router.get('/:id', (req, res) => {
 })
 
 // EDIT
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', m.checkCourseOwnership, (req, res) => {
     Course.findById(req.params.id, (err, foundCourse) => {
         if (err) {
             req.flash('error', err.message);
@@ -60,7 +62,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // UPDATE
-router.put('/:id', (req, res) => {
+router.put('/:id', m.checkCourseOwnership, (req, res) => {
     var newData = {
         $set: {
             name: req.body.name,
@@ -84,12 +86,13 @@ router.put('/:id', (req, res) => {
 })
 
 // DELETE
-router.delete('/:id', (req, res) => {
-    Course.findByIdAndRemove(req.params.id, (err, removed) => {
+router.delete('/:id', m.checkCourseOwnership, (req, res) => {
+    Course.findById(req.params.id, (err, removed) => {
         if(err) {
             req.flash('error', err.message);
             res.redirect('/courses');
         } else {
+            removed.remove();
             req.flash('success', 'Successfully Removed!');
             res.redirect('/courses');
         }

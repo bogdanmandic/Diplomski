@@ -1,17 +1,40 @@
 <% include ../partials/header %>
+    <div>
+        <h2>Name:
+            <%= course.name %>
+        </h2>
+        <h4>ID:
+            <%= course.id %>
+        </h4>
+        <p>Code:
+            <%= course.code %>
+        </p>
+        <img src="<%= course.image %>" alt="">
+        <p>Description:
+            <%= course.description %>
+        </p>
+    </div>
+    <div>
+        <form action='/courses/<%= course.id %>/edit'>
+            <input type="submit" value="EDIT" />
+        </form>
+        <form action='/courses/<%= course.id %>?_method=DELETE' method='POST'>
+            <input type="submit" value="DELETE" />
+        </form>
+    </div>
+
+    <% if(!currentUser || currentUser && currentUser.courses.indexOf(course.id) < 0 ) { %>
         <div>
-            <h2>Name: <%= course.name %></h2>
-            <h4>ID: <%= course.id %></h4>
-            <p>Code: <%= course.code %></p>
-            <img src="<%= course.image %>" alt="">
-            <p>Description: <%= course.description %></p>
+            <form action='/enroll/<%= course.id %>' method='POST'>
+                <input type='submit' value='ENROLL' />
+            </form>
         </div>
+        <% } %>
+    <% if(currentUser && currentUser.courses.indexOf(course.id) >= 0) { %>
         <div>
-            <form action='/courses/<%= course.id %>/edit'>
-                <input type="submit" value="EDIT" />
-            </form>
-            <form action='/courses/<%= course.id %>?_method=DELETE' method='POST'>
-                <input type="submit" value="DELETE" />
+            <form action='/unenroll/<%= course.id %>' method='POST'>
+                <input type='submit' value='UNENROLL' />
             </form>
         </div>
+        <% } %>
 <% include ../partials/footer %>

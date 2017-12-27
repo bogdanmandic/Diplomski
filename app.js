@@ -18,6 +18,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var courses = require('./routes/courses');
 var auth = require('./routes/auth');
+var enroll = require('./routes/enroll');
 
 // mongoose setup
 mongoose.Promise = global.Promise;
@@ -63,6 +64,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/courses', courses);
 app.use(auth);
+app.use(enroll);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

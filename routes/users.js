@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
 	User.findById(req.params.id, (err, foundUser) => {
 		if (err || !foundUser) {
-			req.flash('error', err.message);
+			req.flash('error', 'User does not exist.' );
 			res.redirect('/courses');
 		} else {
 			res.render('./users/show', { user: foundUser });
@@ -66,13 +66,14 @@ router.put('/:id', (req, res) => {
 
 // DELETE
 router.delete('/:id', (req, res) => {
-	User.findByIdAndRemove(req.params.id, (err, deleted) => {
-		if(err) {
-        	req.flash('error', err.message);
+	User.findById(req.params.id, (err, deleted) => {
+		if(err || !deleted) {
+        	req.flash('error', 'No user to delete');
             res.redirect('/courses');
         } else {
+			deleted.remove();
             req.flash('success', 'Successfully Removed!');
-            res.redirect('/courses');
+            res.redirect('/users');
         }
 	})
 })

@@ -19,6 +19,7 @@ var users = require('./routes/users');
 var courses = require('./routes/courses');
 var auth = require('./routes/auth');
 var enroll = require('./routes/enroll');
+var carousel = require('./routes/carousel');
 
 // mongoose setup
 mongoose.Promise = global.Promise;
@@ -35,6 +36,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
+app.use(express.static('uploads'));
 app.use(methodOverride('_method'));
 app.use(flash());
 
@@ -65,6 +68,7 @@ app.use('/users', users);
 app.use('/courses', courses);
 app.use(auth);
 app.use(enroll);
+app.use('/carousel', carousel);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

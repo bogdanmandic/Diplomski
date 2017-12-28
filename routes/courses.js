@@ -1,20 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var Course = require('../models/course');
+var Carousel = require('../models/carousel');
 var m = require('../middlewares/middleware');
 
 
 // INDEX
 router.get('/', (req, res) => {
-    Course.find({}, (err, allCourses) => {
-        if (err) {
-            req.flash('error', err.message);
-            res.redirect('/courses');
-        } else {
-            res.render('courses/index', { courses: allCourses });
-            //res.json(allCourses);
-        }
-    })
+    Carousel.find({}, (err, car) => {
+        Course.find({}, (err, allCourses) => {
+            if (err) {
+                req.flash('error', err.message);
+                res.redirect('/courses');
+            } else {
+                res.render('courses/index', { courses: allCourses, car: car });
+                //res.json(allCourses);
+            }
+        });
+    });
 });
 
 // NEW

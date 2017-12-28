@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var m = require('../middlewares/middleware');
 
 // INDEX
-router.get('/', (req, res) => {
+router.get('/', m.isAdmin, (req, res) => {
 	User.find({}, (err, users) => {
 		if (err) {
 			req.flash("error", err.message);
@@ -31,7 +32,7 @@ router.get('/:id', (req, res) => {
 });
 
 // EDIT
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', m.checkUserOwnership, (req, res) => {
 	User.findById(req.params.id, (err, foundUser) => {
 		if (err) {
 			req.flash('error', err.message);
@@ -43,7 +44,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // UPDATE
-router.put('/:id', (req, res) => {
+router.put('/:id', m.checkUserOwnership, (req, res) => {
 	let newData = {
 		$set: {
 			firstName: req.body.firstName,
@@ -65,7 +66,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE
-router.delete('/:id', (req, res) => {
+router.delete('/:id', m.checkUserOwnership, (req, res) => {
 	User.findById(req.params.id, (err, deleted) => {
 		if(err || !deleted) {
         	req.flash('error', 'No user to delete');

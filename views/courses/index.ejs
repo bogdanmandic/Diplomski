@@ -1,8 +1,22 @@
 <% include ../partials/header %>
+    <div>
+    <% if(car.length > 0 ) {
+        car.forEach(c => { %>
+            <div>
+                <a href='<%= c.link %>' target=_blank>
+                    <img src='/images/<%= c.picture.filename %>.png' style="width: 200px; height: 200px;"  />
+                </a>
 
+            </div>
+       <% }) %>
+    <% } %>
+    </div>
+    <% if(currentUser && (currentUser.type == 'teacher' || currentUser.type == 'admin')) { %>
     <form action='/courses/new'>
     <input type='submit' value='NEW COURSE' />
     </form>
+    <% } %>
+    <h2>ALL COURSES</h2>
     <div>
         <% courses.forEach((course) => { %>
             <p>

@@ -1,0 +1,371 @@
+#nav-main a:focus {
+  outline: none !important; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #EDEEF0; }
+
+#main-container {
+  min-height: 100%;
+  position: relative; }
+
+#body {
+  padding: 20px;
+  padding-bottom: 70px;
+  /* Height of the footer */ }
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  /* Height of the footer */
+  background: #6cf; }
+
+@media (min-width: 1200px) {
+  #nav-main > .container {
+    max-width: 1350px; } }
+
+.course {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  transition: box-shadow .4s; }
+
+.course-card {
+  padding-bottom: 15px; }
+
+.course:hover {
+  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.55); }
+
+.course-header {
+  height: 56px;
+  position: relative;
+  margin-bottom: 16px;
+  align-items: center;
+  padding: 5px 20px;
+  color: #fff; }
+  .course-header .time, .course-header .book {
+    width: 25px; }
+
+.course-card-body {
+  padding: 0 15px; }
+
+.course-type-html .course-header {
+  background: #D24D57; }
+.course-type-html .btn-details {
+  color: #D24D57 !important; }
+.course-type-html .tags {
+  color: #D24D57 !important; }
+.course-type-html .btn-details {
+  border-color: #D24D57; }
+
+.course-type-css .course-header {
+  background: #2196F3; }
+.course-type-css .btn-details {
+  color: #2196F3 !important; }
+.course-type-css .tags {
+  color: #2196F3 !important; }
+.course-type-css .btn-details {
+  border-color: #2196F3; }
+
+.course-type-js .course-header {
+  background: #F9A825; }
+.course-type-js .btn-details {
+  color: #F9A825 !important; }
+.course-type-js .tags {
+  color: #F9A825 !important; }
+.course-type-js .btn-details {
+  border-color: #F9A825; }
+
+.time-container {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.book {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.course-logo img {
+  width: 200px; }
+
+.course-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px; }
+
+@media (min-width: 992px) {
+  .course:nth-child(even) .course-card-body,
+  .course:nth-child(odd) .course-footer {
+    flex-direction: row-reverse; } }
+
+.tag {
+  vertical-align: middle; }
+  .tag:not(:last-child) {
+    margin-right: 20px; }
+
+@media (max-width: 767px) {
+  .course-footer {
+    flex-direction: column; }
+
+  .btn-details {
+    align-self: center;
+    width: 120px;
+    margin-bottom: 15px; } }
+#footer {
+  display: flex;
+  align-items: center;
+  background-color: #2D353A;
+  color: white; }
+
+.social-networks {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.social-link {
+  font-size: 1.5em;
+  margin-right: 15px;
+  color: #fff; }
+
+.about-link {
+  font-size: 0.9em;
+  color: #fff !important;
+  text-decoration: none !important; }
+
+.copyright {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7em;
+  padding-bottom: 5px; }
+
+@media (min-width: 768px) {
+  .social-link {
+    font-size: 1.8em; }
+
+  .about-link {
+    font-size: 1.2em; }
+
+  .copyright {
+    font-size: 0.9em; } }
+.calendar {
+  width: 90%; }
+  @media (max-width: 992px) {
+    .calendar {
+      width: 70%; } }
+  @media (max-width: 414px) {
+    .calendar {
+      width: 90%; } }
+
+.profileImage {
+  width: 70%; }
+  @media (max-width: 992px) {
+    .profileImage {
+      width: 50%; } }
+  @media (max-width: 414px) {
+    .profileImage {
+      width: 70%; } }
+
+.profileBackground {
+  background-color: #EDEEF0; }
+
+.margin-remove {
+  margin-left: 15px;
+  margin-right: 15px; }
+
+.profile-info-centar {
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center; }
+
+.progressWidth {
+  width: 95%;
+  margin: 0 auto; }
+
+.courseContent {
+  width: 100%;
+  padding-bottom: 20px;
+  margin-top: 20px; }
+
+.courseContent span {
+  font-weight: bold;
+  font-size: 1.2em; }
+
+.courseTitle {
+  margin-bottom: 0px;
+  padding: 5px 5px; }
+
+.profileCourseBtn {
+  border: 1px solid #8a8a8a;
+  width: 120px;
+  background-color: #f4f4f4;
+  color: #333232; }
+
+.profileCourseBtn:hover {
+  background-color: #9b9999;
+  color: white; }
+
+.cardMarginTop {
+  margin-top: 35px; }
+
+.text-profile {
+  margin-bottom: 35px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.text-profile button {
+  width: 100px;
+  margin: 10px; }
+
+.profile-header {
+  padding-top: 25px; }
+
+span {
+  padding-left: 10px;
+  display: inline-block; }
+
+.student-list-info {
+  border: 1px solid lightgray;
+  height: 150px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  overflow-y: scroll; }
+
+.course-list-info {
+  border: 1px solid lightgray;
+  height: 150px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px; }
+
+.border-courses {
+  background-color: white; }
+
+.course:hover {
+  box-shadow: 0px 3px 12px 0px #EDEEF0; }
+
+.profileBody {
+  margin-top: 56px;
+  padding-top: 30px; }
+
+.nav-link {
+  text-align: center; }
+
+@media (min-width: 992px) {
+  #nav-main li:not(:last-child) {
+    margin-right: 15px; } }
+
+#nav-main .dropdown-menu {
+  min-width: auto; }
+
+@media (max-width: 991px) {
+  .dropdown-language {
+    background-color: transparent;
+    border: none; }
+    .dropdown-language.show {
+      display: flex;
+      justify-content: center; } }
+.language, .language-en, .language-sr {
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 5px 50%;
+  padding-left: 28px;
+  width: auto; }
+
+.language-en {
+  background-image: url("../img/uk.svg"); }
+
+.language-sr {
+  background-image: url("../img/serbia.svg"); }
+
+.nav-divider {
+  width: 100%; }
+
+.dropdown {
+  color: #F0F0F0; }
+
+.navigation {
+  background-color: #2D353A; }
+  .navigation .nav-link, .navigation .navbar-brand, .navigation .dropdown-item {
+    color: #F0F0F0; }
+  @media (min-width: 992px) {
+    .navigation .language, .navigation .language-en, .navigation .language-sr {
+      color: #2D353A; } }
+
+
+.carousel-item > img {
+  max-width: 100%;
+  width: 100%;
+}
+
+ /* #header .carousel-item:nth-child(1) {
+    background-image: url("https://www.planwallpaper.com/static/images/4-Nature-Wallpapers-2014-1_cDEviqY.jpg"); }
+  #header .carousel-item:nth-child(2) {
+    background-image: url("https://wallpaperscraft.com/image/yosemite_national_park_lake_rocks_mountains_autumn_nature_96336_3840x1200.jpg"); }
+  #header .carousel-item:nth-child(3) {
+    background-image: url("https://static.pexels.com/photos/259526/pexels-photo-259526.jpeg"); }
+*/
+
+
+.hamburger-menu {
+  transition: all .2s;
+  width: 30px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: #fff;
+  display: block; }
+  .hamburger-menu:not(:first-child) {
+    margin-top: 5px; }
+  .hamburger-menu:first-child {
+    transform: translateX(4.4px) rotate(45deg);
+    transform-origin: 10% 10%; }
+  .hamburger-menu:nth-child(2) {
+    opacity: 0; }
+  .hamburger-menu:nth-child(3) {
+    transform: translateX(4.4px) rotate(-45deg);
+    transform-origin: 10% 90%; }
+
+#nav-main button.navbar-toggler {
+  border-color: #fff;
+  height: 40px;
+  outline: none !important; }
+#nav-main .navbar-toggler.collapsed {
+  border-color: #e4e4e4; }
+  #nav-main .navbar-toggler.collapsed .hamburger-menu {
+    background-color: #e4e4e4; }
+    #nav-main .navbar-toggler.collapsed .hamburger-menu:first-child {
+      transform: translateX(0) rotate(0); }
+    #nav-main .navbar-toggler.collapsed .hamburger-menu:nth-child(2) {
+      opacity: 1; }
+    #nav-main .navbar-toggler.collapsed .hamburger-menu:nth-child(3) {
+      transform: translateX(0) rotate(0); }
+
+.btn-details {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 3px 35px;
+  text-decoration: none !important; }
+
+/*# sourceMappingURL=main.css.map */

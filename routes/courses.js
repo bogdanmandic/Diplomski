@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
                 req.flash('error', err.message);
                 res.redirect('/courses');
             } else {
-                res.render('courses/index', { courses: allCourses, car: car });
+                res.render('courses/indexx', { courses: allCourses, carousel: car });
                 //res.json(allCourses);
             }
         });
@@ -97,7 +97,7 @@ router.delete('/:id', m.checkCourseOwnership, (req, res) => {
         } else {
             removed.remove();
             req.flash('success', 'Successfully Removed!');
-            res.redirect('/courses');
+            res.redirect('back');
         }
     })
 })

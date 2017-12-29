@@ -42,7 +42,7 @@ router.post('/', m.isTeacher, (req, res) => {
 
 // SHOW
 router.get('/:id', (req, res) => {
-    Course.findById(req.params.id, (err, foundCourse) => {
+    Course.findById(req.params.id).populate('teacher').exec( (err, foundCourse) => {
         if (err || !foundCourse) {
             req.flash('error', 'There was an error or that course can\'t be found');
             res.redirect('/courses');

@@ -1,14 +1,82 @@
 <% include ../partials/header %>
 
-    <div>
-        <h1><%= user.username %></h1>
+<main id="body">
+    <div class="profileBody container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12">
+                <div class="column container text-center">
+                    <img class="profileImage" src="<%= user.image %>" alt="UserPicture">
+                    <div class="text-profile">
+                        <div class="row profile-info-centar">
+                            First name:
+                            <span><%= user.firstName %></span>
 
-        <form action='/users/<%= user._id %>/edit'>
-            <input type='submit' value='EDIT' /> 
-        </form>
-        <form action='/users/<%= user._id %>?_method=DELETE' method='POST'>
-            <input type='submit' value='DELETE' /> 
-        </form>
+                        </div>
+                        <div class="row profile-info-centar">
+                            Last name:
+                            <span><%= user.lastName %></span>
+                        </div>
+                        <div class="row profile-info-centar">
+                            Username:
+                            <span><%= user.username %></span>
+                        </div>
+
+                        <a href='/users/<%= user.id %>/edit' class='btn btn-primary'>Edit Profile</a>
+
+                    </div>
+
+                    <section>
+                        <img class="calendar" src="http://www.calendarzoom.com/media/printable-calendar/january-2018-print-free-calendar-full-weekday.png"
+                            alt="UserPicture">
+                    </section>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-7 col-md-12 col-sm-12 ">
+                <h1 class="text-center profile-header">Your Courses</h1>
+                <div>
+                    <% user.courses.forEach(e => { %>
+
+                    
+                    <div>
+                        <div class="course course-type-css cardMarginTop">
+                            <div class="course-card">
+                                <header class="course-header container-fluid courseTitle">
+
+                                    <h2 class="text-center m-0 py-1"><%= e.name %></h2>
+
+                                </header>
+
+                                <div class="column courseContent ">
+                                    <div class="row margin-remove">
+                                        <p>Started at:
+                                            <span>17.11.1847.</span>
+                                        </p>
+
+                                    </div>
+                                    <div class="progress progressWidth">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                                    </div>
+                                </div>
+
+                                <footer class="course-footer html-color">
+                                    <a href="#" class="btn profileCourseBtn">Continue</a>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                    
+                </div>
+            </div>
+
+
+        </div>
     </div>
+
+</main>
 
 <% include ../partials/footer %>

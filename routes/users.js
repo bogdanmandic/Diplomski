@@ -21,9 +21,9 @@ router.get('/', m.isAdmin, (req, res) => {
 
 // SHOW
 router.get('/:id', (req, res) => {
-	User.findById(req.params.id, (err, foundUser) => {
+	User.findById(req.params.id).populate('courses').exec( (err, foundUser) => {
 		if (err || !foundUser) {
-			req.flash('error', 'User does not exist.' );
+			req.flash('error', err.message );
 			res.redirect('/courses');
 		} else {
 			res.render('./users/show', { user: foundUser });

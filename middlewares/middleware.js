@@ -45,7 +45,7 @@ m.isAdmin = (req, res, next) => {
             return next();
         } else {
             req.flash('error', 'You need to be admin to do that!');
-            res.redirect('back');
+            res.redirect('/courses');
         }
     } else {
         req.flash('error', 'Please login first!');

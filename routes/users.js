@@ -15,7 +15,7 @@ router.get('/', m.isAdmin, (req, res) => {
 	})
 });
 
-// NEW (register)
+// NEW (auth.js)
 
 // CREATE (auth.js)
 

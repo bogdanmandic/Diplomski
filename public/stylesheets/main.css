@@ -8,9 +8,14 @@ body {
   height: 100%;
   background-color: #EDEEF0; }
 
+  body {
+    padding-top: 56px;
+  }
+
 #main-container {
   min-height: 100%;
-  position: relative; }
+  position: relative;
+}
 
 #body {
   padding: 20px;
@@ -361,7 +366,7 @@ span {
       color: #2D353A; } }
 
 .carousel {
-  margin-top: 56px;
+  /*margin-top: 56px;*/
   height: 200px; }
   @media (min-width: 360px) {
     .carousel {

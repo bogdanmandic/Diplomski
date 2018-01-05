@@ -381,7 +381,7 @@ span {
 .carousel-item {
   width: 100%; }
 
-.carousel-item > img {
+.carousel-item img {
   max-width: 100%;
   width: 100%; }
 

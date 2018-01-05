@@ -7,6 +7,7 @@
                 <div class="column container text-center">
                     <img class="profileImage" src="<%= user.image %>" alt="UserPicture">
                     <div class="text-profile">
+                        <% if(user.firstName || user.lastName) { %>
                         <div class="row profile-info-centar">
                             First name:
                             <span><%= user.firstName %></span>
@@ -20,7 +21,12 @@
                             Username:
                             <span><%= user.username %></span>
                         </div>
+                        <% } else { %>
 
+                        <div class="row profile-info-centar">
+                            Please edit your profile to show more info about you.
+                        </div>
+                        <% } %>
                         <a href='/users/<%= user.id %>/edit' class='btn btn-primary'>Edit Profile</a>
 
                     </div>

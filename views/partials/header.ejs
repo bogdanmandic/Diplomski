@@ -31,6 +31,14 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li> -->
+                            <% if(currentUser && currentUser.type == 'teacher') { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/courses/new">New
+                                        
+                                    </a>
+                                </li>
+                            <% } %>
+                            <hr class="nav-divider" />
                             <li class="nav-item">
                                 <a class="nav-link" href="/courses">Courses</a>
                             </li>
@@ -53,6 +61,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link nav-button" href="#" data-toggle='modal' data-target='#myModal'>Login</a>
                                 </li>
+                                <hr class="nav-divider" />
                                 <li class="nav-item">
                                     <a class="nav-link nav-button" href="/register">Signup</a>
                                 </li>
@@ -62,7 +71,7 @@
                                             <%= currentUser.username %>
                                         </a>
                                     </li>
-
+                                    <hr class="nav-divider" />
                                     <li class="nav-item">
                                         <a class="nav-link nav-button" href="/logout">Logout</a>
                                     </li>

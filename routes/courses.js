@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
                 req.flash('error', err.message);
                 res.redirect('/courses');
             } else {
-                res.render('courses/indexx', { courses: allCourses, carousel: car });
+                res.render('courses/index', { courses: allCourses, carousel: car });
                 //res.json(allCourses);
             }
         });

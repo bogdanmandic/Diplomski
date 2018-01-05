@@ -59,7 +59,7 @@ router.put('/:id', m.checkUserOwnership, (req, res) => {
 			res.redirect('/courses');
 		} else {
 			req.flash('success', 'Successfuly updated');
-            res.redirect('/courses/' + updatedUser.id);
+            res.redirect('/users/' + updatedUser.id);
 		}
 	})
 

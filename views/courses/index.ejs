@@ -1,30 +1,76 @@
 <% include ../partials/header %>
-    <div>
-    <% if(car.length > 0 ) {
-        car.forEach(c => { %>
-            <div>
-                <a href='<%= c.link %>' target=_blank>
-                    <img src='uploads/<%= c.picture.filename %>' style="width: 200px; height: 200px;"  />
-                </a>
 
+    <section id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <% if(carousel && carousel.length > 0 ) {
+                for(var i =0; i<carousel.length; i++) { %>
+            <li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>" class="<%=  i==0 ? 'active' : '' %>"></li>
+            <%  }} %>
+        </ol>
+        <div class="carousel-inner">
+            <% if(carousel && carousel.length > 0 ) {
+                for(var i =0; i<carousel.length; i++) { %>
+            <div class="carousel-item <%=  i==0 ? 'active' : '' %>">
+                <a href='<%= carousel[i].link %>' target=_blank>
+                    <img src="uploads/<%= carousel[i].picture.filename %>" alt="<%= carousel[i].originalname %>">
+                </a>
             </div>
-       <% }) %>
-    <% } %>
-    </div>
-    <% if(currentUser && (currentUser.type == 'teacher' || currentUser.type == 'admin')) { %>
-    <form action='/courses/new'>
-    <input type='submit' value='NEW COURSE' />
-    </form>
-    <% } %>
-    <h2>ALL COURSES</h2>
-    <div>
-        <% courses.forEach((course) => { %>
-            <p>
-                <a href="/courses/<%= course.id %>">
-                    <%= course.name %>
-                </a>
-            </p>
-            <% }) %>
-    </div>
+            <% }} %>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </section>
 
-<% include ../partials/footer %>
+    <main id="body" class="container">
+    
+    <section class="courses">
+        <div class="container text-center">
+            <h1 class="text-center pb-3">Courses</h1>
+            <% courses.forEach(c => { %>
+                <div class="course course-type-css">
+                    <div class="course-card">
+                        <header class="course-header container-fluid">
+                            <div class="time-container">
+                               <img class="time mr-1" src="<%= c.image %>" alt=""> 
+                               <span class="align-middle">4 weeks</span>
+                            </div>
+                            <h2 class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= c.name %></h2>    
+                            <img class="book" src="<%= c.image %>" alt="">
+                        </header>
+
+                        <h2 class="text-center m-0 py-1 d-md-none"><%= c.name %></h2>  
+                        <div class="row course-card-body">
+                            <div class="col-lg-6 course-logo">
+                                <img src="<%= c.image %>" class="py-3" />
+                            </div>
+                            <div class="col-lg-6 course-description">
+                                <p class="text-justify"><%= c.description %></p>
+                            </div>
+                        </div>
+                        <footer class="course-footer">
+                            <a href="/courses/<%= c.id %>" class="btn-details">Details</a>
+                            <div class="tags">
+                                <span class="tag">#Beginner</span>
+                                <span class="tag">#Front-end</span>
+                            </div>    
+                        </footer>
+                    </div>
+                </div>
+
+            <% }) %>
+
+
+
+
+
+        </div>
+    </section>
+</main>
+
+    <% include ../partials/footer %>

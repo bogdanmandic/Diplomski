@@ -9,13 +9,30 @@ router.get('/', m.isAdmin, (req, res) => {
 })
 
 router.get('/courses', m.isAdmin, (req, res) => {
-    Course.find({}).populate('teacher').exec( (err, allCourses) => {
+    Course.find({}).populate('teacher').exec((err, allCourses) => {
         res.render('admin/courses', { allCourses: allCourses });
     });
 });
 
 router.get('/users', m.isAdmin, (req, res) => {
-    User.find({}).exec();
+    User.find({}, (err, allUsers) => {
+        res.render('admin/users', { allUsers: allUsers });
+    })
+});
+
+router.get('/users/:id/edit',  (req, res) => {
+    var enumm = User.schema.path('type').enumValues;
+    Course.find({}, '_id name', (err, allCourses) => {
+        User.findById(req.params.id).populate('courses', 'name').exec((err, foundUser) => {
+            if (err || !foundUser) {
+                req.flash('error', 'That user can not be found!');
+                res.redirect('/admin/users');
+            } else {
+                var fCourses = allCourses.filter(el => foundUser.courses.findIndex(a => a.id == el.id ) < 0);
+                res.render('admin/userEdit', { user: foundUser, enumm: enumm, allCourses: fCourses });
+            }
+        })
+    })
 });
 
 

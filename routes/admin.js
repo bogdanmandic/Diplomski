@@ -22,7 +22,7 @@ router.get('/users', m.isAdmin, (req, res) => {
 
 router.get('/users/:id/edit',  (req, res) => {
     var enumm = User.schema.path('type').enumValues;
-    Course.find({}, '_id name', (err, allCourses) => {
+    Course.find({}, 'name', (err, allCourses) => {
         User.findById(req.params.id).populate('courses', 'name').exec((err, foundUser) => {
             if (err || !foundUser) {
                 req.flash('error', 'That user can not be found!');

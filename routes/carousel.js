@@ -3,38 +3,40 @@ var router = express.Router();
 var Carousel = require('../models/carousel');
 var multer = require('multer');
 var fs = require('fs-extra');
-var upload = multer( { dest: './uploads/' });
+var upload = multer({ dest: './uploads/' });
 var m = require('../middlewares/middleware');
 
-router.get('/', m.isAdmin, (req, res) => {
+router.get('/new', m.isAdmin, (req, res) => {
     res.render('carousel/new');
 });
 
 router.post('/', m.isAdmin, upload.single('pic'), (req, res) => {
-    var newImg = fs.readFileSync(req.file.path);
-    var encImg = newImg.toString('base64');
-    var s = new Buffer(encImg, 'base64');
-    
-    var newCar = {
-        picture: s,
-        contentType: req.file.mimetype,
-        link: req.body.link
-    }
-    Carousel.create(newCar, (err, createdCourse) => {
-        if (err) {
-            req.flash('error', err.message);
-            res.redirect('/courses');
-        } else {
-            fs.remove(req.file.path);
-            req.flash('success', 'New carousel created!');
-            res.redirect('/courses');
+
+    fs.readFile(req.file.path, (err, newImg) => {
+        var encImg = newImg.toString('base64');
+        var newCar = {
+            picture: encImg,
+            contentType: req.file.mimetype,
+            link: req.body.link
         }
-    })
+
+        Carousel.create(newCar, (err, createdCar) => {
+            if (err) {
+                req.flash('error', err.message);
+                res.redirect('/courses');
+            } else {
+                fs.remove(req.file.path);
+                req.flash('success', 'New carousel created!');
+                res.redirect('/courses');
+            }
+        })
+    });
+
 });
 
 router.get('/test', (req, res) => {
     Carousel.find({}, (err, foundCars) => {
-        
+
         /*var a = 'Hello';
         var b = a.toString('base64');
         var c = Buffer(a).toString('base64');
@@ -48,11 +50,11 @@ router.get('/test', (req, res) => {
         console.log('==========');*/
 
         res.render('carousel/index', { car: foundCars });
-        
+
     })
 })
 
-router.get('/delete', (req, res) => {
+router.get('/delete', m.isAdmin, (req, res) => {
     Carousel.remove({}).exec();
     res.redirect('/courses');
 })

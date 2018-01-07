@@ -24,12 +24,9 @@
                                 <span>Students on this course:</span>
                                 <div class="course-student-list-info">
                                     <ol>
-                                        <li>Student1</li>
-                                        <li>Student2</li>
-                                        <li>Student3</li>
-                                        <li>Student1</li>
-                                        <li>Student2</li>
-                                        <li>Student3</li>
+                                        <% course.students.forEach(s => { %>
+                                            <li><%= s.data %></li>
+                                        <% }) %>
                             
                                     </ol>
                                 </div>
@@ -40,7 +37,7 @@
                             <p class="text-justify paddingParagraph"><%= course.description %></p>
                             <div class="row courseTeacherText">
                                 <span>Teacher:</span>
-                                <a href='/users/<%= course.teacher %>'><p class="marginParagraphCancel"><%= course.teacher.username %></p></a>
+                                <a href='/users/<%= course.teacher.id %>'><p class="marginParagraphCancel"><%= course.teacher.username %></p></a>
                             </div>
                             <div class="row courseTeacherText">
                                 <span>Start Date:</span>

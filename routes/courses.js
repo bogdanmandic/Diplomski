@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Course = require('../models/course');
 var Carousel = require('../models/carousel');
+var User = require('../models/user');
 var m = require('../middlewares/middleware');
 
 
@@ -34,6 +35,10 @@ router.post('/', m.isTeacher, (req, res) => {
             req.flash('error', err.message);
             res.redirect('/courses');
         } else {
+            User.findById(req.user._id, (err, foundUser) => {
+                foundUser.courses.push(created._id);
+                foundUser.save();
+            });
             req.flash('success', 'New course created!');
             res.redirect('/courses');
         }
@@ -97,7 +102,7 @@ router.delete('/:id', m.checkCourseOwnership, (req, res) => {
         } else {
             removed.remove();
             req.flash('success', 'Successfully Removed!');
-            res.redirect('back');
+            res.redirect('/courses');
         }
     })
 })

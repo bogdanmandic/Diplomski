@@ -138,15 +138,7 @@ body {
   border-right: 10px;
 }
 
-::-moz-selection { /* Code for Firefox */
-  color: none; 
-  background: none;
-}
 
-::selection {
-  color: none; 
-  background: none;
-}
 .btn-login_register {
   background: #81C784 !important;
   color: #ffffff;

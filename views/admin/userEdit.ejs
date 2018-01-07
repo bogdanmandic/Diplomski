@@ -38,7 +38,8 @@
 
             <label for="courses">Current Courses</label>
             
-            <select id="list1" name="courses" size="5" multiple="multiple">
+            <select id="list1" name="courses[]" size="5" multiple="multiple" style='width: 150px'>
+                
                 <% user.courses.forEach(c => { %>
 
                     <option value='<%= c.id %>'>
@@ -46,10 +47,11 @@
                     </option>
                     <% }) %>
             </select>
+            
             <input id="button1" type="button" value="->" />
             <input id="button2" type="button" value="<-" />
-
-            <select id="list2" name="allCourses" size="5" multiple="multiple">
+           
+            <select id="list2" name="allCourses" size="5" multiple="multiple" style='width: 150px'>
                 <% allCourses.forEach(a => { %>
                     
                     <option value='<%= a.id %>'>
@@ -57,12 +59,21 @@
                         </option>
                 <% }) %>
             </select>
-            <script>
-               
+            <label for="allCourses">All Courses</label>
+            <script type="text/javascript">
+                function selectAll() 
+                { 
+                    selectBox = document.getElementById("list1");
+
+                    for (var i = 0; i < selectBox.options.length; i++) 
+                    { 
+                         selectBox.options[i].selected = true; 
+                    } 
+                }
             </script>
             <br />
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" onclick="selectAll()">
         </form>
     </div>
 </main>

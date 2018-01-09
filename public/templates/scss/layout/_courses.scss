@@ -1,0 +1,141 @@
+.course {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    transition: box-shadow .4s;
+}
+
+.course-card {
+    padding-bottom: 15px;
+}
+
+.course:hover {
+    box-shadow: 0px 3px 12px 0px rgba(0,0,0,0.55);
+}
+
+.course-header {
+    height: 56px;
+    position: relative;   
+    margin-bottom: 16px;
+    align-items: center;
+    padding: 5px 20px; 
+    color: #fff;
+
+    .time, .book {
+        width: 25px;
+    }
+}
+
+.course-card-body {
+    padding: 0 15px;
+}
+
+.course-type-html {
+
+    .course-header {
+        background: $color-html;
+    }
+
+    .btn-details {
+        color: $color-html!important;
+    }
+
+    .tags {
+        color: $color-html!important;
+    }
+
+    .btn-details {
+         border-color: $color-html;
+    }
+} 
+
+.course-type-css {
+
+    .course-header {
+        background: $color-css;
+    }
+
+    .btn-details {
+        color: $color-css!important;
+    }
+
+    .tags {
+        color: $color-css!important;
+    }
+
+    .btn-details {
+         border-color: $color-css;
+    }
+} 
+
+.course-type-js {
+
+    .course-header {
+        background: $color-js;
+    }
+
+    .btn-details {
+        color: $color-js!important;
+    }
+
+    .tags {
+        color: $color-js!important;
+    }
+
+    .btn-details {
+         border-color: $color-js;
+    }
+} 
+
+.time-container {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.book {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.course-logo img {
+    width: 200px;
+}
+
+.course-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.course:nth-child(even) .course-card-body,
+.course:nth-child(odd) .course-footer {
+    @media(min-width: 992px) {
+        flex-direction: row-reverse;
+    }
+}
+
+.tag {
+    vertical-align: middle;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .course-footer {
+        flex-direction: column;
+    }
+
+    .btn-details {
+        align-self: center;
+        width: 120px;
+        margin-bottom: 15px;
+    }
+}               

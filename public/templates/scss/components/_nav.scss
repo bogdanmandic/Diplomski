@@ -1,0 +1,70 @@
+.nav-link {
+    text-align: center;
+}
+
+#nav-main li {
+    &:not(:last-child) {
+        @media(min-width: 992px) {
+            margin-right: 15px;
+        }
+    }
+}
+
+#nav-main .dropdown-menu {
+    min-width: auto;
+}
+
+
+
+@media(max-width:991px) {
+    .dropdown-language {
+        background-color: transparent;
+        border: none;
+
+        &.show {
+            display: flex;
+            justify-content: center;  
+        }
+    }
+}
+
+.language {
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 5px 50%;
+    padding-left: 28px;
+    width: auto;
+}
+
+.language-en {
+    @extend .language;
+    background-image: url('../img/uk.svg');
+}
+
+.language-sr {
+    @extend .language;
+    background-image: url('../img/serbia.svg');
+}
+
+.nav-divider {
+    width: 100%;
+}
+
+.dropdown {
+    color: $color-nav-links;
+}
+.navigation {
+    background-color: $color-primary;
+    
+    .nav-link, .navbar-brand, .dropdown-item {
+        color: $color-nav-links;
+    }
+    
+    .language {
+        @media(min-width: 992px) {
+            color: $color-primary;
+        }
+    }
+
+    
+}

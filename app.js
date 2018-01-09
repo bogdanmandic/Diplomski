@@ -24,20 +24,20 @@ var admin = require('./routes/admin');
 
 // mongoose setup
 mongoose.Promise = global.Promise;
-mongoose.connection.openUri('mongodb://localhost/akademija');
+//mongoose.connection.openUri('mongodb://localhost/akademija');
+mongoose.connection.openUri('mongodb://vucko:vucko@ds046047.mlab.com:46047/diplomski');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 //app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 app.use(methodOverride('_method'));
 app.use(flash());
 

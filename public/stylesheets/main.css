@@ -8,9 +8,15 @@ body {
   height: 100%;
   background-color: #EDEEF0; }
 
+  body {
+    padding-top: 56px;
+    
+  }
+
 #main-container {
   min-height: 100%;
-  position: relative; }
+  position: relative;
+}
 
 #body {
   padding: 20px;
@@ -22,6 +28,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 70px;
+  margin-top: 10px;
   /* Height of the footer */
   background: #6cf; }
 
@@ -212,7 +219,8 @@ body {
   border: 1px solid #8a8a8a;
   width: 120px;
   background-color: #f4f4f4;
-  color: #333232; }
+  color: #333232;
+  margin-right: 15px; }
 
 .profileCourseBtn:hover {
   background-color: #9b9999;
@@ -265,9 +273,55 @@ span {
 .course:hover {
   box-shadow: 0px 3px 12px 0px #EDEEF0; }
 
+@media (max-width: 992px) {
+  .content-reverse {
+    display: flex;
+    flex-direction: column-reverse; }
+
+  .content-reverse h1 {
+    padding-top: 25px; } }
 .profileBody {
   margin-top: 56px;
   padding-top: 30px; }
+
+.course-description span {
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-left: 15px; }
+
+.paddingParagraph {
+  padding-top: 15px; }
+
+.marginParagraphCancel {
+  align-self: center;
+  padding-top: 3px;
+  padding-left: 5px; }
+
+.studentList {
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 30px; }
+
+.studentList span {
+  font-weight: bold;
+  font-size: 1.2em; }
+
+.single-course-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 15px 0px 15px; }
+
+.course-student-list-info {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px; }
+
+.course-student-list-info ol {
+  margin-bottom: 0px; }
 
 .nav-link {
   text-align: center; }
@@ -313,20 +367,25 @@ span {
     .navigation .language, .navigation .language-en, .navigation .language-sr {
       color: #2D353A; } }
 
+.carousel {
+  /*margin-top: 56px;*/
+  height: 200px; }
+  @media (min-width: 360px) {
+    .carousel {
+      height: 300px; } }
+  @media (min-width: 120px) {
+    .carousel {
+      height: 400px; } }
 
-.carousel-item > img {
+.carousel-inner {
+  height: 100%; }
+
+.carousel-item {
+  width: 100%; }
+
+.carousel-item img {
   max-width: 100%;
-  width: 100%;
-}
-
- /* #header .carousel-item:nth-child(1) {
-    background-image: url("https://www.planwallpaper.com/static/images/4-Nature-Wallpapers-2014-1_cDEviqY.jpg"); }
-  #header .carousel-item:nth-child(2) {
-    background-image: url("https://wallpaperscraft.com/image/yosemite_national_park_lake_rocks_mountains_autumn_nature_96336_3840x1200.jpg"); }
-  #header .carousel-item:nth-child(3) {
-    background-image: url("https://static.pexels.com/photos/259526/pexels-photo-259526.jpeg"); }
-*/
-
+  width: 100%; }
 
 .hamburger-menu {
   transition: all .2s;

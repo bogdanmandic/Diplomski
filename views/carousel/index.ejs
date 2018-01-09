@@ -1,0 +1,11 @@
+<% include ../partials/header %>
+
+<% car.forEach(c => { %>
+
+    <p><%= c %></p>
+    <img src="data:<%= c.contentType %>;base64, <%= c.picture %>" />
+
+<% }) %>
+
+
+<% include ../partials/footer %>

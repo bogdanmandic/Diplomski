@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+    <h3><%= user %></h3>
+    <div>
+        <h2>Edit <%= user.usernamename %> </h2>
+        <form action='/users/<%= user.id %>?_method=PUT' method='POST'>
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" value="<%= user.firstName %>">
+            <br />
+
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" value="<%= user.lastName %>">
+            <br />
+
+            <label for="email">Email</label>
+            <input name="email" required="true" value='<%= user.email %>' />
+            <br />
+
+            <label for="image">Image</label>
+            <input type="text" name="image" value="<%= user.image %>">
+            <br />
+
+            <div>Current Image: <img src='<%= user.image %>' /></div>
+
+        
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+<% include ../partials/footer %>

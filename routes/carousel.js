@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Carousel = require('../models/carousel');
 var multer = require('multer');
-var upload = multer( { dest: './uploads/' });
+var upload = multer({ dest: './uploads/' });
 var m = require('../middlewares/middleware');
 
 router.get('/', m.isAdmin, (req, res) => {

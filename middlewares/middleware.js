@@ -45,7 +45,7 @@ m.isAdmin = (req, res, next) => {
             return next();
         } else {
             req.flash('error', 'You need to be admin to do that!');
-            res.redirect('back');
+            res.redirect('/courses');
         }
     } else {
         req.flash('error', 'Please login first!');
@@ -93,6 +93,32 @@ m.checkUserOwnership = (req, res, next) => {
         req.flash('error', 'Please login first!');
         res.redirect('/login');
     }
+}
+
+m.isEqualArrays = (arr1, arr2) => {
+    // check if there are values in arrays
+    if(!arr1 || !arr2)
+        return false;
+
+    // compare lengths
+    if(arr1.length != arr2.length)
+        return false;
+
+    // sort arrays before checking
+    arr1.sort();
+    arr2.sort();
+
+    return arr1.every((el,i) => el == arr2[i]);
+}
+
+m.diffInArrays = (arr1, arr2) => {
+    if(!arr1)
+        arr1 = [];
+    else if(!arr2)
+        arr2 = [];
+
+    return arr1.filter(x => !arr2.includes(x));
+
 }
 
 

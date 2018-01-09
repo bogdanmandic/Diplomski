@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Course = require('../models/course');
 var Carousel = require('../models/carousel');
+var User = require('../models/user');
 var m = require('../middlewares/middleware');
 
 
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
                 req.flash('error', err.message);
                 res.redirect('/courses');
             } else {
-                res.render('courses/indexx', { courses: allCourses, carousel: car });
+                res.render('courses/index', { courses: allCourses, carousel: car });
                 //res.json(allCourses);
             }
         });
@@ -34,6 +35,10 @@ router.post('/', m.isTeacher, (req, res) => {
             req.flash('error', err.message);
             res.redirect('/courses');
         } else {
+            User.findById(req.user._id, (err, foundUser) => {
+                foundUser.courses.push(created._id);
+                foundUser.save();
+            });
             req.flash('success', 'New course created!');
             res.redirect('/courses');
         }
@@ -42,7 +47,7 @@ router.post('/', m.isTeacher, (req, res) => {
 
 // SHOW
 router.get('/:id', (req, res) => {
-    Course.findById(req.params.id, (err, foundCourse) => {
+    Course.findById(req.params.id).populate('teacher').exec( (err, foundCourse) => {
         if (err || !foundCourse) {
             req.flash('error', 'There was an error or that course can\'t be found');
             res.redirect('/courses');
@@ -97,7 +102,7 @@ router.delete('/:id', m.checkCourseOwnership, (req, res) => {
         } else {
             removed.remove();
             req.flash('success', 'Successfully Removed!');
-            res.redirect('back');
+            res.redirect('/courses');
         }
     })
 })

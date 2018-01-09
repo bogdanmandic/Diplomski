@@ -1,40 +1,63 @@
 <% include ../partials/header %>
-    <div>
-        <h2>Name:
-            <%= course.name %>
-        </h2>
-        <h4>ID:
-            <%= course.id %>
-        </h4>
-        <p>Code:
-            <%= course.code %>
-        </p>
-        <img src="<%= course.image %>" alt="">
-        <p>Description:
-            <%= course.description %>
-        </p>
-    </div>
-    <div>
-        <form action='/courses/<%= course.id %>/edit'>
-            <input type="submit" value="EDIT" />
-        </form>
-        <form action='/courses/<%= course.id %>?_method=DELETE' method='POST'>
-            <input type="submit" value="DELETE" />
-        </form>
-    </div>
+<main id="body" class="container">
+    <section class="courses">
+        <div class="container text-center">
+            <h1 class="text-center pb-3">Courses</h1>
 
-    <% if(!currentUser || currentUser && currentUser.courses.indexOf(course.id) < 0 ) { %>
-        <div>
-            <form action='/enroll/<%= course.id %>' method='POST'>
-                <input type='submit' value='ENROLL' />
-            </form>
+            <div class="course course-type-html">
+                <div class="course-card">
+                    <header class="course-header container-fluid">
+                        <div class="time-container">
+                            <img class="time mr-1" src="img/clock.svg" alt="">
+                            <span class="align-middle">4 weeks</span>
+                        </div>
+                        <h2 class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= course.name %></h2>
+                        <img class="book" src="img/book.svg" alt="">
+                    </header>
+
+                    <h2 class="text-center m-0 py-1 d-md-none">HTML5</h2>
+                    <div class="row course-card-body">
+                        <div class="col-lg-6 course-logo">
+                            <img src="<%= course.image %>" class="py-3" />
+
+                            <div class="studentList">
+                                <span>Students on this course:</span>
+                                <div class="course-student-list-info">
+                                    <ol>
+                                        <% course.students.forEach(s => { %>
+                                            <li><%= s.data %></li>
+                                        <% }) %>
+                            
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 course-description">
+                            <span>Course Info</span>
+                            <p class="text-justify paddingParagraph"><%= course.description %></p>
+                            <div class="row courseTeacherText">
+                                <span>Teacher:</span>
+                                <a href='/users/<%= course.teacher.id %>'><p class="marginParagraphCancel"><%= course.teacher.username %></p></a>
+                            </div>
+                            <div class="row courseTeacherText">
+                                <span>Start Date:</span>
+                                <p class="marginParagraphCancel">25.11.1999.</p>
+                            </div>
+                            <div class="row courseTeacherText">
+                                    <span>Price:</span>
+                                    <p class="marginParagraphCancel">1000,00</p>
+                                </div>
+                        </div>
+                    </div>
+                    <footer class="single-course-footer">
+                        <form action='/enroll/<%= course.id %>' method='post'><input type='submit' value='Start Course' /></form>
+
+                    </footer>
+                </div>
+            </div>
+
+
         </div>
-        <% } %>
-    <% if(currentUser && currentUser.courses.indexOf(course.id) >= 0) { %>
-        <div>
-            <form action='/unenroll/<%= course.id %>' method='POST'>
-                <input type='submit' value='UNENROLL' />
-            </form>
-        </div>
-        <% } %>
+    </section>
+</main>
 <% include ../partials/footer %>

@@ -15,15 +15,15 @@ router.get('/', m.isAdmin, (req, res) => {
 	})
 });
 
-// NEW (register)
+// NEW (auth.js)
 
 // CREATE (auth.js)
 
 // SHOW
 router.get('/:id', (req, res) => {
-	User.findById(req.params.id, (err, foundUser) => {
+	User.findById(req.params.id).populate('courses').exec( (err, foundUser) => {
 		if (err || !foundUser) {
-			req.flash('error', 'User does not exist.' );
+			req.flash('error', err.message );
 			res.redirect('/courses');
 		} else {
 			res.render('./users/show', { user: foundUser });
@@ -59,7 +59,7 @@ router.put('/:id', m.checkUserOwnership, (req, res) => {
 			res.redirect('/courses');
 		} else {
 			req.flash('success', 'Successfuly updated');
-            res.redirect('/courses/' + updatedUser.id);
+            res.redirect('/users/' + updatedUser.id);
 		}
 	})
 

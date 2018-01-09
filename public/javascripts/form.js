@@ -1,5 +1,7 @@
+$(document).ready(function () {
+
 // toggle function
-$('.toggle').click(function(){
+$('.toggle').click(function () {
   // switch icon
   $(this).children('i').toggleClass('fa-pencil');
   // switch form
@@ -11,3 +13,33 @@ $('.toggle').click(function(){
   }, "medium");
 });
 
+if($('#success-alert').length ) {
+window.setTimeout(function() {
+  $("#success-alert").fadeTo(1500, 0).slideUp(500, function(){
+      $(this).remove(); 
+  });
+}, 5000);
+}
+
+if($('#error-alert').length ) {
+  window.setTimeout(function() {
+    $("#error-alert").fadeTo(1500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+  }, 5000);
+}
+
+$("#userEdit #button1").click(function () {
+  $("#list1 > option:selected").each(function () {
+      $(this).remove().appendTo("#list2");
+  });
+});
+
+$("#userEdit #button2").click(function () {
+  $("#list2 > option:selected").each(function () {
+      $(this).remove().appendTo("#list1");
+  });
+});
+
+
+});

@@ -14,6 +14,7 @@ router.post('/', m.isAdmin, upload.single('pic'), (req, res) => {
 
     fs.readFile(req.file.path, (err, newImg) => {
         var encImg = newImg.toString('base64');
+        var a = new Buffer(encImg);
         var newCar = {
             picture: encImg,
             contentType: req.file.mimetype,

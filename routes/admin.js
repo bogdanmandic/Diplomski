@@ -22,6 +22,32 @@ router.get('/courses/:id/edit', (req, res) => {
     })
 })
 
+// UPDATE
+router.put('/courses/:id', m.checkCourseOwnership, (req, res) => {
+    var newData = {
+        $set: {
+            name: req.body.name,
+            code: req.body.code,
+            //image: req.body.image,
+            description: req.body.description,
+            teacher: req.body.teacher
+        }
+    };
+    req.body.image === "" ? newData.$unset = { image: "" } : newData.$set.image = req.body.image;
+    Course.findByIdAndUpdate(req.params.id, newData, { new: true }, (err, updated) => {
+        if (err) {
+            req.flash('error', err.message);
+            console.log(err);
+            res.redirect('/courses');
+        } else {
+            req.flash('success', 'Successfully Updated!');
+           
+            res.redirect('/courses/' + updated.id);
+        }
+    })
+})
+
+
 router.get('/users', (req, res) => {
     User.find({}, (err, allUsers) => {
         res.render('admin/users', { allUsers: allUsers });

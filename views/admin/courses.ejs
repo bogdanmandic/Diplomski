@@ -18,7 +18,7 @@
                 <td><%= c.image %></td>
                 <td><%= c.description %></td>
                 <td><%= c.teacher.username %></td>
-                <td><form class="form-inline" method="GET" action="/courses/<%= c.id %>/edit"><input type="submit" value="EDIT" class="btn btn-sm btn-success"></form></td>
+                <td><form class="form-inline" method="GET" action="/admin/courses/<%= c.id %>/edit"><input type="submit" value="EDIT" class="btn btn-sm btn-success"></form></td>
                 <td><form class="form-inline" method="POST" action="/courses/<%= c.id %>?_method=DELETE"><input type="submit" value="DELETE" class="btn btn-sm btn-danger"></form></td>
             </tr>
         <% }) %>

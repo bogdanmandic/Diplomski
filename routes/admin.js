@@ -4,11 +4,11 @@ var m = require('../middlewares/middleware');
 var Course = require('../models/course');
 var User = require('../models/user');
 
-router.get('/', m.isAdmin, (req, res) => {
+router.get('/', (req, res) => {
     res.render('admin/index');
 })
 
-router.get('/courses', m.isAdmin, (req, res) => {
+router.get('/courses', (req, res) => {
     Course.find({}).populate('teacher').exec((err, allCourses) => {
         res.render('admin/courses', { allCourses: allCourses });
     });
@@ -19,6 +19,47 @@ router.get('/courses/:id/edit', (req, res) => {
         Course.findById(req.params.id).populate('teacher').exec((err, foundCourse) => {
             res.render('admin/courseEdit', { course: foundCourse, allTeachers: foundTeachers });
         })
+    })
+})
+
+router.put('/courses/:id', (req, res) => {
+    console.log('================');
+    var newData = {
+        name: req.body.name,
+        code: req.body.code,
+        description: req.body.description,
+        teacher: req.body.teacher
+    };
+    req.body.image === "" ? newData.$unset = { image: "" } : newData.image = req.body.image;
+    Course.findById(req.params.id, (err, updated) => {
+        if (err) {
+            req.flash('error', err.message);
+            res.redirect('/courses');
+        } else {
+            console.log(req.body);
+            // ako je promenjen teacher
+            if (req.body.teacher != updated.teacher) {
+                // obrisi iz starog teachera
+                User.findById(updated.teacher, (err, foundTeacher) => {
+                    foundTeacher.courses.pull(updated._id);
+                    foundTeacher.save();
+                });
+                // dodaj kurs novom teacheru
+                User.findById(req.body.teacher, (err, foundTeacher) => {
+                    foundTeacher.courses.addToSet(updated._id);
+                    foundTeacher.save();
+                });
+
+            }
+            updated.set(newData);
+            updated.save((e, a) => {
+                console.log(a);
+            });
+
+            req.flash('success', 'Successfully Updated!');
+            res.redirect('/admin/courses/');
+
+        }
     })
 })
 

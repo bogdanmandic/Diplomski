@@ -23,7 +23,7 @@ router.get('/', m.isAdmin, (req, res) => {
 router.get('/:id', (req, res) => {
 	User.findById(req.params.id).populate({path: 'courses', populate: { path: 'students.data' }}).exec( (err, foundUser) => {
 		if (err || !foundUser) {
-			req.flash('error', err.message );
+			req.flash('error', "User can't be found" );
 			res.redirect('/courses');
 		} else if(foundUser.type == 'student') {
 			res.render('./users/student', { user: foundUser });

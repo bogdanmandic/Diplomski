@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +7,8 @@
     <title>Riitech Academy </title>
 </head>
 
-<body class="profileBackground">
-    <div id="main-container">
+<body>
+    <div id="main-container" class="admin-main-container">
 
         <header id="header">
 
@@ -61,111 +58,45 @@
                 </div>
             </nav>
 
-
         </header>
 
 
 
-
-        <main id="body">
-            <div class="profileBody container">
-                <div class="row">
-                    <div class="col-lg-5 col-md-12 col-sm-12">
-                        <div class="column container text-center">
-                            <img class="profileImage" src="./img/user.png" alt="UserPicture">
-                            <div class="text-profile">
-                                <div class="row profile-info-centar">
-                                    First name:
-                                    <span>Blagoje</span>
-
-                                </div>
-                                <div class="row profile-info-centar">
-                                    Last name:
-                                    <span>Vukovic</span>
-                                </div>
-                                <div class="row profile-info-centar">
-                                    Username:
-                                    <span>BlagojeV</span>
-                                </div>
-
-                                <button>Edit Profile</button>
-
-                            </div>
-
-                            <section>
-                                <img class="calendar" src="http://www.calendarzoom.com/media/printable-calendar/january-2018-print-free-calendar-full-weekday.png"
-                                    alt="UserPicture">
-                            </section>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-lg-7 col-md-12 col-sm-12 ">
-                        <h1 class="text-center profile-header">Your Courses</h1>
-                        <div>
-                            <div>
-                                <div class="course course-type-css cardMarginTop">
-                                    <div class="course-card">
-                                        <header class="course-header container-fluid courseTitle">
-
-                                            <h2 class="text-center m-0 py-1">CSS</h2>
-
-                                        </header>
-
-                                        <div class="column courseContent ">
-                                            <div class="row margin-remove">
-                                                <p>Started at:
-                                                    <span>17.11.1847.</span>
-                                                </p>
-
-                                            </div>
-                                            <div class="progress progressWidth">
-                                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                                            </div>
-                                        </div>
-
-                                        <footer class="course-footer html-color">
-                                            <a href="#" class="btn profileCourseBtn">Continue</a>
-                                        </footer>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="course course-type-js cardMarginTop">
-                                    <div class="course-card">
-                                        <header class="course-header container-fluid courseTitle">
-
-                                            <h2 class="text-center m-0 py-1">JS</h2>
-
-                                        </header>
-
-                                        <div class="column courseContent ">
-                                            <div class="row margin-remove">
-                                                <p>Started at:
-                                                    <span>17.11.1847.</span>
-                                                </p>
-                                            </div>
-                                            <div class="progress progressWidth">
-                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
-                                            </div>
-                                        </div>
-
-                                        <footer class="course-footer html-color">
-                                            <a href="#" class="btn profileCourseBtn">Continue</a>
-                                        </footer>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+        <main id="body" class="container admin-main">
+            <div class="row">
+                <div class="col-lg-4">
+                    <a href="#" class="admin-card admin-card-courses">
+                        <header class="admin-card__header">
+                            <h1 class="text-center">Courses</h1>
+                        </header>
+                        <img src="img/admin-icons/book.svg" alt="" class="admin-card__icon">
+                    </a>
                 </div>
-            </div>
 
+                <div class="col-lg-4">
+                    <a href="#" class="admin-card admin-card-users">
+                        <header class="admin-card__header">
+                            <h1 class="text-center">Users</h1>
+                        </header>
+                        <img src="img/admin-icons/user.svg" alt="" class="admin-card__icon">
+                    </a>
+                </div>
+
+                <div class="col-lg-4">
+                    <a href="#" class="admin-card admin-card-carousel">
+                        <header class="admin-card__header">
+                            <h1 class="text-center">Carousel</h1>
+                        </header>
+                        <img src="img/admin-icons/image.svg" alt="" class="admin-card__icon">
+                    </a>
+                </div>
+                
+            </div>
         </main>
+
+        
+
+    
         <footer id="footer">
             <div class="container">
                 <div class="row">
@@ -196,14 +127,12 @@
             </div>
         </footer>
     </div>
-
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/7ef7f39f18.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../javascripts/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -145,6 +145,13 @@ router.delete('/users/:id', (req, res) => {
             deleted.remove();
         res.redirect('/admin/users');
     });
+});
+
+router.get('/test/:id', (req, res) => {
+    User.findById(req.params.id).populate('courses').exec( (err, foundUser) => {
+        User.find()
+        res.render('./users/teacher', {user: foundUser});
+    })
 })
 
 

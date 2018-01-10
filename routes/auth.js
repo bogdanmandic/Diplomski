@@ -18,7 +18,8 @@ router.post('/register', (req, res) => {
             req.flash('error', err.message);
             res.redirect('/register');
         } else {
-            passport.authenticate('local')(req, res, () => {
+            passport.authenticate('local')
+            (req, res, () => {
                 req.flash('success', 'Welcome ' + user.username + '.');
                 res.redirect('/courses');
             })

@@ -128,7 +128,7 @@ body {
     width: 120px;
     margin-bottom: 15px; } }
 #footer {
-  display: flex;
+  
   align-items: center;
   background-color: #2D353A;
   color: white; }

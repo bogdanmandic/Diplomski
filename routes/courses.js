@@ -102,7 +102,7 @@ router.delete('/:id', m.checkCourseOwnership, (req, res) => {
         } else {
             removed.remove();
             req.flash('success', 'Successfully Removed!');
-            res.redirect('/courses');
+            res.redirect('back');
         }
     })
 })

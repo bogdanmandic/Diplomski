@@ -14,14 +14,13 @@ router.get('/courses', m.isAdmin, (req, res) => {
     });
 });
 
-router.get('/courses/:id', m.isAdmin, (req, res) => {
-    Course.findById(req.params.id, (err, foundCourse) => {
-        if (err) throw err;
-        User.find({ type: 'teacher' }, (err, foundTeachers) => {
-            render('admin/course', {course: foundCourse, foundTeachers: foundTeachers});
-        });
-    });
-});
+router.get('/courses/:id/edit', (req, res) => {
+    User.find({ type: 'teacher' }, (err, foundTeachers) => {
+        Course.findById(req.params.id).populate('teacher').exec((err, foundCourse) => {
+            res.render('admin/courseEdit', { course: foundCourse, allTeachers: foundTeachers });
+        })
+    })
+})
 
 router.get('/users', (req, res) => {
     User.find({}, (err, allUsers) => {

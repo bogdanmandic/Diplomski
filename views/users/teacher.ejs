@@ -1,0 +1,93 @@
+<% include ../partials/header %>
+<main id="body">
+    <div class="profileBody container">
+        <div class="row content-reverse">
+            <div class="col-lg-7 col-md-12 col-sm-12">
+                <h1 class="text-center">Your Courses</h1>
+                <div>
+                    <% user.courses.forEach(c => { %>
+
+                    <div>
+                        <div class="course course-type-css cardMarginTop">
+                            <div class="row course-card">
+                                <header class="course-header container-fluid courseTitle">
+
+                                    <h2 class="text-center m-0 py-1"><%= c.name %></h2>
+
+                                </header>
+
+                                <div class="row courseContent margin-remove">
+                                    
+                                    <div class="column col-8">
+                                        <span>Students on this course:</span>
+                                        <div class="student-list-info">
+                                            <ol>
+                                                <% c.students.forEach(s => { %>
+                                                    <li><%= s.data.username %></li>
+                                                <% }) %>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="column col-4">
+                                        <span>Course info:</span>
+                                        <div class="course-list-info">
+                                            <ul>
+                                                <li>Started at:
+                                                    <span>17.11.1847.</span>
+                                                </li>
+                                                <li>Duration:
+                                                    <span>3 weeks</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <footer class="course-footer html-color">
+                                    <a href="#" class="btn profileCourseBtn">Edit Course</a>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 col-sm-12">
+                <div class="column container text-center">
+                    <img class="profileImage" src="./img/user.png" alt="UserPicture">
+                    <div class="text-profile">
+                        <div class="row profile-info-centar">
+                            First name:
+                            <span><%= user.firstName %></span>
+
+                        </div>
+                        <div class="row profile-info-centar">
+                            Last name:
+                            <span><%= user.lastName %></span>
+                        </div>
+                        <div class="row profile-info-centar">
+                            Username:
+                            <span><%= user.username %></span>
+                        </div>
+
+                        <button>Edit Profile</button>
+
+                    </div>
+
+                    <section>
+                        <img class="calendar" src="http://www.calendarzoom.com/media/printable-calendar/january-2018-print-free-calendar-full-weekday.png"
+                            alt="UserPicture">
+                    </section>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</main>
+
+<% include ../partials/footer %>

@@ -1,0 +1,46 @@
+.course-description span {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding-left: 15px;
+}
+
+.paddingParagraph {
+    padding-top: 15px;
+}
+
+.marginParagraphCancel {
+    align-self: center;
+    padding-top: 3px;
+    padding-left: 5px;
+}
+
+.studentList {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.studentList span {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.single-course-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px 0px 15px;
+}
+
+.course-student-list-info {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 15px;
+}
+
+.course-student-list-info ol {
+    margin-bottom: 0px;
+}

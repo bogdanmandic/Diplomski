@@ -1,0 +1,136 @@
+.calendar {
+    width: 90%;
+    @media (max-width: 992px){
+        width: 70%;
+    }
+    @media (max-width: 414px){
+        width: 90%;
+    }
+}
+
+.profileImage {
+    width: 70%;
+    @media (max-width: 992px){
+        width: 50%;
+    }
+    @media (max-width: 414px){
+        width: 70%;
+    }
+}
+
+.profileBackground {
+    background-color: $body-color;
+}
+
+.margin-remove {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.profile-info-centar {
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.progressWidth {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.courseContent {
+    width: 100%;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.courseContent span {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.courseTitle {
+    margin-bottom: 0px;
+    padding: 5px 5px;
+}
+
+.profileCourseBtn {
+    border: 1px solid rgb(138, 138, 138);
+    width: 120px;
+    background-color: #f4f4f4;
+    color: rgb(51, 50, 50);
+    margin-right: 15px;
+}
+
+.profileCourseBtn:hover {
+    background-color: rgb(155, 153, 153);
+    color: white;
+}
+
+.cardMarginTop {
+    margin-top: 35px;
+}
+
+.text-profile {
+    margin-bottom: 35px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-profile button {
+    width: 100px;
+    margin: 10px;
+}
+
+.profile-header{
+    padding-top: 25px;
+}
+
+span {
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.student-list-info {
+    border: 1px solid lightgray;
+    height: 150px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 15px;
+    overflow-y: scroll;
+}
+
+.course-list-info {
+    border: 1px solid lightgray;
+    height: 150px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 15px;
+}
+
+.border-courses {
+    background-color: white;
+}
+
+.course:hover {
+    box-shadow: 0px 3px 12px 0px $body-color;
+}
+
+@media (max-width: 992px){
+.content-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+
+}
+    .content-reverse h1 {
+        padding-top: 25px;
+    }
+}

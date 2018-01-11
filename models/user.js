@@ -36,7 +36,9 @@ UserSchema.pre('remove', function (next) {
     else if (this.type == 'teacher') {
         this.model('User').findOne({ username: 'tbd' }, (err, tbd) => {
             this.model('Course').update({ teacher: this._id }, { $set: { teacher: tbd._id } }, { multi: true }).exec();
-            this.model('User').update({ _id: tbd._id }, { $push: { courses: { $each: this.courses } } }, { multi: true }).exec();
+            //this.model('User').update({ _id: tbd._id }, { $push: { courses: { $each: this.courses } } }, { multi: true }).exec();
+            tbd.courses.push.apply(tbd.courses, this.courses);
+            tbd.save();
         })
     }
     next();

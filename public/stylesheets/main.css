@@ -61,32 +61,32 @@ body {
 .course-card-body {
   padding: 0 15px; }
 
-.course-type-html .course-header {
-  background: #D24D57; }
-.course-type-html .btn-details {
-  color: #D24D57 !important; }
-.course-type-html .tags {
-  color: #D24D57 !important; }
-.course-type-html .btn-details {
-  border-color: #D24D57; }
-
-.course-type-css .course-header {
-  background: #2196F3; }
-.course-type-css .btn-details {
-  color: #2196F3 !important; }
-.course-type-css .tags {
-  color: #2196F3 !important; }
-.course-type-css .btn-details {
-  border-color: #2196F3; }
-
-.course-type-js .course-header {
-  background: #F9A825; }
-.course-type-js .btn-details {
-  color: #F9A825 !important; }
-.course-type-js .tags {
-  color: #F9A825 !important; }
-.course-type-js .btn-details {
-  border-color: #F9A825; }
+  .course-type:nth-child(3n) .course-header {
+    background: #292C44; }
+  .course-type .btn-details {
+    color: #292C44 !important; }
+  .course-type .tags {
+    color: #292C44 !important; }
+  .course-type .btn-details {
+    border-color: #292C44; }
+  
+  .course-type:nth-child(3n+1) .course-header {
+    background: #FF5349; }
+  .course-type .btn-details {
+    color: #FF5349 !important; }
+  .course-type .tags {
+    color: #FF5349 !important; }
+  .course-type .btn-details {
+    border-color: #FF5349; }
+  
+  .course-type:nth-child(3n+2) .course-header {
+    background: #4F80E1; }
+  .course-type .btn-details {
+    color: #4F80E1 !important; }
+  .course-type .tags {
+    color: #4F80E1 !important; }
+  .course-typ .btn-details {
+    border-color: #4F80E1; } 
 
 .time-container {
   position: absolute;
@@ -269,9 +269,6 @@ span {
 .border-courses {
   background-color: white; }
 
-.course:hover {
-  box-shadow: 0px 3px 12px 0px #EDEEF0; }
-
 @media (max-width: 992px) {
   .content-reverse {
     display: flex;
@@ -318,6 +315,44 @@ span {
 .course-student-list-info ol {
   margin-bottom: 0px; }
 
+@media (min-width: 992px) {
+  .admin-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); } }
+.admin-main .admin-card {
+  display: block;
+  max-width: 300px;
+  margin: 0 auto 30px;
+  border-radius: 15px;
+  background-color: #fff;
+  text-decoration: none;
+  transition: box-shadow .4s; }
+  .admin-main .admin-card:hover {
+    box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.55); }
+  .admin-main .admin-card.admin-card-courses .admin-card__header {
+    background-color: #2196F3; }
+  .admin-main .admin-card.admin-card-users .admin-card__header {
+    background-color: #D24D57; }
+  .admin-main .admin-card.admin-card-carousel .admin-card__header {
+    background-color: #F9A825; }
+.admin-main .admin-card__header {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 7px 0; }
+  .admin-main .admin-card__header:nth-of-type(3) {
+    background-color: #F9A825; }
+  .admin-main .admin-card__header h1 {
+    color: #fff;
+    margin: 0; }
+.admin-main .admin-card__icon {
+  display: block;
+  width: 90%;
+  max-width: 170px;
+  margin: 0 auto;
+  height: 300px; }
+
 .nav-link {
   text-align: center; }
 
@@ -343,10 +378,10 @@ span {
   width: auto; }
 
 .language-en {
-  background-image: url("../img/uk.svg"); }
+  background-image: url("/templates/img/uk.svg"); }
 
 .language-sr {
-  background-image: url("../img/serbia.svg"); }
+  background-image: url("/templates/img/serbia.svg"); }
 
 .nav-divider {
   width: 100%; }
@@ -420,5 +455,43 @@ span {
   border-radius: 10px;
   padding: 3px 3px;
   text-decoration: none !important; }
+
+.okvir {
+  border: 4px solid black; }
+
+.userEditMain {
+  margin-top: 20px;
+  padding: 0px; }
+
+.headingSection {
+  padding-bottom: 20px;
+  padding-top: 10px; }
+
+.courseInput {
+  height: 200px;
+  width: 300px;
+  border: 2px solid #7e7c7c;
+  padding: 5px; }
+
+.userEditPic {
+  padding: 20px 0px; }
+
+.userEditCourseBtn {
+  margin-bottom: 5px; }
+
+.userEditCourseBtn input {
+  margin: 4px 4px 0px 4px; }
+
+.userEditTypeBtnDiv {
+  padding-bottom: 10px; }
+
+.userEditTable label {
+  margin: 0;
+  padding-right: 5px; }
+
+@media (max-width: 440px) {
+  .courseInput {
+    height: 130px;
+    width: 130px; } }
 
 /*# sourceMappingURL=main.css.map */

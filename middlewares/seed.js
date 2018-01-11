@@ -25,7 +25,3 @@ User.find({ type: 'teacher' }, (err, foundTeachers) => {
         })
     }
 })
-
-
-
-console.log('SEEEEEED');

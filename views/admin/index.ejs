@@ -1,15 +1,35 @@
 <% include ../partials/header %>
 
-<form action='/admin/courses'>
-<input type='submit' value='COURSES' />
-</form>
+<main id="body" class="container admin-main">
+    <div class="row">
+        <div class="col-lg-4">
+            <a href="/admin/courses/" class="admin-card admin-card-courses">
+                <header class="admin-card__header">
+                    <h1 class="text-center">Courses</h1>
+                </header>
+                <img src="/templates/img/admin-icons/book.svg" alt="" class="admin-card__icon">
+            </a>
+        </div>
 
-<form action='/admin/users'>
-    <input type='submit' value='USERS' />
-</form>
+        <div class="col-lg-4">
+            <a href="/admin/users/" class="admin-card admin-card-users">
+                <header class="admin-card__header">
+                    <h1 class="text-center">Users</h1>
+                </header>
+                <img src="/templates/img/admin-icons/user.svg" alt="" class="admin-card__icon">
+            </a>
+        </div>
 
-<form action='/admin/carousel'>
-    <input type='submit' value='CAROUSEL' />
-</form>
+        <div class="col-lg-4">
+            <a href="/admin/carousel/" class="admin-card admin-card-carousel">
+                <header class="admin-card__header">
+                    <h1 class="text-center">Carousel</h1>
+                </header>
+                <img src="/templates/img/admin-icons/image.svg" alt="" class="admin-card__icon">
+            </a>
+        </div>
+        
+    </div>
+</main>
 
 <% include ../partials/footer %>

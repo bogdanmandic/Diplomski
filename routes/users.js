@@ -21,12 +21,16 @@ router.get('/', m.isAdmin, (req, res) => {
 
 // SHOW
 router.get('/:id', (req, res) => {
-	User.findById(req.params.id).populate('courses').exec( (err, foundUser) => {
+	User.findById(req.params.id).populate({path: 'courses', populate: { path: 'students.data' }}).exec( (err, foundUser) => {
 		if (err || !foundUser) {
-			req.flash('error', err.message );
+			req.flash('error', "User can't be found" );
 			res.redirect('/courses');
+		} else if(foundUser.type == 'student') {
+			res.render('./users/student', { user: foundUser });
+		} else if(foundUser.type == 'teacher') {
+			res.render('./users/teacher', { user: foundUser });
 		} else {
-			res.render('./users/show', { user: foundUser });
+			res.redirect('/courses');
 		}
 	})
 });

@@ -14,6 +14,7 @@ var app = express();
 
 
 // requiring routes
+var seed = require('./middlewares/seed');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var courses = require('./routes/courses');

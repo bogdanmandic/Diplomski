@@ -61,32 +61,32 @@ body {
 .course-card-body {
   padding: 0 15px; }
 
-.course-type-html .course-header {
-  background: #D24D57; }
-.course-type-html .btn-details {
-  color: #D24D57 !important; }
-.course-type-html .tags {
-  color: #D24D57 !important; }
-.course-type-html .btn-details {
-  border-color: #D24D57; }
-
-.course-type-css .course-header {
-  background: #2196F3; }
-.course-type-css .btn-details {
-  color: #2196F3 !important; }
-.course-type-css .tags {
-  color: #2196F3 !important; }
-.course-type-css .btn-details {
-  border-color: #2196F3; }
-
-.course-type-js .course-header {
-  background: #F9A825; }
-.course-type-js .btn-details {
-  color: #F9A825 !important; }
-.course-type-js .tags {
-  color: #F9A825 !important; }
-.course-type-js .btn-details {
-  border-color: #F9A825; }
+  .course-type:nth-child(3n) .course-header {
+    background: #292C44; }
+  .course-type .btn-details {
+    color: #292C44 !important; }
+  .course-type .tags {
+    color: #292C44 !important; }
+  .course-type .btn-details {
+    border-color: #292C44; }
+  
+  .course-type:nth-child(3n+1) .course-header {
+    background: #FF5349; }
+  .course-type .btn-details {
+    color: #FF5349 !important; }
+  .course-type .tags {
+    color: #FF5349 !important; }
+  .course-type .btn-details {
+    border-color: #FF5349; }
+  
+  .course-type:nth-child(3n+2) .course-header {
+    background: #4F80E1; }
+  .course-type .btn-details {
+    color: #4F80E1 !important; }
+  .course-type .tags {
+    color: #4F80E1 !important; }
+  .course-typ .btn-details {
+    border-color: #4F80E1; } 
 
 .time-container {
   position: absolute;
@@ -128,7 +128,7 @@ body {
     width: 120px;
     margin-bottom: 15px; } }
 #footer {
-  display: flex;
+  
   align-items: center;
   background-color: #2D353A;
   color: white; }
@@ -378,10 +378,10 @@ span {
   width: auto; }
 
 .language-en {
-  background-image: url("../img/uk.svg"); }
+  background-image: url("/templates/img/uk.svg"); }
 
 .language-sr {
-  background-image: url("../img/serbia.svg"); }
+  background-image: url("/templates/img/serbia.svg"); }
 
 .nav-divider {
   width: 100%; }

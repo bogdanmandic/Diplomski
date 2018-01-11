@@ -94,7 +94,7 @@ router.put('/:id', m.checkCourseOwnership, (req, res) => {
 })
 
 // DELETE
-router.delete('/:id', m.checkCourseOwnership, (req, res) => {
+router.delete('/:id', (req, res) => {
     Course.findById(req.params.id, (err, removed) => {
         if(err) {
             req.flash('error', err.message);

@@ -1,5 +1,33 @@
 $(document).ready(function () {
 
+$('#kursevi').DataTable();
+$('#useri').DataTable();
+
+var getUrlParameter = function getUrlParameter(sParam) {
+  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+      sURLVariables = sPageURL.split('&'),
+      sParameterName,
+      i;
+
+  for (i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split('=');
+
+      if (sParameterName[0] === sParam) {
+          return sParameterName[1] === undefined ? true : sParameterName[1];
+      }
+  }
+};
+
+var failLogin = getUrlParameter('failLogin');
+var failSignup = getUrlParameter('failSignup');
+
+if(failLogin == 1) {
+  $('#loginModal').modal('show');
+}
+if(failSignup == 1) {
+  $('#signupModal').modal('show');
+}
+
 // toggle function
 $('.toggle').click(function () {
   // switch icon
@@ -14,19 +42,16 @@ $('.toggle').click(function () {
 });
 
 function aaa() {
-  console.log('a');
   $('#signupModal').modal('hide');
   $('#loginModal').modal('hide');
 }
 
 $('#a').on('click', () => {
-  console.log('a');
   $('#signupModal').modal('hide');
   $('#loginModal').modal('hide');
 })
 
 $('#b').on('click', () => {
-  console.log('a');
   $('#signupModal').modal('hide');
   $('#loginModal').modal('hide');
 })

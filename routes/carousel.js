@@ -66,7 +66,7 @@ router.get('/test', (req, res) => {
 router.delete('/delete/:id', m.isAdmin, (req, res) => {
     Carousel.findById(req.params.id, (err, deleted) => {
         deleted.remove();
-        res.redirect('/courses');
+        res.redirect('back');
     });
 })
 

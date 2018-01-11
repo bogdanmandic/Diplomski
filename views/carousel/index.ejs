@@ -1,11 +1,25 @@
 <% include ../partials/header %>
+<main class='container'>
+    <div class='text-center'>
 
+        <a href='/admin/carousel/new' class='btn btn-success'>Add new Picture</a>
+    </div>
 <% car.forEach(c => { %>
 
-    <p><%= c %></p>
-    <img src="data:<%= c.contentType %>;base64, <%= c.picture %>" />
+    <div class='row' id="body">
+        <div class='col-md-6'>
+            <img src="data:<%= c.contentType %>;base64, <%= c.picture %>" width='400px' height='200px' />
+        </div>
+        <div class='col-md-6'>
+            
+            <form action='/admin/carousel/delete/<%= c.id %>?_method=DELETE' method='POST' >
+                <input type='submit' class='btn-lg btn-danger' value='Delete'>
+            </form>
+        </div>
+
+    </div>
 
 <% }) %>
 
-
+</main>
 <% include ../partials/footer %>

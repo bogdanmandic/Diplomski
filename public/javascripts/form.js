@@ -36,7 +36,7 @@ window.setTimeout(function() {
   $("#success-alert").fadeTo(1500, 0).slideUp(500, function(){
       $(this).remove(); 
   });
-}, 5000);
+}, 1000);
 }
 
 if($('#error-alert').length ) {
@@ -44,7 +44,7 @@ if($('#error-alert').length ) {
     $("#error-alert").fadeTo(1500, 0).slideUp(500, function(){
         $(this).remove(); 
     });
-  }, 5000);
+  }, 1000);
 }
 
 $("#userEdit #button1").click(function () {

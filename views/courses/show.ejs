@@ -4,7 +4,7 @@
         <div class="container text-center">
             <h1 class="text-center pb-3">Courses</h1>
 
-            <div class="course course-type">
+            <div class="course course-type-html">
                 <div class="course-card">
                     <header class="course-header container-fluid">
                         <div class="time-container">
@@ -50,7 +50,11 @@
                         </div>
                     </div>
                     <footer class="single-course-footer">
-                        <form action='/enroll/<%= course.id %>' method='post'><input type='submit' value='Start Course' /></form>
+                        <% if(!currentUser || (currentUser && currentUser.courses.indexOf(course.id) == -1)) { %>
+                            <form action='/enroll/<%= course.id %>' method='post'><input type='submit' value='Start Course' /></form>
+                        <% } else if(currentUser && currentUser.courses.indexOf(course.id) >= 0) { %>
+                            <p>You are already enrolled in this course.</p>
+                        <% } %>
 
                     </footer>
                 </div>

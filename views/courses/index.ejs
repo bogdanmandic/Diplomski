@@ -50,7 +50,7 @@
                                 <img src="<%= c.image %>" class="py-3" />
                             </div>
                             <div class="col-lg-6 course-description">
-                                <p class="text-justify"><%= c.description %></p>
+                                <p class="text-justify"><%= c.description.length<=400 ? c.description : c.description.substr(0,400)+'...' %></p>
                             </div>
                         </div>
                         <footer class="course-footer">

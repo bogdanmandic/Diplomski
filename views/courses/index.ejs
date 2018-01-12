@@ -41,7 +41,7 @@
                                <span class="align-middle">4 weeks</span>
                             </div>
                             <a href="#" class="course-link-lg">
-                                <h2 title='<%= c.name %>' class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= c.name %></h2>    
+                                <h2 title='<%= c.name %>' class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= c.name.length<=45 ? c.name : c.name.substring(0,45)+'...' %></h2> 
                             </a>
                             <img class="book" src="/templates/img/book.svg" alt="">
                         </header>

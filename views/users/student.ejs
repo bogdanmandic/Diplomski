@@ -4,7 +4,7 @@
     <div class="profileBody container">
         <div class="row">
             <div class="col-lg-5 col-md-12 col-sm-12">
-                <div class="column container text-center">
+                <div class="column container text-center teacherViewImg">
                     <img class="profileImage userEditPic" src="<%= user.image %>" alt="UserPicture">
                     <div class="text-profile">
                         <% if(user.firstName || user.lastName) { %>
@@ -52,9 +52,11 @@
                             <div class="course-card">
                                 <header class="course-header container-fluid courseTitle">
 
-                                    <h2 class="text-center m-0 py-1"><%= e.name %></h2>
+                                        <h2 title='<%= e.name %>' class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= e.name.length<=25 ? e.name : e.name.substring(0,25)+'...' %></h2>   
 
                                 </header>
+
+                                <h2 class="text-center m-0 py-1 d-md-none"><%= e.name %></h2> 
 
                                 <div class="column courseContent ">
                                     <div class="row margin-remove">

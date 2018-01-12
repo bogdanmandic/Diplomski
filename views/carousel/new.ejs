@@ -1,9 +1,25 @@
 <% include ../partials/header %>
+    <div class="container">
+        <form action='/admin/carousel' method='POST' enctype="multipart/form-data" class="pt-5">
+            <div class="form-group row">
+                <label for="link" class="col-md-2 col-form-label">Link</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="link" name="link" value="">
+                </div>
+            </div>
 
-    <form action='/admin/carousel' method='POST' enctype="multipart/form-data">
-        Link: <input type='text' name='link' />
-        File: <input type='file' name='pic' />
-        <input type='submit' />
-    </form>
+            <div class="form-group row">
+                    <label for="pic" class="col-md-2 col-form-label">Example file input</label>
+                    <div class="col-md-10">
+                            <input type="file" class="form-control-file" id="pic" name="pic">
+                    </div>
+            </div>
 
-<% include ../partials/footer %>
+            <input type="submit" class="btn btn-danger editCourseBtn ">
+            
+        </form>
+    </div>
+
+    <% include ../partials/footer %>
+
+ 

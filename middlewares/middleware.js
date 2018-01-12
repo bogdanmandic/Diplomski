@@ -9,7 +9,6 @@ m.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();
     } else {
-        console.log(req.headers.referer);
         var currentUrl = new URL(req.protocol + '://' + req.get('Host') + '/courses');
         if(req.headers.referer) {
             currentUrl = new URL(req.headers.referer);

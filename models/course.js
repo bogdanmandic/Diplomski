@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
 var CourseSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true
+    },
     code: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     image: {
         type: String,
@@ -13,7 +17,8 @@ var CourseSchema = new mongoose.Schema({
     description: String,
     teacher: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     students: [{
         data: {

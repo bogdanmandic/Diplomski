@@ -27,8 +27,9 @@
                             Please edit your profile to show more info about you.
                         </div>
                         <% } %>
+                        <% if(currentUser && currentUser.id == user.id) { %>
                         <a href='/users/<%= user.id %>/edit' class='btn btn-primary'>Edit Profile</a>
-
+                        <% } %>
                     </div>
 
                     <section>
@@ -67,10 +68,11 @@
                                         <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
                                     </div>
                                 </div>
-
+                                <% if(currentUser && currentUser.id == user.id) { %>
                                 <footer class="course-footer html-color">
                                     <a href="/courses/<%= e.id %>" class="btn profileCourseBtn">Continue</a>
                                 </footer>
+                                <% } %>
                             </div>
                         </div>
                     </div>

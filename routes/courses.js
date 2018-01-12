@@ -32,7 +32,7 @@ router.get('/new', m.isLoggedIn, m.isAdmin, (req, res) => {
 router.post('/', m.isLoggedIn, m.isAdmin, (req, res) => {
     if (req.body.image === '') delete req.body.image;
 
-    User.findOne({ username: req.body.teacher }, (err, foundUser) => {
+    User.findOne({ username: req.body.teacher }, (err, foundUser) => { //TODO handle errors
         req.body.teacher = foundUser._id;
         Course.create(req.body, (err, created) => {
             if (err) {
@@ -86,7 +86,6 @@ router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
     Course.findByIdAndUpdate(req.params.id, newData, { new: true }, (err, updated) => {
         if (err) {
             req.flash('error', err.message);
-            console.log(err);
             res.redirect('/courses');
         } else {
             req.flash('success', 'Successfully Updated!');

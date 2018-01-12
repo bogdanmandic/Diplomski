@@ -41,6 +41,13 @@ body {
   margin-bottom: 30px;
   overflow: hidden;
   transition: box-shadow .4s; }
+  .course .course-link-sm,
+  .course .course-link-lg {
+    text-decoration: none; }
+  .course .course-link-sm {
+    color: #000; }
+  .course .course-link-lg {
+    color: #fff; }
 
 .course-card {
   padding-bottom: 15px; }
@@ -592,6 +599,16 @@ span {
   font-weight: bold;
   text-transform: uppercase;
   padding-left: 5px; }
+
+.editCourseFields {
+  padding: 0 20px;
+  text-align: left; }
+
+.courses:nth-child(3n+2) .course-header {
+  background: #D24D57; }
+
+.courses:nth-child(3n+3) .course-header {
+  background: #F9A825; }
 
 .editCourseFields {
   padding: 0 20px;

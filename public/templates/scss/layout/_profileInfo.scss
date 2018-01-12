@@ -8,6 +8,11 @@
     }
 }
 
+.forma {
+    justify-content: center;
+    display: flex;
+}
+
 .profileImage {
     width: 70%;
     @media (max-width: 992px){

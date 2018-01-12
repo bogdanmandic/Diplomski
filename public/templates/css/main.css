@@ -41,6 +41,13 @@ body {
   margin-bottom: 30px;
   overflow: hidden;
   transition: box-shadow .4s; }
+  .course .course-link-sm,
+  .course .course-link-lg {
+    text-decoration: none; }
+  .course .course-link-sm {
+    color: #000; }
+  .course .course-link-lg {
+    color: #fff; }
 
 .course-card {
   padding-bottom: 15px; }
@@ -192,6 +199,10 @@ body {
   @media (max-width: 414px) {
     .calendar {
       width: 90%; } }
+
+.forma {
+  justify-content: center;
+  display: flex; }
 
 .profileImage {
   width: 70%; }

@@ -1,25 +1,33 @@
 <% include ../partials/header %>
-<main class='container'>
-    <div class='text-center'>
+<main id="body" class="container">
+        
 
-        <a href='/admin/carousel/new' class='btn btn-success'>Add new Picture</a>
-    </div>
-<% car.forEach(c => { %>
 
-    <div class='row' id="body">
-        <div class='col-md-6'>
-            <img src="data:<%= c.contentType %>;base64, <%= c.picture %>" width='400px' height='200px' />
-        </div>
-        <div class='col-md-6'>
-            
-            <form action='/admin/carousel/delete/<%= c.id %>?_method=DELETE' method='POST' >
-                <input type='submit' class='btn-lg btn-danger' value='Delete'>
-            </form>
-        </div>
 
+
+
+
+
+    <div class="buttondiv">
+        <a href='/admin/carousel/new' class="btn btn-success dugme">Add a new Image</a>
+
+        
     </div>
 
-<% }) %>
+    <% car.forEach(c => { %>
 
+    <div class="carouselItem container">
+
+        <img class="img-fluid" src="data:<%= c.contentType %>;base64, <%= c.picture %>">
+
+
+        <form action='/admin/carousel/delete/<%= c.id %>?_method=DELETE' method='POST' >
+            <div class="DeleteButtonDiv">
+        <input type="submit" value="Delete" class="btn btn-danger buttonDelete">
+    </div>
+    </form>
+    </div>
+    
+    <% }) %>
 </main>
 <% include ../partials/footer %>

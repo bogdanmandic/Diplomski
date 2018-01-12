@@ -19,18 +19,19 @@
                     <div class="row course-card-body">
                         <div class="col-lg-6 course-logo">
                             <img src="<%= course.image %>" class="py-3" />
-
+                            <% if(currentUser && (currentUser.id == course.teacher.id || currentUser.type == 'admin')) { %>
                             <div class="studentList">
                                 <span>Students on this course:</span>
                                 <div class="course-student-list-info">
                                     <ol>
                                         <% course.students.forEach(s => { %>
-                                            <li><%= s.data %></li>
+                                            <li><a href='/users/<%= s.data.id %>'><%= s.data.username %></a></li>
                                         <% }) %>
                             
                                     </ol>
                                 </div>
                             </div>
+                            <% } %>
                         </div>
                         <div class="col-lg-6 course-description">
                             <span>Course Info</span>
@@ -50,10 +51,12 @@
                         </div>
                     </div>
                     <footer class="single-course-footer">
-                        <% if(!currentUser || (currentUser && currentUser.courses.indexOf(course.id) == -1)) { %>
+                        <% if(!currentUser || (currentUser && currentUser.type == 'student' && currentUser.courses.indexOf(course.id) == -1)) { %>
                             <form action='/enroll/<%= course.id %>' method='post'><input type='submit' value='Start Course' /></form>
-                        <% } else if(currentUser && currentUser.courses.indexOf(course.id) >= 0) { %>
+                        <% } else if(currentUser && currentUser.type == 'student' && currentUser.courses.indexOf(course.id) >= 0) { %>
                             <p class='btn btn-success'>Enrolled</p>
+                        <% } else if (currentUser && (currentUser.id == course.teacher.id || currentUser.type == 'admin')) { %>
+                            <a href='/courses/<%= course.id %>/edit' class='btn btn-warning'>Edit</a>
                         <% } %>
 
                     </footer>

@@ -86,7 +86,7 @@ router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
         }
     };
     req.body.image === "" ? newData.$unset = { image: "" } : newData.$set.image = req.body.image;
-    Course.findByIdAndUpdate(req.params.id, newData, { new: true }, (err, updated) => {
+    Course.findByIdAndUpdate(req.params.id, newData, { new: true, runValidators: true }, (err, updated) => {
         if (err) {
             req.flash('error', err.message);
             res.redirect('/courses');

@@ -377,6 +377,10 @@ span {
   display: flex;
   justify-content: center; }
 
+.adminCourseTeacherSelect {
+  margin-left: 40%;
+  margin-bottom: 10px; }
+
 .nav-link {
   text-align: center; }
 
@@ -575,47 +579,16 @@ span {
   text-transform: uppercase;
   padding-left: 5px; }
 
-.editCourseMargin {
-  margin: 0;
+.editCourseFields {
+  padding: 0 20px;
+  text-align: left; }
+
+.submitButtonsContainer {
   display: flex;
-  flex-direction: row-reverse; }
-
-.editCourseForm label {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 0; }
-  @media (max-width: 450px) {
-    .editCourseForm label {
-      font-size: 14px; } }
-
-.editCourseField {
-  padding-left: 5px; }
-
-.editCourseForm table {
-  margin: 0 auto;
-  border-spacing: 25px;
-  border-collapse: separate; }
+  flex-direction: row;
+  justify-content: center; }
 
 .editCourseBtn {
   margin: 15px; }
-
-@media (max-width: 769px) {
-  .editCourseHeader {
-    font-size: 22px; } }
-
-.editCourseBorder {
-  border: 2px solid #7e7c7c; }
-
-.editCourseForm textarea {
-  width: 90%;
-  padding-left: 5px;
-  padding-top: 5px;
-  margin-top: 5px; }
-  @media (max-width: 991px) {
-    .editCourseForm textarea {
-      width: 60%; } }
-  @media (max-width: 767px) {
-    .editCourseForm textarea {
-      width: 85%; } }
 
 /*# sourceMappingURL=main.css.map */

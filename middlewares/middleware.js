@@ -1,13 +1,18 @@
+var express = require('express');
 var Course = require('../models/course');
 var User = require('../models/user');
+const { URL } = require('url');
+var queryString = require('query-string');
+
 var m = {};
 
 m.isLoggedIn = (req, res, next) => {
     if(req.isAuthenticated()) {
         return next();
     } else {
+        console.log(req.headers.referer);
         req.flash('error', 'Please login first!');
-        res.redirect(req.headers.referer + '?failLogin=1');
+        res.redirect(req.headers.referer);
     }
 }
 
@@ -20,8 +25,12 @@ m.isStudent = (req, res, next) => {
             res.redirect('back');
         }
     } else {
+        var url = new URL(req.headers.referer);
+        console.log(url.search);
+        url.search = 'failLogin=1';
         req.flash('error', 'Please login first!');
-        res.redirect(req.headers.referer + '?failLogin=1');
+        console.log(url.href);
+        res.redirect(url.href);
     }
 }
 

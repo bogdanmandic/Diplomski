@@ -17,7 +17,7 @@
                                     <div class="container-fluid row adminCourseTeacherSelect">
                                             <label for="teacher">Teacher</label> 
                                             <div class="col-md-10">
-                                                    <select name='teacher'>
+                                                    <select class="custom-select" name='teacher'>
                                                             <% teachers.forEach(t => { %>
                                                                 <option><%= t.username %></option>
                                                             <% }) %>

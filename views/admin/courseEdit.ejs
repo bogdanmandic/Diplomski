@@ -3,23 +3,23 @@
         <div>
                 <h2>Edit <%= course.name %> </h2>
                 <form action='/admin/courses/<%= course.id %>?_method=PUT' method='POST'>
-                    <label for="name">Name</label>
+                    <label for="name">Name</label> <br />
                     <input type="text" name="name" value="<%= course.name %>">
                     <br />
         
-                    <label for="code">Code</label>
+                    <label for="code">Code</label> <br />
                     <input type="text" name="code" required="true" value="<%= course.code %>">
                     <br />
         
-                    <label for="image">Link to image</label>
+                    <label for="image">Link to image</label> <br />
                     <input type="text" name="image" value="<%= course.image %>">
                     <br />
         
-                    <label for="description">Description</label>
+                    <label for="description">Description</label> <br />
                     <textarea name="description"><%= course.description %></textarea>
                     <br />
 
-                    <label for="teacher">Teacher</label>
+                    <label for="teacher">Teacher</label> <br />
                     <select name='teacher'>
                         <% allTeachers.forEach(t => { %>
                             <option value='<%=t.id%>' <%= t.id == course.teacher.id ? 'selected' : '' %>><%= t.username %></option>

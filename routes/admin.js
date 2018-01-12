@@ -4,17 +4,17 @@ var m = require('../middlewares/middleware');
 var Course = require('../models/course');
 var User = require('../models/user');
 
-router.get('/', (req, res) => {
+router.get('/', m.isLoggedIn, m.isAdmin, (req, res) => {
     res.render('admin/index');
 })
 
-router.get('/courses', (req, res) => {
+router.get('/courses', m.isLoggedIn, m.isAdmin, (req, res) => {
     Course.find({}).populate('teacher').exec((err, allCourses) => {
         res.render('admin/courses', { allCourses: allCourses });
     });
 });
 
-router.get('/courses/:id/edit', (req, res) => {
+router.get('/courses/:id/edit', m.isLoggedIn, m.isAdmin, (req, res) => {
     User.find({ type: 'teacher' }, (err, foundTeachers) => {
         Course.findById(req.params.id).populate('teacher').exec((err, foundCourse) => {
             res.render('admin/courseEdit', { course: foundCourse, allTeachers: foundTeachers });
@@ -22,7 +22,7 @@ router.get('/courses/:id/edit', (req, res) => {
     })
 })
 
-router.put('/courses/:id', (req, res) => {
+router.put('/courses/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     var newData = {
         name: req.body.name,
         code: req.body.code,
@@ -59,13 +59,13 @@ router.put('/courses/:id', (req, res) => {
     })
 })
 
-router.get('/users', (req, res) => {
+router.get('/users', m.isLoggedIn, m.isAdmin, (req, res) => {
     User.find({}, (err, allUsers) => {
         res.render('admin/users', { allUsers: allUsers });
     })
 });
 
-router.get('/users/:id/edit', (req, res) => {
+router.get('/users/:id/edit', m.isLoggedIn, m.isAdmin, (req, res) => {
     var enumm = User.schema.path('type').enumValues;
     Course.find({}, 'name', (err, allCourses) => {
         User.findById(req.params.id).populate('courses', 'name').exec((err, foundUser) => {
@@ -80,7 +80,7 @@ router.get('/users/:id/edit', (req, res) => {
     })
 });
 
-router.put('/users/:id', (req, res) => {
+router.put('/users/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     var updatedUser = {
 
         firstName: req.body.firstName,
@@ -133,7 +133,7 @@ router.put('/users/:id', (req, res) => {
 
 });
 
-router.delete('/users/:id', (req, res) => {
+router.delete('/users/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     User.findOne({username: 'tbd'}, (err, tbd) => {
         User.findById(req.params.id, (err, deleted) => {
             if (deleted._id != tbd._id)
@@ -144,7 +144,7 @@ router.delete('/users/:id', (req, res) => {
     
 });
 
-router.get('/test/:id', (req, res) => {
+router.get('/test/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     User.findById(req.params.id).populate('courses').exec( (err, foundUser) => {
         User.find()
         res.render('./users/teacher', {user: foundUser});

@@ -4,19 +4,20 @@
     flex-direction: row-reverse;
 }
 
-.editCourseForm {
-    width: 50%;
-}
-
 .editCourseForm textarea{
     width: 90%;
     height: 400px;
+    padding-left: 5px;
 }
 
 .editCourseForm label {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 0;
+}
+
+.editCourseForm input {
+    padding-left: 5px;
 }
 
 .editCourseForm table {
@@ -27,4 +28,10 @@
 
 .editCourseBtn {
     margin: 15px;
+}
+
+.editCourseHeader {
+    @media (max-width: 769px) {
+        font-size: 22px;
+    }
 }

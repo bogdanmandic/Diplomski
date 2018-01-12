@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/user');
+const { URL } = require('url');
 
 // SHOW REGISTER FORM
 router.get('/register', (req, res) => {
@@ -32,13 +33,13 @@ router.get('/login', (req, res) => {
     res.render('auth/login');
 });
 
-router.post('/login', passport.authenticate('local', {
+/*router.post('/login', passport.authenticate('local', {
     successRedirect: '/courses',
     failureRedirect: '/courses',
     failureFlash: true
 }), (req, res) => {
 
-});
+});*/
 
 
 /*var backUrl = '';
@@ -51,22 +52,15 @@ router.post('/login', passport.authenticate('local', {
 
 });*/
 
-/*router.post('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
+    var currentUrl = new URL(req.headers.referer);
     passport.authenticate('local', function(err, user, info) {
       if (err) { return next(err); }
       // Redirect if it fails
       if (!user) { 
-          console.log(req.query);
-          if(req.query.failLogin) {
-            console.log('if');
-            req.flash('error', 'Username or passwrod is incorrect.'); 
-            return res.redirect(req.headers.referer); 
-          } else {
-            console.log('else');
-            req.flash('error', 'Username or passwrod is incorrect.'); 
-            return res.redirect(req.headers.referer + '?failLogin=1'); 
-          }
-          
+          currentUrl.search = 'failLogin=1';
+          req.flash('error', info.message);
+          return res.redirect(currentUrl.href);
         }
       req.logIn(user, function(err) {
         if (err) { return next(err); }
@@ -74,7 +68,7 @@ router.post('/login', passport.authenticate('local', {
         return res.redirect('back');
       });
     })(req, res, next);
-  });*/
+  });
 
 router.get('/logout', (req, res) => {
     if (req.isAuthenticated()) {

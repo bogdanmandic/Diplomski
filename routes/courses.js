@@ -22,14 +22,14 @@ router.get('/', (req, res) => {
 });
 
 // NEW
-router.get('/new', (req, res) => {
+router.get('/new', m.isLoggedIn, m.isAdmin, (req, res) => {
     User.find({type: 'teacher'}, (err, allTeachers) => {
         res.render('courses/new', {teachers: allTeachers});
     })
 });
 
 // CREATE
-router.post('/', m.isTeacher, (req, res) => {
+router.post('/', m.isLoggedIn, m.isAdmin, (req, res) => {
     if (req.body.image === '') delete req.body.image;
     req.body.teacher = req.user._id;
     Course.create(req.body, (err, created) => {
@@ -60,7 +60,7 @@ router.get('/:id', (req, res) => {
 })
 
 // EDIT
-router.get('/:id/edit', m.checkCourseOwnership, (req, res) => {
+router.get('/:id/edit', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
     Course.findById(req.params.id, (err, foundCourse) => {
         if (err) {
             req.flash('error', err.message);
@@ -72,7 +72,7 @@ router.get('/:id/edit', m.checkCourseOwnership, (req, res) => {
 })
 
 // UPDATE
-router.put('/:id', m.checkCourseOwnership, (req, res) => {
+router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
     var newData = {
         $set: {
             name: req.body.name,
@@ -96,7 +96,7 @@ router.put('/:id', m.checkCourseOwnership, (req, res) => {
 })
 
 // DELETE
-router.delete('/:id', (req, res) => {
+router.delete('/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     Course.findById(req.params.id, (err, removed) => {
         if(err) {
             req.flash('error', err.message);

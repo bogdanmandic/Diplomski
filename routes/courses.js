@@ -23,33 +23,34 @@ router.get('/', (req, res) => {
 
 // NEW
 router.get('/new', m.isLoggedIn, m.isAdmin, (req, res) => {
-    User.find({type: 'teacher'}, (err, allTeachers) => {
-        res.render('courses/new', {teachers: allTeachers});
+    User.find({ type: 'teacher' }, (err, allTeachers) => {
+        res.render('courses/new', { teachers: allTeachers });
     })
 });
 
 // CREATE
 router.post('/', m.isLoggedIn, m.isAdmin, (req, res) => {
     if (req.body.image === '') delete req.body.image;
-    req.body.teacher = req.user._id;
-    Course.create(req.body, (err, created) => {
-        if (err) {
-            req.flash('error', err.message);
-            res.redirect('/courses');
-        } else {
-            User.findById(req.user._id, (err, foundUser) => {
+
+    User.findOne({ username: req.body.teacher }, (err, foundUser) => { //TODO handle errors
+        req.body.teacher = foundUser._id;
+        Course.create(req.body, (err, created) => {
+            if (err) {
+                req.flash('error', err.message);
+                res.redirect('/courses');
+            } else {
                 foundUser.courses.push(created._id);
                 foundUser.save();
-            });
-            req.flash('success', 'New course created!');
-            res.redirect('/courses');
-        }
-    })
+                req.flash('success', 'New course created!');
+                res.redirect('/courses');
+            }
+        });
+    });
 })
 
 // SHOW
 router.get('/:id', (req, res) => {
-    Course.findById(req.params.id).populate('teacher').exec( (err, foundCourse) => {
+    Course.findById(req.params.id).populate('teacher').populate('students.data').exec((err, foundCourse) => {
         if (err || !foundCourse) {
             req.flash('error', 'There was an error or that course can\'t be found');
             res.redirect('/courses');
@@ -85,11 +86,10 @@ router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
     Course.findByIdAndUpdate(req.params.id, newData, { new: true }, (err, updated) => {
         if (err) {
             req.flash('error', err.message);
-            console.log(err);
             res.redirect('/courses');
         } else {
             req.flash('success', 'Successfully Updated!');
-           
+
             res.redirect('/courses/' + updated.id);
         }
     })
@@ -98,7 +98,7 @@ router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
 // DELETE
 router.delete('/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     Course.findById(req.params.id, (err, removed) => {
-        if(err) {
+        if (err) {
             req.flash('error', err.message);
             res.redirect('/courses');
         } else {

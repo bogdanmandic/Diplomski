@@ -46,10 +46,11 @@
                                     </div>
 
                                 </div>
-
+                                <% if(currentUser && currentUser.id == user.id) { %>
                                 <footer class="course-footer html-color">
                                     <a href="/courses/<%= c.id %>/edit" class="btn profileCourseBtn">Edit Course</a>
                                 </footer>
+                                <% } %>
                             </div>
                         </div>
                     </div>
@@ -73,8 +74,10 @@
                             Username:
                             <span><%= user.username %></span>
                         </div>
+                        <% if(currentUser && currentUser.id == user.id) { %>
 
-                        <a href='/users/<%= user.id%>/edit' class='btn btn-info'>Edit Profile</a>
+                            <a href='/users/<%= user.id%>/edit' class='btn btn-info'>Edit Profile</a>
+                        <% } %>
 
                     </div>
 

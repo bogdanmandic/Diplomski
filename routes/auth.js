@@ -78,7 +78,7 @@ router.get('/logout', (req, res) => {
         res.redirect('/courses');
     } else {
         req.flash('error', 'Noone is logged in!');
-        res.redirect('back');
+        res.redirect('/courses');
     }
 });
 

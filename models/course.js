@@ -1,36 +1,24 @@
 const mongoose = require('mongoose');
 
 var CourseSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true
+    },
     code: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     image: {
         type: String,
         default: 'http://via.placeholder.com/250x200'
     },
     description: String,
-    teacher: [{
+    teacher: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    curriculum: {
-        goal: String,
-        content: String,
-        referenceBooks: [{
-            book: String,
-            author: String
-        }]
-    },
-    calendar: {
-        startDate: {
-            type: Date,
-            default: Date.now
-        },
-        endDate: {
-            type: Date
-        }
+        ref: 'User',
+        required: true
     },
     students: [{
         data: {

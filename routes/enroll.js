@@ -4,7 +4,7 @@ var User = require('../models/user');
 var Course = require('../models/course');
 var m = require('../middlewares/middleware');
 
-router.post('/enroll/:courseId', m.isStudent, (req, res) => {
+router.post('/enroll/:courseId', m.isLoggedIn, m.isStudent, (req, res) => {
     Course.findById(req.params.courseId, (err, foundCourse) => {
         if (foundCourse.students.findIndex(e => e.data.equals(req.user._id)) == -1) {
             User.findById(req.user._id, (err, foundUser) => {
@@ -22,7 +22,7 @@ router.post('/enroll/:courseId', m.isStudent, (req, res) => {
     });
 });
 
-router.post('/unenroll/:courseId', m.isStudent, (req, res) => {
+router.post('/unenroll/:courseId', m.isLoggedIn, m.isStudent, (req, res) => {
     Course.findById(req.params.courseId, (err, foundCourse) => {
         if (foundCourse.students.findIndex(e => e.data.equals(req.user._id)) > -1) {
             User.findById(req.user._id, (err, foundUser) => {

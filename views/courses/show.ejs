@@ -50,7 +50,11 @@
                         </div>
                     </div>
                     <footer class="single-course-footer">
-                        <form action='/enroll/<%= course.id %>' method='post'><input type='submit' value='Start Course' /></form>
+                        <% if(!currentUser || (currentUser && currentUser.courses.indexOf(course.id) == -1)) { %>
+                            <form action='/enroll/<%= course.id %>' method='post'><input type='submit' value='Start Course' /></form>
+                        <% } else if(currentUser && currentUser.courses.indexOf(course.id) >= 0) { %>
+                            <p class='btn btn-success'>Enrolled</p>
+                        <% } %>
 
                     </footer>
                 </div>

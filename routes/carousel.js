@@ -6,14 +6,22 @@ var fs = require('fs-extra');
 var upload = multer({ dest: './uploads/' });
 var m = require('../middlewares/middleware');
 
-router.get('/new', m.isAdmin, (req, res) => {
+
+router.get('/', m.isLoggedIn, m.isAdmin, (req, res) => {
+    Carousel.find({}, (err, foundCars) => {
+        res.render('carousel/index', { car: foundCars });
+    });
+})
+
+router.get('/new', m.isLoggedIn, m.isAdmin, (req, res) => {
     res.render('carousel/new');
 });
 
-router.post('/', m.isAdmin, upload.single('pic'), (req, res) => {
+router.post('/', m.isLoggedIn, m.isAdmin, upload.single('pic'), (req, res) => {
 
     fs.readFile(req.file.path, (err, newImg) => {
         var encImg = newImg.toString('base64');
+        var a = new Buffer(encImg);
         var newCar = {
             picture: encImg,
             contentType: req.file.mimetype,
@@ -34,7 +42,7 @@ router.post('/', m.isAdmin, upload.single('pic'), (req, res) => {
 
 });
 
-router.get('/test', (req, res) => {
+router.get('/test', m.isLoggedIn, m.isAdmin, (req, res) => {
     Carousel.find({}, (err, foundCars) => {
 
         /*var a = 'Hello';
@@ -54,9 +62,12 @@ router.get('/test', (req, res) => {
     })
 })
 
-router.get('/delete', m.isAdmin, (req, res) => {
-    Carousel.remove({}).exec();
-    res.redirect('/courses');
+
+router.delete('/delete/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
+    Carousel.findById(req.params.id, (err, deleted) => {
+        deleted.remove();
+        res.redirect('back');
+    });
 })
 
 module.exports = router;

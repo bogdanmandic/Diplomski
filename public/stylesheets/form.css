@@ -31,7 +31,6 @@ body {
 .form-module {
   position: relative;
   background: #ffffff;
-  max-width: 320px;
   width: 100%;
   border-top: 5px solid #4CAF50;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -134,7 +133,7 @@ body {
   text-decoration: none;
 }
 .login-register-form {
-  box-shadow: 0px 0px 30px 1px #BDBDBD;
+
   border-right: 10px;
 }
 
@@ -229,4 +228,20 @@ body {
 
 .line {
   border: 0px solid black;
+}
+.line-t {
+  border: 0px solid white;
+}
+.form-ls {
+  text-align: center;
+  margin-top: 150px;
+}
+.form-name {
+  padding-top: 20px;
+}
+.helpers {
+  color: #9E9E9E;
+}
+.helpers:hover {
+  text-decoration: none;
 }

@@ -21,18 +21,22 @@ router.get('/', m.isAdmin, (req, res) => {
 
 // SHOW
 router.get('/:id', (req, res) => {
-	User.findById(req.params.id).populate('courses').exec( (err, foundUser) => {
+	User.findById(req.params.id).populate({path: 'courses', populate: { path: 'students.data' }}).exec( (err, foundUser) => {
 		if (err || !foundUser) {
-			req.flash('error', err.message );
+			req.flash('error', "User can't be found" );
 			res.redirect('/courses');
+		} else if(foundUser.type == 'student') {
+			res.render('./users/student', { user: foundUser });
+		} else if(foundUser.type == 'teacher') {
+			res.render('./users/teacher', { user: foundUser });
 		} else {
-			res.render('./users/show', { user: foundUser });
+			res.redirect('/courses');
 		}
 	})
 });
 
 // EDIT
-router.get('/:id/edit', m.checkUserOwnership, (req, res) => {
+router.get('/:id/edit', m.isLoggedIn, m.checkUserOwnership, (req, res) => {
 	User.findById(req.params.id, (err, foundUser) => {
 		if (err) {
 			req.flash('error', err.message);
@@ -44,7 +48,7 @@ router.get('/:id/edit', m.checkUserOwnership, (req, res) => {
 });
 
 // UPDATE
-router.put('/:id', m.checkUserOwnership, (req, res) => {
+router.put('/:id', m.isLoggedIn, m.checkUserOwnership, (req, res) => {
 	let newData = {
 		$set: {
 			firstName: req.body.firstName,
@@ -66,7 +70,7 @@ router.put('/:id', m.checkUserOwnership, (req, res) => {
 });
 
 // DELETE
-router.delete('/:id', m.checkUserOwnership, (req, res) => {
+router.delete('/:id', m.isLoggedIn, m.checkUserOwnership, (req, res) => {
 	User.findById(req.params.id, (err, deleted) => {
 		if(err || !deleted) {
         	req.flash('error', 'No user to delete');

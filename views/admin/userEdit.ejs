@@ -1,80 +1,151 @@
 <% include ../partials/header %>
-<main id="body" class="container">
-    <div id="userEdit">
-        <h2>Edit
-            <%= user.username %>
-        </h2>
-        <form action='/admin/users/<%= user.id %>?_method=PUT' method='POST'>
-            <label for="firstName">First Name</label>
-            <input type="text" name="firstName" value="<%= user.firstName %>">
-            <br />
+    <main id="body" class="container">
+        <div class="column userEditMain" id="userEdit">
 
-            <label for="lastName">Last Name</label>
-            <input type="text" name="lastName" value="<%= user.lastName %>">
-            <br />
+            <section class="row-1 headingSection">
+                <h2 class="text-center">Edit
+                    <%= user.username %>
+                </h2>
+            </section>
+            <form action='/admin/users/<%= user.id %>?_method=PUT' method='POST'>
+                <section class="row-7 row justify-content-around align-items-center">
+                    <div>
 
-            <label for="image">Image</label>
-            <input type="text" name="image" value="<%= user.image %>">
-            <img src='<%= user.image %>' />
-            <br />
 
-            <label for="email">Email</label>
-            <input name="email" required="true" value='<%= user.email %>' />
-            <br />
+                        <table class="userEditTable">
+                            <tr>
+                                <th>
+                                    <label for="type">Type</label>
+                                </th>
+                                <th>
+                                    <select name="type" required="true">
+                                        <% enumm.forEach(e => { %>
+                                            <option value='<%= e %>' <%=e==user.type ? 'selected' : null %>>
+                                                <%= e %>
+                                            </option>
+                                            
+                                            <% }) %>
+                                    </select>
+                                </th>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <label for="username">Username</label>
+                                </td>
+                                <td>
+                                    <input name="username" required="true" value='<%= user.username %>' /> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="firstName">First Name</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="firstName" value="<%= user.firstName %>"> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="lastName">Last Name</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="lastName" value="<%= user.lastName %>"> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="email">Email</label>
+                                </td>
+                                <td>
+                                    <input name="email" required="true" value='<%= user.email %>' />
+                                </td>
+                            </tr>
 
-            <label for="type">Type</label>
-            <select name="type" required="true">
-                <% enumm.forEach(e => { %>
-                    <option value='<%= e %>' <%=e==user.type ? 'selected' : null %>>
-                        <%= e %>
-                    </option>
-                    <% }) %>
-            </select>
-            <br />
 
-            <label for="username">Username</label>
-            <input name="username" required="true" value='<%= user.username %>' />
-            <br />
 
-            <label for="courses">Current Courses</label>
-            
-            <select id="list1" name="courses[]" size="5" multiple="multiple" style='width: 150px'>
-                
-                <% user.courses.forEach(c => { %>
+                        </table>
 
-                    <option value='<%= c.id %>'>
-                        <%= c.name %>
-                    </option>
-                    <% }) %>
-            </select>
-            
-            <input id="button1" type="button" value="->" />
-            <input id="button2" type="button" value="<-" />
-           
-            <select id="list2" name="allCourses" size="5" multiple="multiple" style='width: 150px'>
-                <% allCourses.forEach(a => { %>
-                    
-                    <option value='<%= a.id %>'>
-                            <%= a.name %>
-                        </option>
-                <% }) %>
-            </select>
-            <label for="allCourses">All Courses</label>
-            <script type="text/javascript">
-                function selectAll() 
-                { 
-                    selectBox = document.getElementById("list1");
+                    </div>
 
-                    for (var i = 0; i < selectBox.options.length; i++) 
-                    { 
-                         selectBox.options[i].selected = true; 
-                    } 
-                }
-            </script>
-            <br />
+                    <div class="column editImgUser">
+                        <img class="userEditPic img-thumbnail" src='<%= user.image %>' />
+                        <div>
+                            <label for="image">Image</label>
+                            <input type="text" name="image" value="<%= user.image %>">
+                        </div>
+                    </div>
+                </section>
+                <br />
 
-            <input type="submit" value="Submit" onclick="selectAll()">
-        </form>
-    </div>
-</main>
+                <br />
+
+                <br />
+
+                <br />
+
+                <section class="row-4 text-center">
+                    <div class="row justify-content-center">
+
+                        <div class="column">
+                            <div>
+                                <label for="courses">Current Courses</label>
+                            </div>
+                            <div>
+                                <select class="courseInput" id="list1" name="courses[]" size="5" multiple="multiple">
+
+                                    <% user.courses.forEach(c => { %>
+
+                                        <option value='<%= c.id %>'>
+                                            *
+                                            <%= c.name %>
+                                        </option>
+                                        <br>
+                                        <% }) %>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="column align-self-end userEditCourseBtn">
+                            <div>
+                                <input id="button1" type="button" value="->" />
+                            </div>
+                            <div>
+                                <input id="button2" type="button" value="<-" />
+                            </div>
+
+                        </div>
+
+                        <div class="column">
+                            <div>
+                                <label for="allCourses">All Courses</label>
+                            </div>
+                            <div>
+                                <select class="courseInput" id="list2" name="allCourses" size="5" multiple="multiple">
+                                    <% allCourses.forEach(a => { %>
+
+                                        <option value='<%= a.id %>'>
+                                            *
+                                            <%= a.name %>
+                                        </option>
+                                        <br>
+                                        <% }) %>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <script type="text/javascript">
+                        function selectAll() {
+                            selectBox = document.getElementById("list1");
+
+                            for (var i = 0; i < selectBox.options.length; i++) {
+                                selectBox.options[i].selected = true;
+                            }
+                        }
+                    </script>
+                    <br />
+
+                    <input class="btn-dark userEditSubmit" type="submit" value="Submit" onclick="selectAll()">
+                </section>
+            </form>
+        </div>
+    </main>
     <% include ../partials/footer %>

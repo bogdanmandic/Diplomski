@@ -31,7 +31,16 @@ const UserSchema = mongoose.Schema({
 });
 
 UserSchema.pre('remove', function (next) {
-    this.model('Course').update({ students: { $elemMatch: { data: this._id } } },{ $pull: { students: { $elemMatch: { data: this._id } }  } }, { multi: true }).exec();
+    if (this.type == 'student')
+        this.model('Course').update({ students: { $elemMatch: { data: this._id } } }, { $pull: { students: { data: this._id } } }, { multi: true }).exec();
+    else if (this.type == 'teacher') {
+        this.model('User').findOne({ username: 'tbd' }, (err, tbd) => {
+            this.model('Course').update({ teacher: this._id }, { $set: { teacher: tbd._id } }, { multi: true }).exec();
+            //this.model('User').update({ _id: tbd._id }, { $push: { courses: { $each: this.courses } } }, { multi: true }).exec();
+            tbd.courses.push.apply(tbd.courses, this.courses);
+            tbd.save();
+        })
+    }
     next();
 });
 

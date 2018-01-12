@@ -3,7 +3,6 @@ var Course = require('../models/course');
 var User = require('../models/user');
 const { URL } = require('url');
 var queryString = require('query-string');
-
 var m = {};
 
 m.isLoggedIn = (req, res, next) => {

@@ -8,6 +8,11 @@
     }
 }
 
+.forma {
+    justify-content: center;
+    display: flex;
+}
+
 .profileImage {
     width: 70%;
     @media (max-width: 992px){
@@ -32,6 +37,11 @@
     margin-right: 15px;
     display: flex;
     justify-content: center;
+    font-weight: bold;
+}
+
+.profile-info-centar span {
+    font-weight: normal;
 }
 
 .progressWidth {
@@ -61,6 +71,7 @@
     background-color: #f4f4f4;
     color: rgb(51, 50, 50);
     margin-right: 15px;
+    margin-left: 15px;
 }
 
 .profileCourseBtn:hover {
@@ -104,6 +115,7 @@ span {
     padding-bottom: 10px;
     margin-top: 15px;
     overflow-y: scroll;
+    margin-bottom: 10px;
 }
 
 .course-list-info {
@@ -114,6 +126,8 @@ span {
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 15px;
+    overflow-x: auto;
+    margin-bottom: 10px;
 }
 
 .border-courses {
@@ -131,4 +145,12 @@ span {
     .content-reverse h1 {
         padding-top: 25px;
     }
+}
+
+.teacherViewImg {
+    margin-top: 40px;
+}
+
+.teacherViewImg a{
+    margin-top: 10px;
 }

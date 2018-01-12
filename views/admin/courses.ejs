@@ -1,7 +1,11 @@
 <% include ../partials/header %>
 <main id="body" class="container">
-    <a href='/courses/new' class='btn btn-success'>Create a new course</a>
-<table id='kursevi' class="display" cellspacing="1" width="100%">
+    <div class="adminCourseCreateNewDiv">
+       
+    <a href='/courses/new' class='btn btn-success adminCourseCreateNew'>Create a new course</a>
+    
+</div>
+    <table id='kursevi' class="display" cellspacing="1" width="100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -21,8 +25,8 @@
                 <td><img src='<%= c.image %>' width='100px' height='50px' /></td>
                 <td><%= c.description.substr(0,50)+'...' %></td>
                 <td><%= c.teacher.username %></td>
-                <td><form class="form-inline" method="GET" action="/admin/courses/<%= c.id %>/edit"><input type="submit" value="EDIT" class="btn btn-sm btn-success"></form></td>
-                <td><form class="form-inline" method="POST" action="/courses/<%= c.id %>?_method=DELETE"><input type="submit" value="DELETE" class="btn btn-sm btn-danger"></form></td>
+                <td><form class="form-inline" method="GET" action="/admin/courses/<%= c.id %>/edit"><input type="submit" value="Edit" class="btn btn-sm btn-info"></form></td>
+                <td><form class="form-inline" method="POST" action="/courses/<%= c.id %>?_method=DELETE"><input type="submit" value="Delete" class="btn btn-sm btn-danger"></form></td>
             </tr>
         <% }) %>
     </tbody>

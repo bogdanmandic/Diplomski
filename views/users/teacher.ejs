@@ -12,13 +12,16 @@
                             <div class="row course-card">
                                 <header class="course-header container-fluid courseTitle">
 
-                                    <h2 class="text-center m-0 py-1"><%= c.name %></h2>
+                                        <h2 title='<%= c.name %>' class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= c.name.length<=25 ? c.name : c.name.substring(0,25)+'...' %></h2> 
 
                                 </header>
 
+                                <h2 class=" col-12 text-center m-0 py-1 d-md-none"><%= c.name %></h2>                                 
+
                                 <div class="row courseContent margin-remove">
+                                        
                                     
-                                    <div class="column col-8">
+                                    <div class="column col-lg-7 col-md-7 col-sm-12">
                                         <span>Students on this course:</span>
                                         <div class="student-list-info">
                                             <ol>
@@ -28,7 +31,7 @@
                                             </ol>
                                         </div>
                                     </div>
-                                    <div class="column col-4">
+                                    <div class="column col-lg-5 col-md-5 col-sm-12">
                                         <span>Course info:</span>
                                         <div class="course-list-info">
                                             <ul>
@@ -54,8 +57,8 @@
                 </div>
             </div>
             <div class="col-lg-5 col-md-12 col-sm-12">
-                <div class="column container text-center">
-                    <img class="profileImage" src="<%= user.image %>" alt="UserPicture">
+                <div class="column container text-center teacherViewImg">
+                    <img class="profileImage userEditPic" src="<%= user.image %>" alt="UserPicture">
                     <div class="text-profile">
                         <div class="row profile-info-centar">
                             First name:

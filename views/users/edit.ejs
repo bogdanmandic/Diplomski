@@ -1,28 +1,68 @@
 <% include ../partials/header %>
-    <h3><%= user %></h3>
-    <div>
-        <h2>Edit <%= user.usernamename %> </h2>
-        <form action='/users/<%= user.id %>?_method=PUT' method='POST'>
-            <label for="firstName">First Name</label>
-            <input type="text" name="firstName" value="<%= user.firstName %>">
-            <br />
+    <main id="body" class="container">
+        <div class="column userEditMain" id="userEdit">
 
-            <label for="lastName">Last Name</label>
-            <input type="text" name="lastName" value="<%= user.lastName %>">
-            <br />
+            <section class="row-1 headingSection">
+                <h2 class="text-center">Edit
+                    <%= user.usernamename %>
+                </h2>
+            </section>
+            <form action='/users/<%= user.id %>?_method=PUT' method='POST'>
+                <section class="row-7 row justify-content-around ">
+                    <div>
 
-            <label for="email">Email</label>
-            <input name="email" required="true" value='<%= user.email %>' />
-            <br />
+                        <table class="userEditTable editInput">
+                            <tr>
+                                <td>
+                                    <label for="username">Username</label>
+                                </td>
+                                <td>
+                                    <input name="username" required="true" value='<%= user.username %>' /> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="firstName">First Name</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="firstName" value="<%= user.firstName %>"> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="lastName">Last Name</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="lastName" value="<%= user.lastName %>"> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="email">Email</label>
+                                </td>
+                                <td>
+                                    <input name="email" required="true" value='<%= user.email %>' />
+                                </td>
+                            </tr>
 
-            <label for="image">Image</label>
-            <input type="text" name="image" value="<%= user.image %>">
-            <br />
 
-            <div>Current Image: <img src='<%= user.image %>' /></div>
 
-        
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-<% include ../partials/footer %>
+                        </table>
+
+                    </div>
+
+                    <div class="column editImgUser">
+                        <img class="userEditPic img-thumbnail" src='<%= user.image %>' />
+                        <div>
+                            <label for="image">Image</label>
+                            <input type="text" name="image" value="<%= user.image %>">
+                        </div>
+                    </div>
+                </section>
+                <section class="container-fluid text-center ">
+                    <input class="btn-dark userEditSubmit editSubmitBtn" type="submit" value="Submit">
+                </section>
+
+
+            </form>
+
+        </div>
+    </main>
+    <% include ../partials/footer %>

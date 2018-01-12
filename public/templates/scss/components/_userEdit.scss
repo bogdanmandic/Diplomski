@@ -22,7 +22,34 @@
 }
 
 .userEditPic {
-    padding: 20px 0px;
+    padding: 10px;
+    border: 2px solid #7e7c7c;
+    margin: 20px 0px;
+    background: white;
+}
+
+.editSubmitBtn {
+    margin: 150px;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+  }
+
+@media (min-width: 768px) {
+    .editInput {
+      border-spacing: 30px;
+      border-collapse: separate;
+    }
+}
+@media (max-width: 767px) {
+    .editInput {
+      border-spacing: 7px;
+      border-collapse: separate;
+    }
+}
+
+.userEditSubmit {
+    margin-bottom: 10px;
 }
 
 .userEditCourseBtn {
@@ -44,11 +71,65 @@
 }
 
 
-@media (max-width: 440px) {
-    .courseInput {
-        height: 130px;
-        width: 130px;
-     } 
-  
-    }
+.row-7 label {
+    font-size: 20px;
+    font-weight: bold;
+  } 
 
+@media (max-width: 440px) {
+  .courseInput {
+    height: 130px;
+    width: 130px; 
+  }
+  .row-7 label {
+    font-size: 16px;
+  } 
+  .editSubmitBtn {
+    margin: 10px;
+    height: 25px;
+    width: 70px;
+    font-size: 14px;
+  }
+}
+
+.row-7 select {
+    font-size: 20px;
+    width: auto;
+}
+
+.row-7 th {
+    padding-bottom: 20px;
+}
+
+.row-7 input {
+    border: 2px solid #7e7c7c;
+    padding-left: 5px;
+}
+
+.editImgUser label{
+    padding-right: 10px;
+}
+
+.userEditMain h2 {
+    text-decoration: underline;
+}
+
+.courseInput option {
+    margin-bottom: 7px;
+  }
+
+  .row-4 label {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 5px;
+  }
+
+  .courses:nth-child(3n+1) .course-header{
+    background: #2196F3;
+  }
+  .courses:nth-child(3n+2) .course-header{
+    background: #D24D57;
+  }
+  .courses:nth-child(3n+3) .course-header{
+    background: #F9A825;
+  }

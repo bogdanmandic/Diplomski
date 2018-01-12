@@ -200,6 +200,10 @@ body {
     .calendar {
       width: 90%; } }
 
+.forma {
+  justify-content: center;
+  display: flex; }
+
 .profileImage {
   width: 70%; }
   @media (max-width: 992px) {
@@ -402,6 +406,36 @@ span {
   margin-left: 40%;
   margin-bottom: 10px; }
 
+.dugme {
+  margin-top: 35px; }
+
+.buttondiv {
+  justify-content: center;
+  display: flex; }
+
+.carouselItem {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 80px; }
+  .carouselItem img {
+    margin-bottom: 15px; }
+
+.imagediv img {
+  margin: 25px; }
+
+.delete {
+  margin-bottom: 24px; }
+
+.buttonDelete {
+  width: 100px;
+  margin: 0 auto; }
+
+.DeleteButtonDiv {
+  display: flex;
+  justify-content: center; }
+
 .nav-link {
   text-align: center; }
 
@@ -599,16 +633,6 @@ span {
   font-weight: bold;
   text-transform: uppercase;
   padding-left: 5px; }
-
-.editCourseFields {
-  padding: 0 20px;
-  text-align: left; }
-
-.courses:nth-child(3n+2) .course-header {
-  background: #D24D57; }
-
-.courses:nth-child(3n+3) .course-header {
-  background: #F9A825; }
 
 .editCourseFields {
   padding: 0 20px;

@@ -36,7 +36,7 @@ router.get('/:id', (req, res) => {
 });
 
 // EDIT
-router.get('/:id/edit', m.checkUserOwnership, (req, res) => {
+router.get('/:id/edit', m.isLoggedIn, m.checkUserOwnership, (req, res) => {
 	User.findById(req.params.id, (err, foundUser) => {
 		if (err) {
 			req.flash('error', err.message);
@@ -48,7 +48,7 @@ router.get('/:id/edit', m.checkUserOwnership, (req, res) => {
 });
 
 // UPDATE
-router.put('/:id', m.checkUserOwnership, (req, res) => {
+router.put('/:id', m.isLoggedIn, m.checkUserOwnership, (req, res) => {
 	let newData = {
 		$set: {
 			firstName: req.body.firstName,
@@ -70,7 +70,7 @@ router.put('/:id', m.checkUserOwnership, (req, res) => {
 });
 
 // DELETE
-router.delete('/:id', m.checkUserOwnership, (req, res) => {
+router.delete('/:id', m.isLoggedIn, m.checkUserOwnership, (req, res) => {
 	User.findById(req.params.id, (err, deleted) => {
 		if(err || !deleted) {
         	req.flash('error', 'No user to delete');

@@ -65,7 +65,8 @@ router.post('/login', function(req, res, next) {
       req.logIn(user, function(err) {
         if (err) { return next(err); }
         // Redirect if it succeeds
-        return res.redirect('back');
+        currentUrl.search = '';
+        return res.redirect(currentUrl);
       });
     })(req, res, next);
   });

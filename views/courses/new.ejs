@@ -14,17 +14,17 @@
                         </header>
                         <form action='/courses' method='POST'>
                             <div class="editCourseFields">
-                                    <div class="container-fluid row adminCourseTeacherSelect">
-                                            <label for="teacher">Teacher</label> 
-                                            <div class="col-md-10">
-                                                    <select name='teacher'>
-                                                            <% teachers.forEach(t => { %>
-                                                                <option><%= t.username %></option>
-                                                            <% }) %>
-                                                        </select>
-                                            </div>
-                                          
+                                    
+                                <div class="form-group row">
+                                        <label for="teacher" class="col-md-2 col-form-label">Teacher</label>
+                                        <div class="col-md-10">
+                                            <select name="teacher" class="custom-select">
+                                                <% teachers.forEach(t => { %>
+                                                    <option><%= t.username %></option>
+                                                    <% }) %>
+                                            </select>
                                         </div>
+                                    </div>
                                 <div class="form-group row">
                                     <label for="name" class="col-md-2 col-form-label">Name</label>
                                     <div class="col-md-10">
@@ -54,10 +54,10 @@
                             <div class="submitButtonsContainer">
 
 
-                                <input type="submit" value="Edit" class="btn btn-info editCourseBtn ">
+                                <input type="submit" value="Create" class="btn btn-success editCourseBtn ">
                        
                        
-                            <input type="reset" value="Reset" class="btn btn-danger editCourseBtn ">
+                            <input type="reset" value="Reset" class="btn btn-info editCourseBtn ">
                         </form>
 
                         </div>

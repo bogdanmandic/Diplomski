@@ -1,34 +1,83 @@
 <% include ../partials/header %>
-    <div>
-        <h2>Create new course</h2>
-        <form action='/courses' method='POST'>
-            <label for="name">Name</label>
-            <input type="text" name="name">
-            <br />
+<main id="body" class="container">
+        <section class="courses">
+            <div class="container text-center">
 
-            <label for="code">Code</label>
-            <input type="text" name="code" required="true">
-            <br />
 
-            <label for="image">Link to image</label>
-            <input type="text" name="image">
-            <br />
+                <div class="course course-type-html">
+                    <div class="course-card">
+                        <header class="course-header container-fluid adminCourseTeacher">
 
-            <label for="description">Description</label>
-            <textarea name="description"></textarea>
-            <br />
+                            <h2 class="text-center m-0 py-1 editCourseHeader"> Create new course
+                            </h2>
 
-            <label for="teacher">Teacher</label>
-            <select name='teacher'>
-                <% teachers.forEach(t => { %>
-                    <option value='<%= t.username %>'><%= t.username %></option>
-                <% }) %>
-            </select>
-            <br />
+                        </header>
+                        <form action='/courses' method='POST'>
+                            <div class="editCourseFields">
+                                    <div class="container-fluid row adminCourseTeacherSelect">
+                                            <label for="teacher">Teacher</label> 
+                                            <div class="col-md-10">
+                                                    <select name='teacher'>
+                                                            <% teachers.forEach(t => { %>
+                                                                <option><%= t.username %></option>
+                                                            <% }) %>
+                                                        </select>
+                                            </div>
+                                          
+                                        </div>
+                                <div class="form-group row">
+                                    <label for="name" class="col-md-2 col-form-label">Name</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="name" name="name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="code" class="col-md-2 col-form-label">Code</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="code" name="code" required="true">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="image" class="col-md-2 col-form-label">Link to image</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="image" name="image">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="description" class="col-md-2 col-form-label">Description</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" id="description" name="description" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
 
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-        </form>
-    </div>
-    
+                            <div class="submitButtonsContainer">
+
+
+                                <input type="submit" value="Edit" class="btn btn-info editCourseBtn ">
+                       
+                       
+                            <input type="reset" value="Reset" class="btn btn-danger editCourseBtn ">
+                        </form>
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+        </section>
+    </main>
 <% include ../partials/footer %>

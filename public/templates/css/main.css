@@ -41,6 +41,13 @@ body {
   margin-bottom: 30px;
   overflow: hidden;
   transition: box-shadow .4s; }
+  .course .course-link-sm,
+  .course .course-link-lg {
+    text-decoration: none; }
+  .course .course-link-sm {
+    color: #000; }
+  .course .course-link-lg {
+    color: #fff; }
 
 .course-card {
   padding-bottom: 15px; }
@@ -131,6 +138,20 @@ body {
   height: 195px;
   overflow: hidden; }
 
+.course:nth-child(3n+1) .course-header {
+  background: #2196F3; }
+
+.course:nth-child(3n+2) .course-header {
+  background: #D24D57; }
+
+.course:nth-child(3n+3) .course-header {
+  background: #F9A825; }
+
+.coursesImg {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
 #footer {
   display: flex;
   align-items: center;
@@ -178,6 +199,10 @@ body {
   @media (max-width: 414px) {
     .calendar {
       width: 90%; } }
+
+.forma {
+  justify-content: center;
+  display: flex; }
 
 .profileImage {
   width: 70%; }
@@ -356,6 +381,16 @@ span {
   max-width: 170px;
   margin: 0 auto;
   height: 300px; }
+
+.adminCourseCreateNewDiv {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center; }
+
+.adminCourseTeacherSelect {
+  margin-left: 40%;
+  margin-bottom: 10px; }
 
 .nav-link {
   text-align: center; }
@@ -555,43 +590,17 @@ span {
   text-transform: uppercase;
   padding-left: 5px; }
 
-.courses:nth-child(3n+1) .course-header {
-  background: #2196F3; }
+.editCourseFields {
+  padding: 0 20px;
+  text-align: left; }
 
-.courses:nth-child(3n+2) .course-header {
-  background: #D24D57; }
-
-.courses:nth-child(3n+3) .course-header {
-  background: #F9A825; }
-
-.editCourseMargin {
-  margin: 0;
+.submitButtonsContainer {
   display: flex;
-  flex-direction: row-reverse; }
-
-.editCourseForm textarea {
-  width: 90%;
-  height: 400px;
-  padding-left: 5px; }
-
-.editCourseForm label {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 0; }
-
-.editCourseForm input {
-  padding-left: 5px; }
-
-.editCourseForm table {
-  margin: 0 auto;
-  border-spacing: 25px;
-  border-collapse: separate; }
+  flex-direction: row;
+  justify-content: center; }
 
 .editCourseBtn {
-  margin: 15px; }
-
-@media (max-width: 769px) {
-  .editCourseHeader {
-    font-size: 22px; } }
+  margin: 15px;
+  width: 100px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,37 +1,16 @@
-.editCourseMargin {
-    margin: 0;
+.editCourseFields {
+    padding: 0 20px;
+    text-align: left;
+}
+
+.submitButtonsContainer {
     display: flex;
-    flex-direction: row-reverse;
-}
-
-.editCourseForm textarea{
-    width: 90%;
-    height: 400px;
-    padding-left: 5px;
-}
-
-.editCourseForm label {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 0;
-}
-
-.editCourseForm input {
-    padding-left: 5px;
-}
-
-.editCourseForm table {
-    margin: 0 auto;
-    border-spacing: 25px;
-    border-collapse: separate;
+    flex-direction: row;
+    justify-content: center
 }
 
 .editCourseBtn {
     margin: 15px;
+    width: 100px;
 }
 
-.editCourseHeader {
-    @media (max-width: 769px) {
-        font-size: 22px;
-    }
-}

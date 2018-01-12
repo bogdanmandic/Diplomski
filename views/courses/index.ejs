@@ -31,7 +31,7 @@
     
     <section class="courses">
         <div class="container text-center">
-                
+    
             <% courses.forEach(c => { %>
                 <div class="course course-type">
                     <div class="course-card">
@@ -40,14 +40,18 @@
                                <img class="time mr-1" src="/templates/img/clock.svg" alt=""> 
                                <span class="align-middle">4 weeks</span>
                             </div>
-                            <h2 class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= c.name %></h2>    
+                            <a href="#" class="course-link-lg">
+                                <h2 title='<%= c.name %>' class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= c.name %></h2>    
+                            </a>
                             <img class="book" src="/templates/img/book.svg" alt="">
                         </header>
 
-                        <h2 class="text-center m-0 py-1 d-md-none"><%= c.name %></h2>  
+                        <a href="#" class="course-link-sm">
+                            <h2 class="text-center m-0 py-1 d-md-none"><%= c.name %></h2>  
+                        </a>
                         <div class="row course-card-body">
                             <div class="col-lg-6 course-logo ">
-                                <img src="<%= c.image %>" class="py-3 align-self-center" />
+                                <img src="<%= c.image %>" class="py-3 coursesImg" />
                             </div>
                             <div class="col-lg-6 course-description courseDescMain">
                                 <p class="text-justify"><%= c.description.length<=400 ? c.description : c.description.substr(0,400)+'...' %></p>

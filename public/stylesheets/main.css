@@ -138,6 +138,20 @@ body {
   height: 195px;
   overflow: hidden; }
 
+.course:nth-child(3n+1) .course-header {
+  background: #2196F3; }
+
+.course:nth-child(3n+2) .course-header {
+  background: #D24D57; }
+
+.course:nth-child(3n+3) .course-header {
+  background: #F9A825; }
+
+.coursesImg {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
 #footer {
   display: flex;
   align-items: center;
@@ -364,6 +378,16 @@ span {
   margin: 0 auto;
   height: 300px; }
 
+.adminCourseCreateNewDiv {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center; }
+
+.adminCourseTeacherSelect {
+  margin-left: 40%;
+  margin-bottom: 10px; }
+
 .nav-link {
   text-align: center; }
 
@@ -562,8 +586,9 @@ span {
   text-transform: uppercase;
   padding-left: 5px; }
 
-.courses:nth-child(3n+1) .course-header {
-  background: #2196F3; }
+.editCourseFields {
+  padding: 0 20px;
+  text-align: left; }
 
 .courses:nth-child(3n+2) .course-header {
   background: #D24D57; }

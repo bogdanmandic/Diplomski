@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 		} else if(foundUser.type == 'teacher') {
 			res.render('./users/teacher', { user: foundUser });
 		} else {
-			res.redirect('/courses');
+			res.redirect('/admin');
 		}
 	})
 });

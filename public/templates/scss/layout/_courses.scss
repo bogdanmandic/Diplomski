@@ -157,3 +157,18 @@
     height: 195px;
     overflow: hidden;
 }
+
+.course:nth-child(3n+1) .course-header {
+    background: #2196F3; }
+  
+  .course:nth-child(3n+2) .course-header {
+    background: #D24D57; }
+  
+  .course:nth-child(3n+3) .course-header {
+    background: #F9A825; }
+
+    .coursesImg {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }

@@ -7,7 +7,7 @@ m.isLoggedIn = (req, res, next) => {
         return next();
     } else {
         req.flash('error', 'Please login first!');
-        res.redirect('/login');
+        res.redirect(req.headers.referer + '?failLogin=1');
     }
 }
 
@@ -21,7 +21,7 @@ m.isStudent = (req, res, next) => {
         }
     } else {
         req.flash('error', 'Please login first!');
-        res.redirect('/login');
+        res.redirect(req.headers.referer + '?failLogin=1');
     }
 }
 
@@ -35,7 +35,7 @@ m.isTeacher = (req, res, next) => {
         }
     } else {
         req.flash('error', 'Please login first!');
-        res.redirect('/login');
+        res.redirect(req.headers.referer + '?failLogin=1');
     }
 }
 
@@ -49,7 +49,7 @@ m.isAdmin = (req, res, next) => {
         }
     } else {
         req.flash('error', 'Please login first!');
-        res.redirect('/login');
+        res.redirect(req.headers.referer + '?failLogin=1');
     }
 }
 
@@ -70,7 +70,7 @@ m.checkCourseOwnership = (req, res, next) => {
         })
     } else {
         req.flash('error', 'Please login first!');
-        res.redirect('/login');
+        res.redirect(req.headers.referer + '?failLogin=1');
     }
 }
 
@@ -91,7 +91,7 @@ m.checkUserOwnership = (req, res, next) => {
         })
     } else {
         req.flash('error', 'Please login first!');
-        res.redirect('/login');
+        res.redirect(req.headers.referer + '?failLogin=1');
     }
 }
 

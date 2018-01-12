@@ -18,6 +18,14 @@
             <textarea name="description"></textarea>
             <br />
 
+            <label for="teacher">Teacher</label>
+            <select name='teacher'>
+                <% teachers.forEach(t => { %>
+                    <option><%= t.username %></option>
+                <% }) %>
+            </select>
+            <br />
+
             <input type="submit" value="Submit">
             <input type="reset" value="Reset">
         </form>

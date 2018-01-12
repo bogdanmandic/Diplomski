@@ -21,14 +21,20 @@
             <label for="teacher">Teacher</label>
             <select name='teacher'>
                 <% teachers.forEach(t => { %>
-                    <option><%= t.username %></option>
-                <% }) %>
+                    <option>
+                        <%= t.username %>
+                    </option>
+                    <% }) %>
             </select>
             <br />
-
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
+            <% teachers.forEach(t => { %>
+                <br>
+                <label style="font-size: 2em"><%=t.username%><input type="checkbox" <%= t.username %> ></label>
+                <% }) %>
+                    <br>
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
         </form>
     </div>
-    
-<% include ../partials/footer %>
+
+    <% include ../partials/footer %>

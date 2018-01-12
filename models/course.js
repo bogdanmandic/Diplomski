@@ -11,10 +11,10 @@ var CourseSchema = new mongoose.Schema({
         default: 'http://via.placeholder.com/250x200'
     },
     description: String,
-    teacher: {
+    teacher: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    },
+    }],
     curriculum: {
         goal: String,
         content: String,

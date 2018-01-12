@@ -44,6 +44,12 @@
                         </label><br>
 
                     </label><br>
+		<% allTeachers.forEach(t => { %>
+			<input
+			 	type="checkbox" 
+				name="teachers" 
+				value="<%=t.id%>" 
+		<% } %>
             <input type="submit" class="btn btn-success" value="Submit">
     </form>
                 <form action='/courses/<%= course.id %>?_method=DELETE' method='POST'>

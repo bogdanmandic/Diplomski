@@ -80,42 +80,42 @@
                                 </h2>
 
                             </header>
+                            <form action='/courses/<%= course.id %>?_method=PUT' method='POST'>
+                                <div class="editCourseFields">
+                                    <div class="form-group row">
+                                        <label for="name" class="col-md-2 col-form-label">Name</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="name" name="name" value="<%= course.name %>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="code" class="col-md-2 col-form-label">Code</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="code" name="code" required="true" value="<%= course.code %>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="image" class="col-md-2 col-form-label">Link to image</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="image" name="image" value="<%= course.image %>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="description" class="col-md-2 col-form-label">Description</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" id="description" name="description" rows="10"><%= course.description %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div class="editCourseFields">
-                                <div class="form-group row">
-                                    <label for="courseName" class="col-md-2 col-form-label">Name</label>
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control" id="courseName" placeholder="HTML Intro">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="courseCode" class="col-md-2 col-form-label">Password</label>
-                                    <div class="col-md-10">
-                                        <input type="password" class="form-control" id="courseCode" placeholder="123456">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="imageLink" class="col-md-2 col-form-label">Image Link</label>
-                                    <div class="col-md-10">
-                                        <input type="password" class="form-control" id="imageLink" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="courseDesciption" class="col-md-2 col-form-label">Description</label>
-                                    <div class="col-md-10">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                                <div class="submitButtonsContainer">
 
-                            <div class="submitButtonsContainer">
 
-                                <form action="/courses/<%= course.id %>?_method=PUT">
                                     <input type="submit" value="Submit" class="btn btn-info editCourseBtn ">
-                                </form>
-                                <form action="/courses/<%= course.id %>?_method=DELETE" method="POST">
-                                    <input type="submit" value="Delete" class="btn btn-danger editCourseBtn ">
-                                </form>
+                            </form>
+                            <form action="/courses/<%= course.id %>?_method=DELETE" method="POST">
+                                <input type="submit" value="Delete" class="btn btn-danger editCourseBtn ">
+                            </form>
 
                             </div>
 
@@ -131,43 +131,43 @@
 
                     </div>
 
-    
 
 
-            </div>
-        </section>
-    </main>
 
-
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <ul class="social-networks">
-                        <li>
-                            <a href="#" class="social-link">
-                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="social-link">
-                                <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="social-link">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
-                <div class="col-6 text-right align-self-center">
-                    <a href="#" class="about-link">About Us</a>
+            </section>
+        </main>
+
+
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="social-networks">
+                            <li>
+                                <a href="#" class="social-link">
+                                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link">
+                                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-6 text-right align-self-center">
+                        <a href="#" class="about-link">About Us</a>
+                    </div>
                 </div>
+                <p class="text-center copyright m-0">&copy; Riitech Academy</p>
             </div>
-            <p class="text-center copyright m-0">&copy; Riitech Academy</p>
-        </div>
-    </footer>
+        </footer>
     </div>
 
 

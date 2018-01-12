@@ -23,7 +23,6 @@ router.get('/courses/:id/edit', (req, res) => {
 })
 
 router.put('/courses/:id', (req, res) => {
-    console.log('================');
     var newData = {
         name: req.body.name,
         code: req.body.code,
@@ -36,7 +35,6 @@ router.put('/courses/:id', (req, res) => {
             req.flash('error', err.message);
             res.redirect('/courses');
         } else {
-            console.log(req.body);
             // ako je promenjen teacher
             if (req.body.teacher != updated.teacher) {
                 // obrisi iz starog teachera
@@ -52,9 +50,7 @@ router.put('/courses/:id', (req, res) => {
 
             }
             updated.set(newData);
-            updated.save((e, a) => {
-                console.log(a);
-            });
+            updated.save();
 
             req.flash('success', 'Successfully Updated!');
             res.redirect('/admin/courses/');
@@ -109,7 +105,6 @@ router.put('/users/:id', (req, res) => {
                 var deletedCourses = m.diffInArrays(stringIds, req.body.courses);
 
                 if (newCourses.length > 0) {
-                    console.log('za dodavanje: ' + newCourses);
                     Course.find({ _id: { $in: newCourses } }, 'students', (err, allCourses) => {
                         allCourses.forEach(c => {
                             c.students.push({ data: foundUser._id });
@@ -118,7 +113,6 @@ router.put('/users/:id', (req, res) => {
                     })
                 }
                 if (deletedCourses.length > 0) {
-                    console.log('za brisanje: ' + deletedCourses);
                     Course.find({ _id: { $in: deletedCourses } }, 'students', (err, allCourses) => {
                         allCourses.forEach(c => {
                             var i = c.students.findIndex(e => e.data == foundUser.id);
@@ -140,11 +134,14 @@ router.put('/users/:id', (req, res) => {
 });
 
 router.delete('/users/:id', (req, res) => {
-    User.findById(req.params.id, (err, deleted) => {
-        if (deleted._id != '5a54d6e9619944545c9e166d')
-            deleted.remove();
-        res.redirect('/admin/users');
-    });
+    User.findOne({username: 'tbd'}, (err, tbd) => {
+        User.findById(req.params.id, (err, deleted) => {
+            if (deleted._id != tbd._id)
+                deleted.remove();
+            res.redirect('/admin/users');
+        });
+    })
+    
 });
 
 router.get('/test/:id', (req, res) => {

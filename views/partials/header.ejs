@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel='stylesheet' href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
     <link rel="stylesheet" href="/stylesheets/form.css">
     <title>Riitech Academy </title>
@@ -31,14 +32,13 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li> -->
-                            <% if(currentUser && currentUser.type == 'teacher') { %>
+                            <% if(currentUser && currentUser.type == 'admin') { %>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/courses/new">New
-
-                                    </a>
+                                    <a class="nav-link" href="/admin">Admin</a>
                                 </li>
+                                <hr class="nav-divider" />
                                 <% } %>
-                                    <hr class="nav-divider" />
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="/courses">Courses</a>
                                     </li>
@@ -80,6 +80,7 @@
                                                 <a class="nav-link nav-button" href="/logout">Logout</a>
                                             </li>
                                             <% } %>
+
                         </ul>
                     </div>
                 </div>
@@ -104,23 +105,23 @@
                             <hr class="line-t">
                             <a class="btn-forgot-password form-name helpers" href="#">Forgot Your Password?</a>
                             <hr class="line-t">
-                            <a class="btn-new-account helpers"  id='a' data-toggle='modal' data-target='#signupModal' href="#">Don't Have an Account?</a>
+                            <a class="btn-new-account helpers" id='a' data-toggle='modal' data-target='#signupModal' href="#">Don't Have an Account?</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-     
+
         <div class="modal form-ls" id="signupModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="module form-module login-register-form">
                         <h2 class="form-name">Create an account</h2>
-                       <div class="form">
-                            <form>
-                                <input type="text" placeholder="Username" />
-                                <input type="password" placeholder="Password" />
-                                <input type="email" placeholder="Email Address" />
+                        <div class="form">
+                            <form action='/register' method='POST'>
+                                <input type="email" placeholder="Email Address" name='email' />
+                                <input type="text" placeholder="Username" name='username' />
+                                <input type="password" placeholder="Password" name='password' />
                                 <button class="btn-login_register">Signup</button>
                             </form>
                             <hr class="line-t">
@@ -132,7 +133,7 @@
         </div>
 
 
-        <div class='container' id='alerts' style='position: absolute; top: 10px; left: 0; right: 0; z-index: 9999;'>
+        <div class='container' id='alerts' style='position: absolute; top: 70px; left: 0; right: 0; z-index: 9999;'>
             <% if(error && error.length>0) { %>
                 <div class='alert alert-danger alert-dismissible fade show' role='alert' id='error-alert'>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -1,6 +1,7 @@
 <% include ../partials/header %>
 <main id="body" class="container">
-<table class="table">
+    <a href='/courses/new' class='btn btn-success'>Create a new course</a>
+<table id='kursevi' class="display" cellspacing="1" width="100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -8,6 +9,8 @@
             <th>Image</th>
             <th>Description</th>
             <th>Teacher</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -15,8 +18,8 @@
             <tr>
                 <td><%= c.name %></td>
                 <td><%= c.code %></td>
-                <td><%= c.image %></td>
-                <td><%= c.description %></td>
+                <td><img src='<%= c.image %>' width='100px' height='50px' /></td>
+                <td><%= c.description.substr(0,50)+'...' %></td>
                 <td><%= c.teacher.username %></td>
                 <td><form class="form-inline" method="GET" action="/admin/courses/<%= c.id %>/edit"><input type="submit" value="EDIT" class="btn btn-sm btn-success"></form></td>
                 <td><form class="form-inline" method="POST" action="/courses/<%= c.id %>?_method=DELETE"><input type="submit" value="DELETE" class="btn btn-sm btn-danger"></form></td>

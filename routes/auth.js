@@ -16,13 +16,13 @@ router.post('/register', (req, res) => {
     User.register(newUser, req.body.password, (err, user) => {
         if (err) {
             req.flash('error', err.message);
-            res.redirect('/register');
+            res.redirect('/courses?failSignup=1');
         } else {
             passport.authenticate('local')
-            (req, res, () => {
-                req.flash('success', 'Welcome ' + user.username + '.');
-                res.redirect('/courses');
-            })
+                (req, res, () => {
+                    req.flash('success', 'Welcome ' + user.username + '.');
+                    res.redirect('/courses');
+                })
         }
     })
 });
@@ -34,11 +34,47 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/courses',
-    failureRedirect: '/login',
+    failureRedirect: '/courses',
     failureFlash: true
 }), (req, res) => {
 
 });
+
+
+/*var backUrl = '';
+//(req, res, next) => { backUrl = req.headers.referer + '?failLogin=1'; next(); }
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/courses',
+    failureRedirect: backUrl,
+    failureFlash: true
+}), (req, res) => {
+
+});*/
+
+/*router.post('/login', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+      if (err) { return next(err); }
+      // Redirect if it fails
+      if (!user) { 
+          console.log(req.query);
+          if(req.query.failLogin) {
+            console.log('if');
+            req.flash('error', 'Username or passwrod is incorrect.'); 
+            return res.redirect(req.headers.referer); 
+          } else {
+            console.log('else');
+            req.flash('error', 'Username or passwrod is incorrect.'); 
+            return res.redirect(req.headers.referer + '?failLogin=1'); 
+          }
+          
+        }
+      req.logIn(user, function(err) {
+        if (err) { return next(err); }
+        // Redirect if it succeeds
+        return res.redirect('back');
+      });
+    })(req, res, next);
+  });*/
 
 router.get('/logout', (req, res) => {
     if (req.isAuthenticated()) {

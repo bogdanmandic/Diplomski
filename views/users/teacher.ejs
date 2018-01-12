@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<main id="body">
+<main id="body" class='container'>
     <div class="profileBody container">
         <div class="row content-reverse">
             <div class="col-lg-7 col-md-12 col-sm-12">
@@ -45,7 +45,7 @@
                                 </div>
 
                                 <footer class="course-footer html-color">
-                                    <a href="#" class="btn profileCourseBtn">Edit Course</a>
+                                    <a href="/courses/<%= c.id %>/edit" class="btn profileCourseBtn">Edit Course</a>
                                 </footer>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <span><%= user.username %></span>
                         </div>
 
-                        <button>Edit Profile</button>
+                        <a href='/users/<%= user.id%>/edit' class='btn btn-info'>Edit Profile</a>
 
                     </div>
 

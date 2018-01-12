@@ -22,8 +22,10 @@ router.get('/', (req, res) => {
 });
 
 // NEW
-router.get('/new', m.isTeacher, (req, res) => {
-    res.render('courses/new');
+router.get('/new', (req, res) => {
+    User.find({type: 'teacher'}, (err, allTeachers) => {
+        res.render('courses/new', {teachers: allTeachers});
+    })
 });
 
 // CREATE

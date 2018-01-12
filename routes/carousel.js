@@ -6,6 +6,13 @@ var fs = require('fs-extra');
 var upload = multer({ dest: './uploads/' });
 var m = require('../middlewares/middleware');
 
+
+router.get('/', (req, res) => {
+    Carousel.find({}, (err, foundCars) => {
+        res.render('carousel/index', { car: foundCars });
+    });
+})
+
 router.get('/new', m.isAdmin, (req, res) => {
     res.render('carousel/new');
 });
@@ -55,9 +62,12 @@ router.get('/test', (req, res) => {
     })
 })
 
-router.get('/delete', m.isAdmin, (req, res) => {
-    Carousel.remove({}).exec();
-    res.redirect('/courses');
+
+router.delete('/delete/:id', m.isAdmin, (req, res) => {
+    Carousel.findById(req.params.id, (err, deleted) => {
+        deleted.remove();
+        res.redirect('back');
+    });
 })
 
 module.exports = router;

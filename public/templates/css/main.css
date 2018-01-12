@@ -569,17 +569,15 @@ span {
   display: flex;
   flex-direction: row-reverse; }
 
-.editCourseForm textarea {
-  width: 90%;
-  height: 400px;
-  padding-left: 5px; }
-
 .editCourseForm label {
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 0; }
+  @media (max-width: 450px) {
+    .editCourseForm label {
+      font-size: 14px; } }
 
-.editCourseForm input {
+.editCourseField {
   padding-left: 5px; }
 
 .editCourseForm table {
@@ -593,5 +591,20 @@ span {
 @media (max-width: 769px) {
   .editCourseHeader {
     font-size: 22px; } }
+
+.editCourseBorder {
+  border: 2px solid #7e7c7c; }
+
+.editCourseForm textarea {
+  width: 90%;
+  padding-left: 5px;
+  padding-top: 5px;
+  margin-top: 5px; }
+  @media (max-width: 991px) {
+    .editCourseForm textarea {
+      width: 60%; } }
+  @media (max-width: 767px) {
+    .editCourseForm textarea {
+      width: 85%; } }
 
 /*# sourceMappingURL=main.css.map */

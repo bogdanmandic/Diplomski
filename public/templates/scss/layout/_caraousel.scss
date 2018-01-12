@@ -1,0 +1,38 @@
+.dugme {
+    margin-top: 35px;
+  
+}
+.buttondiv {
+    justify-content: center;
+    display: flex;
+   
+}
+.carouselItem {
+    flex-direction: column;  
+    display: flex;  
+    justify-content: center;
+    margin-top:25px;
+    margin-bottom: 80px;
+    img {
+        margin-bottom: 15px;
+    }
+
+
+}
+.imagediv img {
+    margin: 25px;
+}
+.delete {
+    margin-bottom: 24px;
+
+}
+
+.buttonDelete {
+    width: 100px;
+    margin: 0 auto;
+}
+
+.DeleteButtonDiv {
+    display: flex;
+    justify-content: center;
+}

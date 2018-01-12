@@ -4,6 +4,19 @@
     margin-bottom: 30px;
     overflow: hidden;
     transition: box-shadow .4s;
+
+    .course-link-sm,
+    .course-link-lg {
+        text-decoration: none;
+    }
+
+    .course-link-sm {
+        color: #000;
+    }
+    
+    .course-link-lg {
+        color: #fff;
+    }
 }
 
 .course-card {

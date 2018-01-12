@@ -23,6 +23,7 @@ router.get('/courses/:id/edit', m.isLoggedIn, m.isAdmin, (req, res) => {
 })
 
 router.put('/courses/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
+    console.log(req.body);
     var newData = {
         name: req.body.name,
         code: req.body.code,

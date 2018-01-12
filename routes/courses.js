@@ -3,6 +3,7 @@ var router = express.Router();
 var Course = require('../models/course');
 var Carousel = require('../models/carousel');
 var User = require('../models/user');
+const url = require('url');
 var m = require('../middlewares/middleware');
 
 
@@ -37,12 +38,13 @@ router.post('/', m.isLoggedIn, m.isAdmin, (req, res) => {
         Course.create(req.body, (err, created) => {
             if (err) {
                 req.flash('error', err.message);
-                res.redirect('/courses');
+
+                res.redirect(url.format({pathname: '/courses/new', query: req.body }));
             } else {
                 foundUser.courses.push(created._id);
                 foundUser.save();
                 req.flash('success', 'New course created!');
-                res.redirect('/courses');
+                res.redirect('/admin/courses');
             }
         });
     });
@@ -74,6 +76,7 @@ router.get('/:id/edit', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
 
 // UPDATE
 router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
+    console.log(req.body);
     var newData = {
         $set: {
             name: req.body.name,

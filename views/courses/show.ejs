@@ -2,7 +2,7 @@
 <main id="body" class="container">
     <section class="courses">
         <div class="container text-center">
-            <h1 class="text-center pb-3">Courses</h1>
+            <h1 class="text-center pb-3"></h1>
 
             <div class="course course-type-html">
                 <div class="course-card">
@@ -22,7 +22,7 @@
 
                             <div class="studentList">
                                 <span>Students on this course:</span>
-                                <div class="course-student-list-info">
+                                <div class="course-student-list-info" style="min-height: 200px">
                                     <ol>
                                         <% course.students.forEach(s => { %>
                                             <li><%= s.data %></li>

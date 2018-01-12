@@ -596,6 +596,7 @@ span {
   justify-content: center; }
 
 .editCourseBtn {
-  margin: 15px; }
+  margin: 15px;
+  width: 100px; }
 
 /*# sourceMappingURL=main.css.map */

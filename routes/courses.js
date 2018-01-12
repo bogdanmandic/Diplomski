@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 });
 
 // NEW
-router.get('/new', m.isTeacher, (req, res) => {
+router.get('/new', m.isAdmin, (req, res) => {
     res.render('courses/new');
 });
 

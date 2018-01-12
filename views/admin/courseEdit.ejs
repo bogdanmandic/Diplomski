@@ -27,12 +27,28 @@
                         
                     </select>
                     <br />
-        
-                    <input type="submit" value="Submit">
-                </form>
+                    <label>Curriculum
+                        <label for="goal">Goal
+                            <input type="text" 
+                            <%if(course.curriculum.goal) { %>
+                            value="<%=course.curriculum.goal%>"
+                            <% } else {%> value="To get better and more competetive..." <%}%>
+                            name="goal" id="goal">
+                        </label><br>
+                        <label for="goal">Content
+                            <input type="text" 
+                            <%if(course.curriculum.content) { %>
+                            value="<%=course.curriculum.content%>"
+                            <% } else {%> value="There will be value" <%}%>
+                            name="goal" id="goal">
+                        </label><br>
+
+                    </label><br>
+            <input type="submit" class="btn btn-success" value="Submit">
+    </form>
                 <form action='/courses/<%= course.id %>?_method=DELETE' method='POST'>
                     <input type='submit' value='DELETE' class='btn btn-danger' />
-                </form>
-            </div>
-</main>
-    <% include ../partials/footer %>
+            </form>
+        </div>
+    </main>
+<% include ../partials/footer %>

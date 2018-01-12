@@ -15,6 +15,23 @@ var CourseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
+    curriculum: {
+        goal: String,
+        content: String,
+        referenceBooks: [{
+            book: String,
+            author: String
+        }]
+    },
+    calendar: {
+        startDate: {
+            type: Date,
+            default: Date.now
+        },
+        endDate: {
+            type: Date
+        }
+    },
     students: [{
         data: {
             type: mongoose.Schema.Types.ObjectId,

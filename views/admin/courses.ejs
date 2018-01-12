@@ -1,28 +1,54 @@
 <% include ../partials/header %>
-<main id="body" class="container">
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Image</th>
-            <th>Description</th>
-            <th>Teacher</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% allCourses.forEach(function(c) { %>
-            <tr>
-                <td><%= c.name %></td>
-                <td><%= c.code %></td>
-                <td><%= c.image %></td>
-                <td><%= c.description %></td>
-                <td><%= c.teacher.username %></td>
-                <td><form class="form-inline" method="GET" action="/admin/courses/<%= c.id %>/edit"><input type="submit" value="EDIT" class="btn btn-sm btn-success"></form></td>
-                <td><form class="form-inline" method="POST" action="/courses/<%= c.id %>?_method=DELETE"><input type="submit" value="DELETE" class="btn btn-sm btn-danger"></form></td>
-            </tr>
-        <% }) %>
-    </tbody>
-</table>
-</main>
-<% include ../partials/footer %>
+    <main id="body" class="container">
+        <a href="/courses/new">
+            <button type="menu" class="btn-success">Create new course</button>
+        </a>
+                <table id="courses" class="display" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Teacher</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% allCourses.forEach(function(c) { %>
+                    <tr>
+                        <td>
+                            <%= c.name %>
+                        </td>
+                        <td>
+                            <%= c.code %>
+                        </td>
+                        <td>
+                            <%= c.image %>
+                        </td>
+                        <td>
+                            <% 
+                            var des = c.description.slice(0, 60);
+                            des += '...';
+                            %> <%=des %>
+                        </td>
+                        <td>
+                            <%= c.teacher.username %>
+                        </td>
+                        <td>
+                            <form class="form-inline" method="GET" action="/admin/courses/<%= c.id %>/edit">
+                                <input type="submit" value="EDIT" class="btn btn-sm btn-success">
+                            </form>
+                        </td>
+                        <td>
+                            <form class="form-inline" method="POST" action="/courses/<%= c.id %>?_method=DELETE">
+                                <input type="submit" value="DELETE" class="btn btn-sm btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </main>
+    <% include ../partials/footer %>

@@ -1,0 +1,8 @@
+#1. skini sa show course studente ono id 
+#2. dodaj edit za teacher kad gleda svoj kurs skini enrol/start
+#3. disable da teacher ne menja kod
+#4. srediti formu /admin/courses/new && /admin/courses/edit
+5. unroll dugme za studenta
+6. minimalni window width
+7. sreshi slova
+8. da ima unroll dugme

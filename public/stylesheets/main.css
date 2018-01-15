@@ -553,7 +553,7 @@ span {
 .courseInput {
   height: 270px;
   width: 100%;
-  border: 2px solid #7e7c7c;
+  border: 3px solid #ced4da;
   padding: 5px; }
 
 .userEditPic {
@@ -600,16 +600,58 @@ span {
   margin: 0;
   padding-right: 5px; }
 
+@media (max-width: 480px) {
+  .row-4 label {
+    text-transform: uppercase;
+    padding-left: 5px;
+    font-size: 14px; } }
+@media (max-width: 427px) {
+  .row-4 label {
+    text-transform: uppercase;
+    padding-left: 5px;
+    font-size: 12px; } }
+@media (max-width: 375px) {
+  .row-4 label {
+    text-transform: uppercase;
+    padding-left: 5px;
+    font-size: 10px; } }
+@media (max-width: 326px) {
+  .row-4 label {
+    text-transform: uppercase;
+    padding-left: 5px;
+    font-size: 9px; } }
+@media (max-width: 767px) {
+  .userEditCourseBtn {
+    width: 10%; }
+
+  .userEditCourseList {
+    width: 40%; }
+
+  .courseInput option {
+    font-size: 14px; } }
 @media (max-width: 440px) {
   .courseInput {
-    height: 130px;
-    width: 130px; }
+    height: 130px; }
+
+  .courseInput option {
+    font-size: 12px; }
+
+  .userEditCourseBtn {
+    width: 10%; }
+
+  .userEditCourseList {
+    width: 40%; }
 
   .editSubmitBtn {
     margin: 10px;
     height: 25px;
     width: 70px;
-    font-size: 14px; } }
+    font-size: 14px; }
+
+  .userEditCourseBtn input {
+    margin: 4px 0px 0px;
+    width: 24px;
+    padding: 0; } }
 .editImgUser label {
   padding-right: 10px; }
 
@@ -617,12 +659,20 @@ span {
   text-decoration: underline; }
 
 .courseInput option {
-  margin-bottom: 7px; }
+  margin-bottom: 7px;
+  padding: 3px; }
 
 .row-4 label {
   font-weight: bold;
   text-transform: uppercase;
   padding-left: 5px; }
+
+.row-4 select {
+  font-size: 16px;
+  overflow: auto; }
+
+.coursesSection {
+  padding: 0 25px; }
 
 .submitButtonsContainer {
   display: flex;

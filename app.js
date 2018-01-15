@@ -25,7 +25,7 @@ var admin = require('./routes/admin');
 
 // mongoose setup
 mongoose.Promise = global.Promise;
-//mongoose.connection.openUri('mongodb://localhost/akademija');
+// mongoose.connection.openUri('mongodb://localhost/akademija');
 mongoose.connection.openUri('mongodb://vucko:vucko@ds046047.mlab.com:46047/diplomski');
 
 // view engine setup

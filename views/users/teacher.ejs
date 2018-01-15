@@ -22,15 +22,21 @@
                                         
                                     
                                     <div class="column col-lg-7 col-md-7 col-sm-12">
-                                        <% if(currentUser.type == 'teacher') { %>
+                                        <% if(currentUser && (currentUser.type == 'teacher' || currentUser.type == 'admin')) { %>
                                         <span>Students on this course:</span>
                                         <div class="student-list-info">
                                             <ol>
-                                                <% c.students.forEach(s => { %>
+                                                <%
+                                                c.students.forEach(s => { %>
                                                     <li><%= s.data.username %></li>
                                                 </ol>
                                             </div>
-                                            <% })} %>
+                                            <% })} else { %> 
+                                        <a href="/courses/<%=c.id%>"><span class="btn btn-info">Go to course</span></a> 
+                                         <div class="student-list-info">
+                                             <img src="<%=c.image%>" alt="slika">
+                                            </div>
+                                                <% } %>
                                     </div>
                                     <div class="column col-lg-5 col-md-5 col-sm-12">
                                         <span>Course info:</span>

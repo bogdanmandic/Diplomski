@@ -7,15 +7,12 @@
             <div class="course course-type-html">
                 <div class="course-card">
                     <header class="course-header container-fluid">
-                        <div class="time-container">
-                            <img class="time mr-1" src="img/clock.svg" alt="">
-                            <span class="align-middle">4 weeks</span>
-                        </div>
+                     
                         <h2 class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= course.name %></h2>
-                        <img class="book" src="img/book.svg" alt="">
+                   
                     </header>
 
-                    <h2 class="text-center m-0 py-1 d-md-none">HTML5</h2>
+                    <h2 class="text-center m-0 py-1 d-md-none"><%= course.name %></h2>
                     <div class="row course-card-body">
                         <div class="col-lg-6 course-logo">
                             <img src="<%= course.image %>" class="py-3" />
@@ -44,6 +41,10 @@
                                 <span>Start Date:</span>
                                 <p class="marginParagraphCancel">25.11.1999.</p>
                             </div>
+                            <div class="row courseTeacherText">
+                                    <span>Duration:</span>
+                                    <p class="marginParagraphCancel">4 weeks</p>
+                                </div>
                             <div class="row courseTeacherText">
                                     <span>Price:</span>
                                     <p class="marginParagraphCancel">1000,00</p>

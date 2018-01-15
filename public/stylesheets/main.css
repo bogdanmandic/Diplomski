@@ -461,10 +461,10 @@ span {
   width: auto; }
 
 .language-en {
-  background-image: url("/templates/img/uk.svg"); }
+  background-image: url("../img/uk.svg"); }
 
 .language-sr {
-  background-image: url("/templates/img/serbia.svg"); }
+  background-image: url("../img/serbia.svg"); }
 
 .nav-divider {
   width: 100%; }
@@ -559,11 +559,15 @@ span {
 .userEditPic {
   padding: 10px;
   border: 2px solid #7e7c7c;
-  margin: 20px 0px;
+  margin: 30px;
   background: white; }
 
+.userEditPicDiv {
+  display: flex;
+  justify-content: center; }
+
 .editSubmitBtn {
-  margin: 150px;
+  margin: 50px;
   height: 50px;
   width: 100px;
   font-size: 20px; }

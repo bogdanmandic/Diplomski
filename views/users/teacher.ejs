@@ -3,7 +3,7 @@
     <div class="profileBody container">
         <div class="row content-reverse">
             <div class="col-lg-7 col-md-12 col-sm-12">
-                <h1 class="text-center">Your Courses</h1>
+                <h1 class="text-center"><%=user.username%> Courses</h1>
                 <div>
                     <% user.courses.forEach(c => { %>
 
@@ -22,14 +22,15 @@
                                         
                                     
                                     <div class="column col-lg-7 col-md-7 col-sm-12">
+                                        <% if(currentUser.type == 'teacher') { %>
                                         <span>Students on this course:</span>
                                         <div class="student-list-info">
                                             <ol>
                                                 <% c.students.forEach(s => { %>
                                                     <li><%= s.data.username %></li>
-                                                <% }) %>
-                                            </ol>
-                                        </div>
+                                                </ol>
+                                            </div>
+                                            <% })} %>
                                     </div>
                                     <div class="column col-lg-5 col-md-5 col-sm-12">
                                         <span>Course info:</span>

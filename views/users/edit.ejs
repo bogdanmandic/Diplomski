@@ -1,68 +1,58 @@
 <% include ../partials/header %>
     <main id="body" class="container">
-        <div class="column userEditMain" id="userEdit">
-
-            <section class="row-1 headingSection">
-                <h2 class="text-center">Edit
-                    <%= user.usernamename %>
-                </h2>
-            </section>
-            <form action='/users/<%= user.id %>?_method=PUT' method='POST'>
-                <section class="row-7 row justify-content-around ">
-                    <div>
-
-                        <table class="userEditTable editInput">
-                            <tr>
-                                <td>
-                                    <label for="username">Username</label>
-                                </td>
-                                <td>
-                                    <input name="username" required="true" value='<%= user.username %>' /> </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="firstName">First Name</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="firstName" value="<%= user.firstName %>"> </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="lastName">Last Name</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="lastName" value="<%= user.lastName %>"> </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="email">Email</label>
-                                </td>
-                                <td>
-                                    <input name="email" required="true" value='<%= user.email %>' />
-                                </td>
-                            </tr>
+        <section class="courses">
+            <div class="container text-center">
+                <div class="course course-type-html">
+                    <div class="course-card">
+                        <header class="course-header container-fluid adminCourseTeacher">
+                            <h2 class="text-center m-0 py-1 editCourseHeader">Edit
+                                <%= user.username %>
+                            </h2>
+                        </header>
 
 
 
-                        </table>
 
+                        <form action='/users/<%= user.id %>?_method=PUT' method='POST'>
+                            <div class="editCourseFields">
+                                <div class="form-group row">
+                                    <label for="username" class="col-md-2 col-form-label">Userame</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="name" name="username" value='<%= user.username %>'>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="firstName" class="col-md-2 col-form-label">First Name</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="code" name="firstName" value="<%= user.firstName %>">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lastName" class="col-md-2 col-form-label">Last Name</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="code" name="lastName" value="<%= user.lastName %>">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label" for="image">Image</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" name="image" value="<%= user.image %>">
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid userEditPicDiv">
+                                        <img class="userEditPic img-thumbnail" src='<%= user.image %>' />
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div> <!-- / course-card -->
+                    <div class="submitButtonsContainer">
+                        <input class="btn-dark userEditSubmit editSubmitBtn" type="submit" value="Submit">
+                        </form>
                     </div>
-
-                    <div class="column editImgUser">
-                        <img class="userEditPic img-thumbnail" src='<%= user.image %>' />
-                        <div>
-                            <label for="image">Image</label>
-                            <input type="text" name="image" value="<%= user.image %>">
-                        </div>
-                    </div>
-                </section>
-                <section class="container-fluid text-center ">
-                    <input class="btn-dark userEditSubmit editSubmitBtn" type="submit" value="Submit">
-                </section>
-
-
-            </form>
-
-        </div>
+                </div>
+            </div>
+        </section>
     </main>
     <% include ../partials/footer %>

@@ -15,8 +15,8 @@
 }
 
 .courseInput {
-    height: 200px;
-    width: 300px;
+    height: 270px;
+    width: 100%;
     border: 2px solid #7e7c7c;
     padding: 5px;
 }
@@ -24,7 +24,7 @@
 .userEditPic {
     padding: 10px;
     border: 2px solid #7e7c7c;
-    margin: 30px;
+    margin-top: 30px;
     background: white;
 }
 
@@ -59,6 +59,11 @@
 
 .userEditCourseBtn {
     margin-bottom: 5px;
+    width: 6%;
+}
+
+.userEditCourseList {
+    width: 47%;
 }
 
 .userEditCourseBtn input {
@@ -76,39 +81,18 @@
 }
 
 
-.row-7 label {
-    font-size: 20px;
-    font-weight: bold;
-  } 
-
 @media (max-width: 440px) {
   .courseInput {
     height: 130px;
     width: 130px; 
   }
-  .row-7 label {
-    font-size: 16px;
-  } 
+ 
   .editSubmitBtn {
     margin: 10px;
     height: 25px;
     width: 70px;
     font-size: 14px;
   }
-}
-
-.row-7 select {
-    font-size: 20px;
-    width: auto;
-}
-
-.row-7 th {
-    padding-bottom: 20px;
-}
-
-.row-7 input {
-    border: 2px solid #7e7c7c;
-    padding-left: 5px;
 }
 
 .editImgUser label{

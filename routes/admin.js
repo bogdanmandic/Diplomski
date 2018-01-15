@@ -31,10 +31,10 @@ router.put('/courses/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
         teacher: req.body.teacher
     };
     req.body.image === "" ? newData.$unset = { image: "" } : newData.image = req.body.image;
-    Course.findById(req.params.id, (err, updated) => {
+    Course.update(req.params.id, newData, { runValidators: true }, (err, updated) => {
         if (err) {
             req.flash('error', err.message);
-            res.redirect('/courses');
+            res.redirect('back');
         } else {
             // ako je promenjen teacher
             if (req.body.teacher != updated.teacher) {
@@ -49,13 +49,11 @@ router.put('/courses/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
                     foundTeacher.save();
                 });
 
-            }
-            updated.set(newData);
-            updated.save();
+                
 
+            }
             req.flash('success', 'Successfully Updated!');
             res.redirect('/admin/courses/');
-
         }
     })
 })
@@ -135,20 +133,20 @@ router.put('/users/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
 });
 
 router.delete('/users/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
-    User.findOne({username: 'tbd'}, (err, tbd) => {
+    User.findOne({ username: 'tbd' }, (err, tbd) => {
         User.findById(req.params.id, (err, deleted) => {
             if (deleted._id != tbd._id)
                 deleted.remove();
             res.redirect('/admin/users');
         });
     })
-    
+
 });
 
 router.get('/test/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
-    User.findById(req.params.id).populate('courses').exec( (err, foundUser) => {
+    User.findById(req.params.id).populate('courses').exec((err, foundUser) => {
         User.find()
-        res.render('./users/teacher', {user: foundUser});
+        res.render('./users/teacher', { user: foundUser });
     })
 })
 

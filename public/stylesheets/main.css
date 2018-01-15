@@ -461,10 +461,10 @@ span {
   width: auto; }
 
 .language-en {
-  background-image: url("../img/uk.svg"); }
+  background-image: url("/templates/img/uk.svg"); }
 
 .language-sr {
-  background-image: url("../img/serbia.svg"); }
+  background-image: url("/templates/img/serbia.svg"); }
 
 .nav-divider {
   width: 100%; }

@@ -24,7 +24,10 @@
                                 <span>Students on this course:</span>
                                 <div class="course-student-list-info" style="min-height: 200px">
                                     <ol>
-                                        <% course.students.forEach(s => { %>
+                                        
+                                        <%course.students.forEach( s => { 
+                                            console.log(s)
+                                            %>
                                             <li><a href='/users/<%= s.data.id %>'><%= s.data.username %></a></li>
                                         <% }) %>
                             

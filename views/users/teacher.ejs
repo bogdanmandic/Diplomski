@@ -21,16 +21,21 @@
                                 <div class="row courseContent margin-remove">
                                         
                                     
+                                    <% if (currentUser && (currentUser.type == 'teacher' || currentUser.type == 'admin')) { %>
                                     <div class="column col-lg-7 col-md-7 col-sm-12">
                                         <span>Students on this course:</span>
                                         <div class="student-list-info">
                                             <ol>
-                                                <% c.students.forEach(s => { %>
+                                                <% c.students.forEach(s => {
+                                                    console.log(s)
+                                                    %>
+
                                                     <li><%= s.data.username %></li>
                                                 <% }) %>
                                             </ol>
                                         </div>
                                     </div>
+                                    <% } %>
                                     <div class="column col-lg-5 col-md-5 col-sm-12">
                                         <span>Course info:</span>
                                         <div class="course-list-info">

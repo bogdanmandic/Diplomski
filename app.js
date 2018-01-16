@@ -73,6 +73,10 @@ app.use(enroll);
 app.use('/admin/carousel', carousel);
 app.use('/admin', admin);
 
+// V1 API
+const apiCourses = require('./routes/v1/courses');
+app.use('/v1/courses', apiCourses);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

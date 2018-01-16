@@ -23,8 +23,10 @@ var enroll = require('./routes/enroll');
 var carousel = require('./routes/carousel');
 var admin = require('./routes/admin');
 
-// requiring routes api
+//api
+var apiUsers = require('./routes/v1/users')
 var apiCourses = require('./routes/v1/courses');
+var apiAuth = require('./routes/v1/auth');
 
 // mongoose setup
 mongoose.Promise = global.Promise;
@@ -77,7 +79,9 @@ app.use('/admin/carousel', carousel);
 app.use('/admin', admin);
 
 // V1 API ROUTES
+app.use('/v1/users', apiUsers);
 app.use('/v1/courses', apiCourses);
+app.use('/v1/auth', apiAuth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

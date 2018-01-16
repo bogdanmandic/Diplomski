@@ -10,8 +10,10 @@ m.isLoggedIn = (req, res, next) => {
         return next();
     } else {
         var currentUrl = new URL(req.protocol + '://' + req.get('Host') + '/courses');
+        //console.log(currentUrl);
         if(req.headers.referer) {
             currentUrl = new URL(req.headers.referer);
+            //console.log('if: ' + currentUrl);
         }
         currentUrl.search = 'failLogin=1';
         req.flash('error', 'Please login first!');

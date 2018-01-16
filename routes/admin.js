@@ -49,7 +49,7 @@ router.put('/courses/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
                     foundTeacher.save();
                 });
 
-                
+
 
             }
             req.flash('success', 'Successfully Updated!');
@@ -123,10 +123,15 @@ router.put('/users/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
             }
             foundUser.set(updatedUser);
             foundUser.courses = req.body.courses;
-            foundUser.save();
-
-            //req.flash('success', 'Updated!');
-            res.redirect('/admin/users');
+            foundUser.save((e, a) => {
+                if (e) {
+                    req.flash('error', e.message);
+                    res.redirect('/admin/users');
+                } else {
+                    req.flash('success', 'Updated!');
+                    res.redirect('/admin/users');
+                }
+            });
         }
     })
 

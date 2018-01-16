@@ -32,13 +32,11 @@ router.get('/new', m.isLoggedIn, m.isAdmin, (req, res) => {
 // CREATE
 router.post('/', m.isLoggedIn, m.isAdmin, (req, res) => {
     if (req.body.image === '') delete req.body.image;
-
     User.findOne({ username: req.body.teacher }, (err, foundUser) => { //TODO handle errors
         req.body.teacher = foundUser._id;
         Course.create(req.body, (err, created) => {
             if (err) {
                 req.flash('error', err.message);
-
                 res.redirect(url.format({pathname: '/courses/new', query: req.body }));
             } else {
                 foundUser.courses.push(created._id);
@@ -89,10 +87,9 @@ router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
     Course.findByIdAndUpdate(req.params.id, newData, { new: true, runValidators: true }, (err, updated) => {
         if (err) {
             req.flash('error', err.message);
-            res.redirect('/courses');
+            res.redirect('back');
         } else {
             req.flash('success', 'Successfully Updated!');
-
             res.redirect('/courses/' + updated.id);
         }
     })
@@ -101,9 +98,9 @@ router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
 // DELETE
 router.delete('/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     Course.findById(req.params.id, (err, removed) => {
-        if (err) {
-            req.flash('error', err.message);
-            res.redirect('/courses');
+        if (err || !removed) {
+            req.flash('error', 'That course can\'t be deleted');
+            res.redirect('back');
         } else {
             removed.remove();
             req.flash('success', 'Successfully Removed!');

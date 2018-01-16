@@ -61,6 +61,17 @@ router.get('/:id', (req, res) => {
         }
     })
 })
+//show api
+router.get('/v1/:id', m.isLoggedIn, (req, res) => {
+    Course.findById(req.params.id).populate('teacher').populate('students.data').exec((err, foundCourse) => {
+        if (err || !foundCourse) {
+            req.flash('error', 'There was an error or that course can\'t be found');
+            res.redirect('/courses');
+        } else {
+            res.json(foundCourse);
+        }
+    })
+})
 
 // EDIT
 router.get('/:id/edit', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {

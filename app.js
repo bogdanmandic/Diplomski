@@ -23,6 +23,8 @@ var enroll = require('./routes/enroll');
 var carousel = require('./routes/carousel');
 var admin = require('./routes/admin');
 
+//api
+var apiUsers = require('./routes/v1/users')
 // requiring routes api
 var apiCourses = require('./routes/v1/courses');
 
@@ -76,6 +78,7 @@ app.use(enroll);
 app.use('/admin/carousel', carousel);
 app.use('/admin', admin);
 
+app.use('/v1/users', apiUsers);
 // V1 API ROUTES
 app.use('/v1/courses', apiCourses);
 

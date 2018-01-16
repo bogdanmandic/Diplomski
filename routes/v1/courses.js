@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 });
 
 // NEW COURSE
-router.post('/new', (req, res) => {
+router.post('/new', m.isLoggedIn, m.isAdmin, (req, res) => {
     if (req.body.image === '') delete req.body.image;
     User.findOne({ username: req.body.teacher }, (err, foundUser) => { //TODO handle errors
         req.body.teacher = foundUser._id;
@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
 });
 
 // EDIT
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
     Course.findById(req.params.id).populate('teacher').populate('students.data').exec((err, foundCourse) => {
         if (err || !foundCourse) {
             h.logError(err, req);
@@ -68,7 +68,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // UPDATE
-router.put('/:id', (req, res) => {
+router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
     const { name, code, description } = req.body;
     let newData = {
         $set: {
@@ -89,7 +89,7 @@ router.put('/:id', (req, res) => {
 })
 
 // DELETE
-router.delete('/:id', (req, res) => {
+router.delete('/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     Course.findByIdAndRemove(req.params.id, (err, removed) => {
         if (err || !removed) {
             h.logError(err, req);

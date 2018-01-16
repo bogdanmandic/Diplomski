@@ -6,7 +6,7 @@ const h = require('../../helpers/helpers');
 
 
 // INDEX
-router.get('/', (req, res) => {
+router.get('/', m.isLoggedIn, m.isAdmin, (req, res) => {
     User.find({}, (err, allUsers) => {
         if (err) {
             h.logError(err, req);
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 })
 
 // EDIT
-router.get('/:id/edit',  (req, res) => {
+router.get('/:id/edit',  m.isLoggedIn, m.checkUserOwnership , (req, res) => {
     User.findById(req.params.id, (err, foundUser) => {
         if (err || !foundUser) {
             h.logError(err, req);
@@ -43,7 +43,7 @@ router.get('/:id/edit',  (req, res) => {
 
 // Update 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', m.isLoggedIn, m.checkUserOwnership, (req, res) => {
     console.log(req.body)
     const {firstName, lastName, email } = req.body;
     let newData = {
@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
 
 // DELETE
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
     User.findById(req.params.id, (err, deleted) => {
         if (err || !deleted) {
             h.logError(err, req);

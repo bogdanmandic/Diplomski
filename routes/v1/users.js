@@ -52,7 +52,7 @@ router.put('/:id', (req, res) => {
         if(err){
             res.status(404);
         } else {
-            res.status(200)
+            res.status(200).json({"updateSuccess" : true})
         }
     })
 })

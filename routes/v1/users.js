@@ -1,26 +1,30 @@
-var express = require('express');
-var router = express.Router();
-var User = require('../../models/user');
-var m = require('../../middlewares/middleware');
+const express = require('express');
+const router = express.Router();
+const User = require('../../models/user');
+const m = require('../../middlewares/middleware');
+const h = require('../../helpers/helpers');
+
 
 // INDEX
 router.get('/', (req, res) => {
     User.find({}, (err, allUsers) => {
-        if (err){
-            res.sendStatus(404);
+        if (err) {
+            h.logError(err, req);
+            res.status(404).json(err);
         } else {
-            res.json(allUsers)
+            res.status(200).json(allUsers)
         }
     })
 })
 
 // SHOW
 router.get('/:id', (req, res) => {
-    User.findById(req.params.id).populate({path: 'courses', populate : {path: 'students.data'}}).exec ( (err, foundUser) => {
-        if(err || !foundUser){
-            res.status(404);
+    User.findById(req.params.id).populate({ path: 'courses', populate: { path: 'students.data' } }).exec((err, foundUser) => {
+        if (err || !foundUser) {
+            h.logError(err, req);
+            res.status(404).json(err);
         } else {
-            res.json(foundUser);
+            res.status(200).json(foundUser);
         }
     })
 })
@@ -28,10 +32,11 @@ router.get('/:id', (req, res) => {
 // EDIT
 router.get('/:id/edit', (req, res) => {
     User.findById(req.params.id, (err, foundUser) => {
-        if(err || !foundUser){
-            res.status(404);
+        if (err || !foundUser) {
+            h.logError(err, req);
+            res.status(404).json(err);
         } else {
-            res.json(foundUser)
+            res.status(200).json(foundUser)
         }
     })
 })
@@ -50,10 +55,11 @@ router.put('/:id', (req, res) => {
     };
     req.body.image === '' ? newData.$unset = {image: ''} : newData.$set.image = req.body.image;
     User.findByIdAndUpdate(req.params.id, newData, (err, updatedUser) => {
-        if(err){
-            res.status(404);
+        if (err) {
+            h.logError(err, req);
+            res.status(404).json(err);
         } else {
-            res.status(200).json({"updateSuccess" : true})
+            res.status(200).json({ "updateSuccess": true })
         }
     })
 })
@@ -62,11 +68,12 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     User.findById(req.params.id, (err, deleted) => {
-        if(err || !deleted){
-            res.status(404)
+        if (err || !deleted) {
+            h.logError(err, req);
+            res.status(404).json(err);
         } else {
             deleted.remove();
-            res.status(200).json({"Deleted": true})
+            res.status(200).json({ "Deleted": true })
         }
     })
 })

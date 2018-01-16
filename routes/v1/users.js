@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 })
 
 // EDIT
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit',  (req, res) => {
     User.findById(req.params.id, (err, foundUser) => {
         if (err || !foundUser) {
             h.logError(err, req);

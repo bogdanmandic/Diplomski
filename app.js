@@ -23,6 +23,9 @@ var enroll = require('./routes/enroll');
 var carousel = require('./routes/carousel');
 var admin = require('./routes/admin');
 
+//api
+var apiUsers = require('./routes/v1/users')
+
 // mongoose setup
 mongoose.Promise = global.Promise;
 // mongoose.connection.openUri('mongodb://localhost/akademija');
@@ -73,6 +76,7 @@ app.use(enroll);
 app.use('/admin/carousel', carousel);
 app.use('/admin', admin);
 
+app.use('/v1/users', apiUsers);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

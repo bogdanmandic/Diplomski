@@ -6,57 +6,47 @@
                     <h1 class="text-center">
                         <%=user.username%> Courses</h1>
                     <div>
-                        <% user.courses.forEach(c => { %>
+                        <div class="course course-type-css cardMarginTop">
+                            <div class="row course-card">
+                                <header class="course-header container-fluid courseTitle">
 
-                            <div>
-                                <div class="course course-type-css cardMarginTop">
-                                    <div class="row course-card">
-                                        <header class="course-header container-fluid courseTitle">
+                                        <h2 title='<%= c.name %>' class="text-center m-0 py-1 d-none d-sm-none d-md-block"><%= c.name.length<=25 ? c.name : c.name.substring(0,25)+'...' %></h2> 
 
-                                            <h2 title='<%= c.name %>' class="text-center m-0 py-1 d-none d-sm-none d-md-block">
-                                                <%= c.name.length<=25 ? c.name : c.name.substring(0,25)+'...' %>
-                                            </h2>
+                                </header>
 
-                                        </header>
+                                <h2 class=" col-12 text-center m-0 py-1 d-md-none"><%= c.name %></h2>                                 
 
-                                        <h2 class=" col-12 text-center m-0 py-1 d-md-none">
-                                            <%= c.name %>
-                                        </h2>
-
-                                        <div class="row courseContent margin-remove">
-
-                                            <% if(currentUser && (currentUser.type == 'teacher' || currentUser.type == 'admin')) {  
-                                                console.log(currentUser.id)
-                                                console.log(c.teacher.id)
-                                                %>
-                                            <div class="column col-lg-7 col-md-7 col-sm-12">
-                                                    <span>Students on this course:</span>
-                                                    <div class="student-list-info">
-                                                        <ol>
-                                                                <% c.students.forEach(s => {
-                                                                    console.log(s) %>
-                                                                <li>
-                                                                    <%= s.data.username %>
-                                                                </li>
-                                                                <% }) %>
-                                                        </ol>
-                                                    </div>
+                                <div class="row courseContent margin-remove">
+                                        
+                                    
+                                    <div class="column col-lg-7 col-md-7 col-sm-12">
+                                        <% if(currentUser && (currentUser.type == 'teacher' || currentUser.type == 'admin')) { %>
+                                        <span>Students on this course:</span>
+                                        <div class="student-list-info">
+                                            <ol>
+                                                <%
+                                                c.students.forEach(s => { %>
+                                                    <li><%= s.data.username %></li>
+                                                </ol>
                                             </div>
-                                            <% } %>
-                                                <div class="column col-lg-5 col-md-5 col-sm-12">
-                                                    <span>Course info:</span>
-                                                    <div class="course-list-info">
-                                                        <ul>
-                                                            <li>Started at:
-                                                                <span>17.11.1847.</span>
-                                                            </li>
-                                                            <li>Duration:
-                                                                <span>3 weeks</span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
+                                            <% })} else { %> 
+                                        <a href="/courses/<%=c.id%>"><span class="">Go to course</span></a> 
+                                         <div class="student-list-info">
+                                             <img width="100%" src="<%=c.image%>" alt="slika">
+                                            </div>
+                                                <% } %>
+                                    </div>
+                                    <div class="column col-lg-5 col-md-5 col-sm-12">
+                                        <span>Course info:</span>
+                                        <div class="course-list-info">
+                                            <ul>
+                                                <li>Started at:
+                                                    <span>17.11.1847.</span>
+                                                </li>
+                                                <li>Duration:
+                                                    <span>3 weeks</span>
+                                                </li>
+                                            </ul>
                                         </div>
                                         <% if(currentUser && currentUser.id == user.id) { %>
                                             <footer class="course-footer html-color">

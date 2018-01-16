@@ -22,6 +22,13 @@ router.get('/', (req, res) => {
     });
 });
 
+// API INDEX
+router.get('/v1/' ,(req, res) => {
+    Course.find({}, (err, allCourses) => {
+        res.json(allCourses);
+    })
+})
+
 // NEW
 router.get('/new', m.isLoggedIn, m.isAdmin, (req, res) => {
     User.find({ type: 'teacher' }, (err, allTeachers) => {

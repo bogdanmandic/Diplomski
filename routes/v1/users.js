@@ -39,6 +39,7 @@ router.get('/:id/edit', (req, res) => {
 // Update 
 
 router.put('/:id', (req, res) => {
+    console.log(req.body)
     let newData = {
         $set: {
             firstName: req.body.firstName,

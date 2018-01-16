@@ -39,14 +39,11 @@ router.get('/:id/edit', (req, res) => {
 // Update 
 
 router.put('/:id', (req, res) => {
+    console.log(req.body)
     let newData = {
-        $set: {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email
-        }
+        $set: req.body
     };
-    req.body.image ==='' ? newData.$unset = {image: ''} : newData.$set.image = req.body.image;
+    req.body.image === '' ? newData.$unset = {image: ''} : newData.$set.image = req.body.image;
     User.findByIdAndUpdate(req.params.id, newData, (err, updatedUser) => {
         if(err){
             res.status(404);

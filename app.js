@@ -27,6 +27,7 @@ var admin = require('./routes/admin');
 var apiUsers = require('./routes/v1/users')
 var apiCourses = require('./routes/v1/courses');
 var apiAuth = require('./routes/v1/auth');
+var apiCarousel = require('./routes/v1/carousel');
 var apiEnroll = require('./routes/v1/enroll');
 
 // mongoose setup
@@ -83,6 +84,7 @@ app.use('/admin', admin);
 app.use('/v1/users', apiUsers);
 app.use('/v1/courses', apiCourses);
 app.use('/v1/auth', apiAuth);
+app.use('/v1/carousel', apiCarousel);
 app.use('/v1/enroll', apiEnroll);
 
 // catch 404 and forward to error handler

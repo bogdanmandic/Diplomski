@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+    <div>
+        <h2>Edit <%= course.name %> </h2>
+        <form action='/courses/<%= course.id %>?_method=PUT' method='POST'>
+            <label for="name">Name</label>
+            <input type="text" name="name" value="<%= course.name %>">
+            <br />
+
+            <label for="code">Code</label>
+            <input type="text" name="code" required="true" value="<%= course.code %>">
+            <br />
+
+            <label for="image">Link to image</label>
+            <input type="text" name="image" value="<%= course.image %>">
+            <br />
+
+            <label for="description">Description</label>
+            <textarea name="description"><%= course.description %></textarea>
+            <br />
+            
+            <input type="submit" value="Submit">
+        </form>
+        <form action='/courses/<%= course.id %>?_method=DELETE' method='POST'>
+            <input type='submit' value='DELETE' class='btn btn-danger' />
+        </form>
+    </div>
+<% include ../partials/footer %>

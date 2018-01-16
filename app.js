@@ -23,10 +23,15 @@ var enroll = require('./routes/enroll');
 var carousel = require('./routes/carousel');
 var admin = require('./routes/admin');
 
+//api
+var apiUsers = require('./routes/v1/users')
+var apiCourses = require('./routes/v1/courses');
+var apiAuth = require('./routes/v1/auth');
+
 // mongoose setup
 mongoose.Promise = global.Promise;
-//mongoose.connection.openUri('mongodb://localhost/akademija');
-mongoose.connection.openUri('mongodb://vucko:vucko@ds046047.mlab.com:46047/diplomski');
+// mongoose.connection.openUri('mongodb://localhost/akademija');
+mongoose.connection.openUri('mongodb://vucko:vucko@ds251737.mlab.com:51737/diplomski');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -72,6 +77,11 @@ app.use(auth);
 app.use(enroll);
 app.use('/admin/carousel', carousel);
 app.use('/admin', admin);
+
+// V1 API ROUTES
+app.use('/v1/users', apiUsers);
+app.use('/v1/courses', apiCourses);
+app.use('/v1/auth', apiAuth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

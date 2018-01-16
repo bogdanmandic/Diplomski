@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $('#courses').DataTable();
 
 $('#kursevi').DataTable();
 $('#useri').DataTable();
@@ -72,17 +73,25 @@ if($('#error-alert').length ) {
   }, 1000);
 }
 
-$("#userEdit #button1").click(function () {
-  $("#list1 > option:selected").each(function () {
-      $(this).remove().appendTo("#list2");
-  });
-});
+  if ($('#error-alert').length) {
+    window.setTimeout(function () {
+      $("#error-alert").fadeTo(1500, 0).slideUp(500, function () {
+        $(this).remove();
+      });
+    }, 5000);
+  }
 
-$("#userEdit #button2").click(function () {
-  $("#list2 > option:selected").each(function () {
-      $(this).remove().appendTo("#list1");
+  $("#userEdit #button1").click(function () {
+    $("#list1 > option:selected").each(function () {
+      $(this).remove().appendTo("#list2");
+    });
   });
-});
+
+  $("#userEdit #button2").click(function () {
+    $("#list2 > option:selected").each(function () {
+      $(this).remove().appendTo("#list1");
+    });
+  });
 
 
 });

@@ -1,12 +1,11 @@
 <% include ../partials/header %>
-<main id="body" class='container'>
-    <div class="profileBody container">
-        <div class="row content-reverse">
-            <div class="col-lg-7 col-md-12 col-sm-12">
-                <h1 class="text-center">Your Courses</h1>
-                <div>
-                    <% user.courses.forEach(c => { %>
-
+    <main id="body" class='container'>
+        <div class="profileBody container">
+            <div class="row content-reverse">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    <h1 class="text-center">
+                        <%=user.username%> Courses</h1>
+                        <% user.courses.forEach( c => { %>
                     <div>
                         <div class="course course-type-css cardMarginTop">
                             <div class="row course-card">
@@ -22,14 +21,21 @@
                                         
                                     
                                     <div class="column col-lg-7 col-md-7 col-sm-12">
+                                        <% if(currentUser && (currentUser.type == 'teacher' || currentUser.type == 'admin')) { %>
                                         <span>Students on this course:</span>
                                         <div class="student-list-info">
                                             <ol>
-                                                <% c.students.forEach(s => { %>
+                                                <%
+                                                c.students.forEach(s => { %>
                                                     <li><%= s.data.username %></li>
-                                                <% }) %>
-                                            </ol>
-                                        </div>
+                                                </ol>
+                                            </div>
+                                            <% })} else { %> 
+                                        <a href="/courses/<%=c.id%>"><span class="">Go to course</span></a> 
+                                         <div class="student-list-info">
+                                             <img width="100%" src="<%=c.image%>" alt="slika">
+                                            </div>
+                                                <% } %>
                                     </div>
                                     <div class="column col-lg-5 col-md-5 col-sm-12">
                                         <span>Course info:</span>
@@ -43,57 +49,60 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        <% if(currentUser && currentUser.id == user.id) { %>
+                                            <footer class="course-footer html-color">
+                                                <a href="/courses/<%= c.id %>/edit" class="btn profileCourseBtn">Edit Course</a>
+                                            </footer>
+                                            <% } %>
                                     </div>
-
                                 </div>
-                                <% if(currentUser && currentUser.id == user.id) { %>
-                                <footer class="course-footer html-color">
-                                    <a href="/courses/<%= c.id %>/edit" class="btn profileCourseBtn">Edit Course</a>
-                                </footer>
-                                <% } %>
                             </div>
-                        </div>
+                            <% }) %>
                     </div>
-                    <% }) %>
                 </div>
-            </div>
-            <div class="col-lg-5 col-md-12 col-sm-12">
-                <div class="column container text-center teacherViewImg">
-                    <img class="profileImage userEditPic" src="<%= user.image %>" alt="UserPicture">
-                    <div class="text-profile">
-                        <div class="row profile-info-centar">
-                            First name:
-                            <span><%= user.firstName %></span>
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <div class="column container text-center teacherViewImg">
+                        <img class="profileImage userEditPic" src="<%= user.image %>" alt="UserPicture">
+                        <div class="text-profile">
+                            <div class="row profile-info-centar">
+                                First name:
+                                <span>
+                                    <%= user.firstName %>
+                                </span>
+
+                            </div>
+                            <div class="row profile-info-centar">
+                                Last name:
+                                <span>
+                                    <%= user.lastName %>
+                                </span>
+                            </div>
+                            <div class="row profile-info-centar">
+                                Username:
+                                <span>
+                                    <%= user.username %>
+                                </span>
+                            </div>
+                            <% if(currentUser && currentUser.id == user.id) { %>
+
+                                <a href='/users/<%= user.id%>/edit' class='btn btn-info'>Edit Profile</a>
+                                <% } %>
 
                         </div>
-                        <div class="row profile-info-centar">
-                            Last name:
-                            <span><%= user.lastName %></span>
-                        </div>
-                        <div class="row profile-info-centar">
-                            Username:
-                            <span><%= user.username %></span>
-                        </div>
-                        <% if(currentUser && currentUser.id == user.id) { %>
 
-                            <a href='/users/<%= user.id%>/edit' class='btn btn-info'>Edit Profile</a>
-                        <% } %>
+                        <section>
+                            <img class="calendar" src="http://www.calendarzoom.com/media/printable-calendar/january-2018-print-free-calendar-full-weekday.png"
+                                alt="UserPicture">
+                        </section>
 
                     </div>
 
-                    <section>
-                        <img class="calendar" src="http://www.calendarzoom.com/media/printable-calendar/january-2018-print-free-calendar-full-weekday.png"
-                            alt="UserPicture">
-                    </section>
-
                 </div>
 
+
             </div>
-
-
         </div>
-    </div>
 
-</main>
+    </main>
 
-<% include ../partials/footer %>
+    <% include ../partials/footer %>

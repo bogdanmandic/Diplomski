@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 <main id="body" class="container">
         <section class="courses">
-            <div class="container text-center">
+            <div class="container">
 
 
                 <div class="course course-type-html">
@@ -13,12 +13,12 @@
 
                         </header>
                         <form action='/courses' method='POST'>
-                            <div class="editCourseFields">
+                            <div class="editCourseFields container-fluid">
                                     
-                                <div class="form-group row">
-                                        <label for="teacher" class="col-md-2 col-form-label">Teacher</label>
-                                        <div class="col-md-10">
-                                            <select name="teacher" class="custom-select">
+                                    <div class="form-group row">
+                                            <label for="type" class="col-md-2 col-form-label">Teacher</label>
+                                            <div class="col-md-10">
+                                                <select name="teacher" required="true" class="custom-select">
                                                 <% teachers.forEach(t => { %>
                                                     <option><%= t.username %></option>
                                                     <% }) %>

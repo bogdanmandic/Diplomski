@@ -25,6 +25,8 @@ var admin = require('./routes/admin');
 
 //api
 var apiUsers = require('./routes/v1/users')
+// requiring routes api
+var apiCourses = require('./routes/v1/courses');
 
 // mongoose setup
 mongoose.Promise = global.Promise;
@@ -77,6 +79,9 @@ app.use('/admin/carousel', carousel);
 app.use('/admin', admin);
 
 app.use('/v1/users', apiUsers);
+// V1 API ROUTES
+app.use('/v1/courses', apiCourses);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

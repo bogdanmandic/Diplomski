@@ -48,7 +48,7 @@ router.post('/unenroll/:cId', m.isLoggedIn, m.isStudent, (req, res) => {
                         foundCourse.save();
                         foundUser.curses.pull(foundCourse._id);
                         foundUser.save();
-                        res.status(200).json({ 'unEnrolled': true })
+                        res.status(200).json({ "unEnrolled": true })
                     }
                 })
             } else {

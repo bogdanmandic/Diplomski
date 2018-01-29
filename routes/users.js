@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-var m = require('../middlewares/middleware');
+var m  = require('../middlewares/middleware').m;
 
 // INDEX
 router.get('/', m.isAdmin, (req, res) => {

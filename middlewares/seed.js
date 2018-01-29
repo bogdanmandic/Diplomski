@@ -15,6 +15,21 @@ User.find({ type: 'admin' }, (err, foundAdmin) => {
 })
 
 
+User.find({ username: 'apiadmin' }, (err, foundAdmin) => {
+    var newAdmin = new User({
+        username: 'apiadmin',
+        password: 'apiadmin',
+        email: 'apiadmin@admin.com',
+        type: 'admin'
+    });
+    if(foundAdmin.length == 0) {
+        newAdmin.save((err) => {
+            console.log('apiadmin created');
+        })
+    }
+})
+
+
 User.find({ type: 'teacher' }, (err, foundTeachers) => {
     if(err) {
         console.warn(err);

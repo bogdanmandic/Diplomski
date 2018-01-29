@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var Course = require('../models/course');
-var m = require('../middlewares/middleware');
+var m = require('../middlewares/middleware').m;
 
 router.post('/enroll/:courseId', m.isLoggedIn, m.isStudent, (req, res) => {
     Course.findById(req.params.courseId, (err, foundCourse) => {

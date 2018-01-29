@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var m = require('../middlewares/middleware');
+var m = require('../middlewares/middleware').m;
 var Course = require('../models/course');
 var User = require('../models/user');
 

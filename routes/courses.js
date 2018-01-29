@@ -4,7 +4,7 @@ var Course = require('../models/course');
 var Carousel = require('../models/carousel');
 var User = require('../models/user');
 const url = require('url');
-var m = require('../middlewares/middleware');
+var m = require('../middlewares/middleware').m;
 
 
 // INDEX

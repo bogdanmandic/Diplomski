@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../../models/user');
 const Course = require('../../models/course');
 const Carousel = require('../../models/carousel');
-const m = require('../../middlewares/middleware');
+const m = require('../../middlewares/middleware').api;
 // const fs = require('fs');
 const h = require('../../helpers/helpers');
 

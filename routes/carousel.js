@@ -4,7 +4,7 @@ var Carousel = require('../models/carousel');
 var multer = require('multer');
 var fs = require('fs-extra');
 var upload = multer({ dest: './uploads/' });
-var m = require('../middlewares/middleware');
+var m = require('../middlewares/middleware').m;
 
 
 router.get('/', m.isLoggedIn, m.isAdmin, (req, res) => {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
+const bcrypt = require('bcrypt-nodejs');
 
 const UserSchema = mongoose.Schema({
     firstName: String,
@@ -23,7 +24,10 @@ const UserSchema = mongoose.Schema({
         required: [true, 'Username missing'],
         unique: true
     },
-    password: String,
+    password: {
+        type: String,
+        required: true
+    },
     courses: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Course'
@@ -44,6 +48,36 @@ UserSchema.pre('remove', function (next) {
     next();
 });
 
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.pre('save', function (next) {
+    var user = this;
+    if (this.isModified('password') || this.isNew) {
+        bcrypt.genSalt(10, function (err, salt) {
+            if (err) {
+                console.log('err')
+                return next(err);
+            }
+            bcrypt.hash(user.password, salt, null, function (err, hash) {
+                if (err) {
+                    return next(err);
+                }
+                user.password = hash;
+                next();
+            });
+        });
+    } else {
+        return next();
+    }
+});
+
+UserSchema.methods.comparePassword = function (passw, cb) {
+    bcrypt.compare(passw, this.password, function (err, isMatch) {
+        if (err) {
+            return cb(err);
+        }
+        cb(null, isMatch);
+    });
+};
+
+//UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);

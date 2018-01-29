@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../../models/user');
-const m = require('../../middlewares/middleware');
+const m = require('../../middlewares/middleware').api;
 const h = require('../../helpers/helpers');
 
 
@@ -77,6 +77,7 @@ router.delete('/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
         }
     })
 })
+
 
 
 module.exports = router;

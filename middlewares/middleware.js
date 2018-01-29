@@ -3,7 +3,10 @@ var Course = require('../models/course');
 var User = require('../models/user');
 const { URL } = require('url');
 var queryString = require('query-string');
+const passport = require('passport');
+require('../config/passport')(passport);
 var m = {};
+var api = {};
 
 m.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
@@ -11,7 +14,7 @@ m.isLoggedIn = (req, res, next) => {
     } else {
         var currentUrl = new URL(req.protocol + '://' + req.get('Host') + '/courses');
         //console.log(currentUrl);
-        if(req.headers.referer) {
+        if (req.headers.referer) {
             currentUrl = new URL(req.headers.referer);
             //console.log('if: ' + currentUrl);
         }
@@ -107,5 +110,89 @@ m.diffInArrays = (arr1, arr2) => {
 
 }
 
+api.isLoggedIn = (req, res, next) => {
+    return passport.authenticate('jwt', {session: false})(req, res, next);
+}
 
-module.exports = m;
+api.isStudent = (req, res, next) => {
+    var token = getToken(req.headers);
+    if(token) {
+        if(req.user.type == 'student') {
+            return next();
+        } else {
+            return res.json({success: false, message: 'You need to be student to do that!'});
+        }
+    } else {
+        res.json({success: false, message: 'No token provided'});
+    }
+}
+
+api.isTeacher = (req, res, next) => {
+    var token = getToken(req.headers);
+    if(token) {
+        if(req.user.type == 'teacher') {
+            return next();
+        } else {
+            return res.json({success: false, message: 'You need to be teacher to do that!'});
+        }
+    } else {
+        res.json({success: false, message: 'No token provided'});
+    }
+}
+
+api.isAdmin = (req, res, next) => {
+    var token = getToken(req.headers);
+    if(token) {
+        if(req.user.type == 'admin') {
+            return next();
+        } else {
+            return res.json({success: false, message: 'You need to be admin to do that!'});
+        }
+    } else {
+        res.json({success: false, message: 'No token provided'});
+    }
+   
+}
+
+api.checkUserOwnership = (req, res, next) => {
+    User.findById(req.params.id, function (err, foundUser) {
+        if (err || !foundUser) {
+            res.json({success: false, message: 'User not found.'});
+        } else {
+            if (foundUser._id.equals(req.user._id) || req.user.type == 'admin') {
+                return next();
+            } else {
+                res.json({success: false, message: 'Unauthorized.'});
+            }
+        }
+    })
+}
+
+api.checkCourseOwnership = (req, res, next) => {
+    Course.findById(req.params.id, function (err, foundCourse) {
+        if (err || !foundCourse) {
+            res.json({success: false, message: 'Course not found'});
+        } else {
+            if (foundCourse.teacher.equals(req.user._id) || req.user.type == 'admin') {
+                return next();
+            } else {
+                res.json({success: false, message: 'Unauthorized.'});
+            }
+        }
+    })
+}
+
+getToken = function (headers) {
+    if (headers && headers.authorization) {
+        var parted = headers.authorization.split(' ');
+        if (parted.length === 2) {
+            return parted[1];
+        } else {
+            return null;
+        }
+    } else {
+        return null;
+    }
+};
+
+module.exports = { m: m, api: api };

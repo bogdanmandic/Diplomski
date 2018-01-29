@@ -47,9 +47,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 app.use(methodOverride('_method'));
-app.use(flash());
+//app.use(flash());
 
-// PASSPORT CONFIG
+// PASSPORT CONFIG FOR SESSION
+/*
 app.use(require('express-session')({
   secret: 'fdghdfhjrnetgnoi3453',
   resave: false,
@@ -60,8 +61,18 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+*/
 
+// PASSPORT CONFIG FOR JWT
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+app.use(passport.initialize());
 
+/*
+CANT BE USED WITHOUT SESSIONS
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.query = req.query;
@@ -69,7 +80,7 @@ app.use((req, res, next) => {
   res.locals.success = req.flash('success');
   next();
 });
-
+*/
 
 // ROUTES
 app.use('/', index);

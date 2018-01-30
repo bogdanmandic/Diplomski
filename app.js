@@ -29,7 +29,7 @@ var apiCourses = require('./routes/v1/courses');
 var apiAuth = require('./routes/v1/auth');
 var apiCarousel = require('./routes/v1/carousel');
 var apiEnroll = require('./routes/v1/enroll');
-
+var apiDescribe = require('./routes/v1/describe');
 // mongoose setup
 mongoose.Promise = global.Promise;
 // mongoose.connection.openUri('mongodb://localhost/akademija');
@@ -97,6 +97,7 @@ app.use('/v1/courses', apiCourses);
 app.use('/v1/auth', apiAuth);
 app.use('/v1/carousel', apiCarousel);
 app.use('/v1/enroll', apiEnroll);
+app.use('/v1/describe', apiDescribe);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

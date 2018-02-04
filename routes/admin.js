@@ -138,14 +138,20 @@ router.put('/users/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
 });
 
 router.delete('/users/:id', m.isLoggedIn, m.isAdmin, (req, res) => {
-    User.findOne({ username: 'tbd' }, (err, tbd) => {
-        User.findById(req.params.id, (err, deleted) => {
-            if (deleted._id != tbd._id)
-                deleted.remove();
-            res.redirect('/admin/users');
-        });
+    User.findOne({ username: 'admin' }, (err, admin) => {
+        User.findOne({ username: 'tbd' }, (err, tbd) => {
+            User.findById(req.params.id, (err, deleted) => {
+                if (deleted._id.equals(tbd._id)) {
+                    console.log('ovo je tbd, ne brisi!');
+                } else if(deleted._id.equals(admin._id)) {
+                    console.log('ovo je admin, ne brisi!');
+                } else {
+                    deleted.remove();
+                }
+                res.redirect('/admin/users');
+            });
+        })
     })
-
 });
 
 router.get('/test/:id', m.isLoggedIn, m.isAdmin, (req, res) => {

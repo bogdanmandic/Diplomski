@@ -15,7 +15,7 @@ User.find({ type: 'admin' }, (err, foundAdmin) => {
 })
 
 
-User.find({ username: 'apiadmin' }, (err, foundAdmin) => {
+/*User.find({ username: 'apiadmin' }, (err, foundAdmin) => {
     var newAdmin = new User({
         username: 'apiadmin',
         password: 'apiadmin',
@@ -27,7 +27,7 @@ User.find({ username: 'apiadmin' }, (err, foundAdmin) => {
             console.log('apiadmin created');
         })
     }
-})
+})*/
 
 
 User.find({ type: 'teacher' }, (err, foundTeachers) => {

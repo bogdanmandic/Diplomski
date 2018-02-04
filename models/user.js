@@ -24,10 +24,10 @@ const UserSchema = mongoose.Schema({
         required: [true, 'Username missing'],
         unique: true
     },
-    password: {
+    /*password: {
         type: String,
         required: true
-    },
+    },*/
     courses: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Course'
@@ -37,7 +37,7 @@ const UserSchema = mongoose.Schema({
 UserSchema.pre('remove', function (next) {
     if (this.type == 'student')
         this.model('Course').update({ students: { $elemMatch: { data: this._id } } }, { $pull: { students: { data: this._id } } }, { multi: true }).exec();
-    else if (this.type == 'teacher') {
+    else if (this.type == 'teacher' && this.username != 'tbd') {
         this.model('User').findOne({ username: 'tbd' }, (err, tbd) => {
             this.model('Course').update({ teacher: this._id }, { $set: { teacher: tbd._id } }, { multi: true }).exec();
             //this.model('User').update({ _id: tbd._id }, { $push: { courses: { $each: this.courses } } }, { multi: true }).exec();
@@ -48,7 +48,7 @@ UserSchema.pre('remove', function (next) {
     next();
 });
 
-UserSchema.pre('save', function (next) {
+/*UserSchema.pre('save', function (next) {
     var user = this;
     if (this.isModified('password') || this.isNew) {
         bcrypt.genSalt(10, function (err, salt) {
@@ -77,7 +77,7 @@ UserSchema.methods.comparePassword = function (passw, cb) {
         cb(null, isMatch);
     });
 };
-
-//UserSchema.plugin(passportLocalMongoose);
+*/
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);

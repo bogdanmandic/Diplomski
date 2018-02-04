@@ -53,7 +53,7 @@ router.put('/:id', m.isLoggedIn, m.checkUserOwnership, (req, res) => {
 		$set: {
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,
-			email: req.body.email,
+			//email: req.body.email,
 		}
 	};
 	req.body.image === '' ? newData.$unset = { image: '' } : newData.$set.image = req.body.image;

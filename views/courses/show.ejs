@@ -23,7 +23,7 @@
                                     <ol>
                                         
                                         <%course.students.forEach( s => { 
-                                            console.log(s)
+                                            
                                             %>
                                             <li><a href='/users/<%= s.data.id %>'><%= s.data.username %></a></li>
                                         <% }) %>

@@ -74,7 +74,7 @@ router.get('/:id/edit', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
 
 // UPDATE
 router.put('/:id', m.isLoggedIn, m.checkCourseOwnership, (req, res) => {
-    console.log(req.body);
+    
     var newData = {
         $set: {
             name: req.body.name,
